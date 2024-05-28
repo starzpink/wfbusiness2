@@ -6,7 +6,7 @@ $sql = "insert into areaat(cod_area, desc_area) "
         . "values (".$_POST['cod_area'].",'".$_POST['desc_area']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "areainistrador criado com sucesso!";
+    $msg = "Área de atuação adicionada com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }

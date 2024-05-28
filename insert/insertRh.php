@@ -7,7 +7,7 @@ $sql = "insert into rh(cod_rh, cod_emp, nome_rh, senha_rh, cpf_rh, email_rh, tel
         . "md5('".$_POST['senha_rh']."'),".$_POST['cpf_rh'].",'".$_POST['email_rh']."','".$_POST['tel_rh']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "RH criado com sucesso!";
+    $msg = "RH adicionado com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }
@@ -15,5 +15,6 @@ if($conn->query($sql) === TRUE){
 $conn->close();
 
 echo json_encode(['msg'=>$msg]);
-        
+
+
 ?>

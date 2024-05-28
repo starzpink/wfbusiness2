@@ -8,7 +8,7 @@ $sql = "insert into vaga(cod_vaga, cod_local, cod_emp, cod_mod, cod_tipo, titulo
         .$_POST['descricao_vaga']."',".$_POST['salario_vaga'].",'".$_POST['horario_vaga']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "Vaga criado com sucesso!";
+    $msg = "Vaga adicionada com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }

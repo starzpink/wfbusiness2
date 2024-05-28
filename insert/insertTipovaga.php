@@ -6,7 +6,7 @@ $sql = "insert into tipo_vaga(cod_tipo, desc_tipo) "
         . "values (".$_POST['cod_tipo'].",'".$_POST['desc_tipo']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "Empresa criado com sucesso!";
+    $msg = "Tipo de vaga adicionada com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }

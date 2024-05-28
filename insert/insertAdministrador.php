@@ -7,7 +7,7 @@ $sql = "insert into administrador(cod_adm, nome_adm, senha_adm, email_adm, tel_a
         . "md5('".$_POST['senha_adm']."'),'".$_POST['email_adm']."','".$_POST['tel_adm']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "Administrador criado com sucesso!";
+    $msg = "Administrador adicionado com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }
@@ -15,5 +15,6 @@ if($conn->query($sql) === TRUE){
 $conn->close();
 
 echo json_encode(['msg'=>$msg]);
-        
+
+
 ?>

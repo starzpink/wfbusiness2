@@ -8,7 +8,7 @@ $sql = "insert into empresa(cod_emp, nome_emp, senha, sede_emp, areaat_emp, desc
         .$_POST['site_emp']."','".$_POST['tel_emp']."','".$_POST['cnpj_emp']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "Empresa criado com sucesso!";
+    $msg = "Empresa adicionada com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }

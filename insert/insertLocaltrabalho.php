@@ -7,7 +7,7 @@ $sql = "insert into local_trabalho(cod_local, cep_local, cidade_local, estado_lo
         .$_POST['cidade_emp']."','".$_POST['estado_emp']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "Local de Trabalho criado com sucesso!";
+    $msg = "Local adicionado com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }

@@ -6,7 +6,7 @@ $sql = "insert into competencia(cod_comp, desc_comp) "
         . "values (".$_POST['cod_comp'].",'".$_POST['desc_comp']."')";
 
 if($conn->query($sql) === TRUE){
-    $msg = "compinistrador criado com sucesso!";
+    $msg = "Competência adicionada com sucesso!";
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }
