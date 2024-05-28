@@ -15,4 +15,3 @@ $conn->close();
 
 echo json_encode(['msg'=>$msg]);
         
-?>
