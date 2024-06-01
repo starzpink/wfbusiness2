@@ -94,7 +94,7 @@ $(document).ready(function () {
         html = html + '<input type="text" name="cod_comp" class="form-control" data-error="Por favor, insira o código da competência." required />';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
-        html = html + '<label class="control-label" for="desc_comp">Descrição da Área de Atuação</label>';
+        html = html + '<label class="control-label" for="desc_comp">Descrição da Competência</label>';
         html = html + '<input type="text" name="desc_comp" class="form-control" data-error="Por favor, insira a descrição da competência." required />';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
