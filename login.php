@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <form action="area_adm.php" method="POST">
+                    <form action="administracao.php" method="POST">
                         <p>Acesso à área do administrador</p>
                         <?php if (isset($_SESSION['msg'])) { ?>
                             <p style="color: red;"><?php echo $_SESSION['msg']; ?></p>

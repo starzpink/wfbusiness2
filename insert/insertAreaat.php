@@ -1,9 +1,9 @@
 <?php
-include './conn.php';
+include '../conn.php';
 header('Content-type: application/json');
 
-$sql = "insert into areaat(cod_area, desc_area) "
-        . "values (".$_POST['cod_area'].",'".$_POST['desc_area']."')";
+$sql = "insert into areaat(desc_area) "
+        . "values ('".$_POST['desc_area']."')";
 
 if($conn->query($sql) === TRUE){
     $msg = "Área de atuação adicionada com sucesso!";

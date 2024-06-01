@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         $.ajax({
             dataType: 'json',
-            url: 'getEmpresa.php',
+            url: 'get/getEmpresa.php',
             data: {page: page}
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
@@ -95,7 +95,7 @@ $(document).ready(function () {
         html = html + '</div>';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="areaat_emp">Área de Atuação</label>';
-        html = html + '<select id="cod_area" name="areaat_emp" class="form-control"></select>';
+        html = html + '<select name="areaat_emp" id="cod_area" class="form-control"></select>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
@@ -129,7 +129,7 @@ $(document).ready(function () {
     }
     function createEditForm() {
 
-        var html = '<input type="hidden" name="id" class="edit-id">';
+        var html = '<input type="hidden" name="cod" class="edit-id">';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="nome_emp">Nome da Empresa</label>';
         html = html + '<input type="text" name="nome_emp" class="form-control" data-error="Por favor, insira o nome da empresa." required />';
@@ -346,7 +346,7 @@ $(document).ready(function () {
 
         $.ajax({
             dataType: 'json',
-            url: 'getAreaat.php',
+            url: 'get/getAreaat.php',
             data: {}
         }).done(function (data) {
 

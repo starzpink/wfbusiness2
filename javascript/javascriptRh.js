@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         $.ajax({
             dataType: 'json',
-            url: 'getRh.php',
+            url: 'get/getRh.php',
             data: {page: page}
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
@@ -38,7 +38,7 @@ $(document).ready(function () {
     function getPageData() {
         $.ajax({
             dataType: 'json',
-            url: 'getRh.php',
+            url: 'get/getRh.php',
 
             data: {page: page}
         }).done(function (data) {

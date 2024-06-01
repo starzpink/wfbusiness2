@@ -1,5 +1,5 @@
 <?php
-include './conn.php';
+include '../conn.php';
 header('Content-type: application/json');
 
 $sql = "insert into requisito(cod_comp, cod_vaga) "

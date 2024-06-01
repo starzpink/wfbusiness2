@@ -1,9 +1,9 @@
 <?php
-include './conn.php';
+include '../conn.php';
 header('Content-type: application/json');
 
-$sql = "insert into modalidade(cod_mod, desc_mod) "
-        . "values (".$_POST['cod_mod'].",'".$_POST['desc_mod']."')";
+$sql = "insert into modalidade(desc_mod) "
+        . "values ('".$_POST['desc_mod']."')";
 
 if($conn->query($sql) === TRUE){
     $msg = "Modalidade adicionada com sucesso!";
