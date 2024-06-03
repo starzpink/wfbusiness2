@@ -1,34 +1,34 @@
 <?php
 $classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
 include_once './conn.php';
-include_once './adm.php';
+include_once './usuario.php';
 session_start();
 
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $consulta = mysqli_query($conn, "select cod_adm, nome_adm, senha_adm, email_adm, tel_adm from administrador where email_adm = '" . $email . "'");
+    $consulta = mysqli_query($conn, "select cod_usuario, email, senha, cargo from usuario where email = '" . $email . "'");
     $dados = mysqli_fetch_assoc($consulta);
-    $adm = null;
+    $usuario = null;
     if ($dados != null) {
-        $adm = new Adm($dados["cod_adm"], $dados["nome_adm"], $dados["senha_adm"], $dados["email_adm"], $dados['tel_adm']);
+        $usuario = new Usuario($dados["cod_usuario"], $dados["email"], $dados["senha"], $dados['cargo']);
     }
 
-    if ($adm != null && $adm->validaEmailSenha($email, md5($senha))) {
-        $_SESSION['adm'] = $adm;
+    if ($usuario != null && $usuario->validaEmailSenha($email, md5($senha))) {
+        $_SESSION['usuario'] = $usuario;
     } else {
         $_SESSION['msg'] = "E-mail ou senha incorretos.";
         header("Location: login.php");
         exit;
     }
-} else if (!isset($_SESSION['adm'])) {
+} else if (!isset($_SESSION['usuario'])) {
     $_SESSION['msg'] = "É necessário logar antes de acessar a área de administrador.";
     header("Location: login.php");
     exit;
 }
 
-$adm = $_SESSION['adm'];
+$usuario = $_SESSION['usuario'];
 
 ?>
 <!DOCTYPE html>
@@ -70,9 +70,11 @@ $adm = $_SESSION['adm'];
                             <h2>Cadastro de <?php echo $classe; ?></h2>
                         </div>
                         <div class="pull-right">
+                            <?php if($classe != "Empresa"){?>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item">
                                 Criar <?php echo $classe; ?>
                             </button>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

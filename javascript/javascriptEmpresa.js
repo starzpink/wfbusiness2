@@ -6,8 +6,10 @@ $(document).ready(function () {
     var types = new Map();
     var dataCon;
     createHeadTable();
+    /*
     createForm();
     createEditForm();
+    */
     createViewForm();
     manageData();
     getDataSelect();
@@ -58,7 +60,7 @@ $(document).ready(function () {
             rows = rows + '<td>' + value.cod_emp + '</td>';
             rows = rows + '<td>' + value.nome_emp + '</td>';
             rows = rows + '<td data-id="' + i++ + '">';
-            rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Editar</button> ';
+            //rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Editar</button> ';
             rows = rows + '<button data-toggle="modal" data-target="#view-item" class="btn btn-primary view-item">Visualizar</button> ';
             rows = rows + '</td>';
             rows = rows + '</tr>';
@@ -75,7 +77,7 @@ $(document).ready(function () {
         rows = rows + '</tr>'
         $("thead").html(rows);
     }
-    function createForm() {
+    /*function createForm() {
 
         var html = '';
         html = html + '<div class="form-group">';
@@ -179,7 +181,7 @@ $(document).ready(function () {
         html = html + '</div>';
         $("#edit-item").find("form").html(html);
 
-    }
+    }*/
 
     function createViewForm() {
 
@@ -246,6 +248,23 @@ $(document).ready(function () {
             type: 'POST',
             url: form_action,
             data: {cod_emp: cod_emp, nome_emp: nome_emp, senha: senha, sede_emp: sede_emp, areaat_emp: areaat_emp, desc_emp: desc_emp, email_emp: email_emp, site_emp: site_emp, tel_emp: tel_emp, cnpj_emp: cnpj_emp}
+        }).done(function (data) {
+
+            $("#create-item").find("input[name='nome_emp']").val('');
+            $("#create-item").find("input[name='senha']").val('');
+            $("#create-item").find("input[name='sede_emp']").val('');
+            $("#create-item").find("select[name='areaat_emp']").val('');
+            getPageData();
+            $(".modal").modal('hide');
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+
+        });
+
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: form_action,
+            data: {cod_usuario: cod_usuario, email:email, senha:senha, cargo:cargo}
         }).done(function (data) {
 
             $("#create-item").find("input[name='nome_emp']").val('');
