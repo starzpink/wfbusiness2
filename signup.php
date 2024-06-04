@@ -11,14 +11,36 @@
     <div class="container">
         <h2>Formulário de Cadastro</h2>
         <form id="cadastroForm" action="process.php" method="post">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required></br>
+            <label for="nome_emp">Nome da Empresa:</label>
+            <input type="text" id="nome_emp" name="nome_emp" required></br>
 
-            <label for="email">Email:</label>
+            <label for="cod_local">Local:</label>
+            <input type="text" id="cod_local" name="cod_local" required></br>
+
+            <label for="areaat_emp">Área de Atuação:</label>
+            <input type="text" id="areaat_emp" name="areaat_emp" required></br>
+
+            <label for="desc_emp">Descrição:</label>
+            <textarea id="desc_emp" name="desc_emp"></textarea></br>
+
+            <label for="email_emp">E-mail de contato:</label>
+            <input type="email" id="email_emp" name="email_emp" required></br>
+
+            <label for="site_emp">Site:</label>
+            <input type="text" id="site_emp" name="site_emp" required></br>
+
+            <label for="tel_emp">Telefone:</label>
+            <input type="text" id="tel_emp" name="tel_emp" required></br>
+
+            <label for="cnpj_emp">CNPJ</label>
+            <input type="text" id="cnpj_emp" name="cnpj_emp" required></br>
+
+
+            <label for="email">E-mail de Login:</label>
             <input type="email" id="email" name="email" required></br>
 
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required></br>
+            <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
 
             <label for="confirmaSenha">Confirme a Senha:</label>
             <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
