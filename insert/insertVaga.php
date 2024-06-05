@@ -1,5 +1,11 @@
 <?php
+session_start();
+$cod_usuario = $_SESSION['cod_usuario'];
+
 include '../conn.php';
+
+$conn->query("SET @cod_usuario = $cod_usuario");
+
 header('Content-type: application/json');
 
 $sql = "insert into vaga(cod_local, cod_emp, cod_mod, cod_tipo, titulo_vaga, descricao_vaga, salario_vaga, horario_vaga) "

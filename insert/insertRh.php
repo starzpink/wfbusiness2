@@ -1,5 +1,11 @@
 <?php
+session_start();
+$cod_usuario = $_SESSION['cod_usuario'];
+
 include '../conn.php';
+
+$conn->query("SET @cod_usuario = $cod_usuario");
+
 header('Content-type: application/json');
 
 $sql = "insert into rh(cod_emp, nome_rh, cpf_rh, email_rh, tel_rh, cod_usuario) "
