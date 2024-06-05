@@ -18,11 +18,7 @@
                 <h1>Centenas de empresas estão na Workfolio for Business</h1>
                     <h2>Cadastre sua empresa hoje, comece a contratar já.</h2>
                     <div class="botoes">
-                        <a href="https://www.google.com">
-                            <img src="assets/google-icon.svg"/>
-                            <p>Continuar com Google</p>
-                        </a>
-                        <a href="./signup.php">
+                        <a href="https://www.google.com/">
                             <img src="assets/user-plus-svgrepo-com.svg" />
                             <p>Cadastre-se com e-mail</p>
                         </a>

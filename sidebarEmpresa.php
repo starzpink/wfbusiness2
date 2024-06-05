@@ -7,7 +7,7 @@
     <div class="sb-menu">
         <ul class="sb-menu-opcoes">
             <li class="sb-opcao">
-                <a>
+                <a href="suaempresa.php">
                 <i class="bx bx-building"></i>
                 <span>Empresa</span>
                 </a>
