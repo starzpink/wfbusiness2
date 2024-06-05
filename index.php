@@ -22,11 +22,11 @@
                             <img src="assets/google-icon.svg"/>
                             <p>Continuar com Google</p>
                         </a>
-                        <a href="https://www.google.com/search?sxsrf=ADLYWIJd6iGj7Z15EiyGZZdyQU-XXM8dNg:1716144391576&q=carlos+oliveira+shirtless&uds=ADvngMh0XpvccYpCvUJmj0CCIbWgrgEy1i0iiGNQnzqxKd1xbjBBBH-cPKlu5GYf2XLLSeFSBamzo0xuPgD75dNv5V74EG171T5SfSjg0ORiq9qYmekE6iVJq-xm2T_CfY57Pexze_eIaIcFVmfGlUUXeRV7qv3DB5UMfwn3yMkiNIH4vls0qq2Yfk2EwpGJyKp37h29Vc_xB3h7DZqaFSDaMhrveTnYBbTYeZm1d89kmtt3dz2qR_z-zbp_OOxL3miB5KOiM0YWTaFh10eVj4XjHBwwOCsGKfANk4drTRCu4qVTfkY7Hbtqv4ovjSVnwkexZ6wnLs0FhtcclQr_1zQP6bYjCDF5sg&udm=2&prmd=ivnsmbtz">
+                        <a href="./signup.php">
                             <img src="assets/user-plus-svgrepo-com.svg" />
                             <p>Cadastre-se com e-mail</p>
                         </a>
-                        <p class="entrar">Sua empresa já tem uma conta? <a class="a-entrar">Entrar</a></p>
+                        <p class="entrar">Sua empresa já tem uma conta? <a href="login.php" class="a-entrar">Entrar</a></p>
                         <p>Está procurando por vagas? <a class="a-entrar">Confira nossa plataforma voltada à candidatos</a></p>
                     </div>
                 </div>
