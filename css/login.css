@@ -1,17 +1,39 @@
-body {
-    background-color: #556B2F;
+body{
+    background: #008080 !important;
 }
+
 path:hover {
     fill: #D9D49C;
 }
 .container {
-    margin-top: 100px;
+    margin-top: 5rem;
+}
+
+a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.navbar {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #ccc;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group > p {
+    margin: 0rem;
+    margin-left: 0.1rem;
 }
 
 form {
-    background-color: #EEE8AA;
+    background-color: #FFFFFF;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 h1 {
@@ -33,7 +55,7 @@ input[type="password"] {
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #556B2F;
+    background-color: #008080;
     color: #EEE8AA;
     border: none;
     border-radius: 5px;
@@ -41,5 +63,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: 	#66b2b2;
+}
+
+.logo {
+    font-weight: 500;
 }
