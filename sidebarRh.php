@@ -20,7 +20,7 @@
                 </li>
             </a>
             <li class="sb-opcao">
-                <a href="suaempresa.php">
+                <a href="perfilempresa.php">
                 <i class="bx bx-building"></i>
                 <span>Empresa</span>
                 </a>
@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="sb-opcao">
-                <a>
+                <a href="logout.php">
                 <i class="bx bx-log-out"></i>
                 <span>Sair</span>
                 </a>
