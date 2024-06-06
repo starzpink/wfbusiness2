@@ -1,9 +1,11 @@
 $(document).ready(function () {
-    var dataCon;
-    var dataChart = new Array();
-    carregaChart();
+    var chartAreaat = new Array();
+    carregaChartAreaat();
+
+    var chartLocal = new Array();
+    carregaChartLocal();
     
-    function carregaChart() {
+    function carregaChartAreaat() {
         $.ajax({
             dataType: 'json',
             type: 'POST',
@@ -11,35 +13,66 @@ $(document).ready(function () {
             data: {}
         }).done(function (data) {
             $.each(data.data, function (key, value) {
-                dataChart.push(new Array(new String(value.desc_area).toString(), new Number(value.total).valueOf()));
-                //dataChart = dataChart + " ['" + value.descricao +"', "+ value.total + "]";
+                chartAreaat.push(new Array(new String(value.desc_area).toString(), new Number(value.total).valueOf()));
             });
-            // Load the Visualization API and the corechart package.
+
             google.charts.load('current', { 'packages': ['corechart'] });
-            // Set a callback to run when the Google Visualization API is loaded.
-            google.charts.setOnLoadCallback(drawChart);
-            // Callback that creates and populates a data table,
-            // instantiates the pie chart, passes in the data and
-            // draws it.
-            function drawChart() {
-                // Create the data table.
+            google.charts.setOnLoadCallback(drawChartAreaat);
+
+            function drawChartAreaat() {
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Topping');
-                data.addColumn('number', 'Slices');
-                data.addRows(dataChart);
-                // Set chart options
+                data.addColumn('string', 'Área');
+                data.addColumn('number', 'Quantidade');
+                data.addRows(chartAreaat);
+
                 var options = {
                     'title': 'Quantidade de Empresas Por Áreas de Atuação',
                     'width': 400,
                     'height': 300
                 };
-                // Instantiate and draw our chart, passing in some options.
-                var chart_div = document.getElementById('chart_div');
+
+                var chart_div = document.getElementById('chart_div_areaat');
                 var chart = new google.visualization.PieChart(chart_div);
                 google.visualization.events.addListener(chart, 'ready', function () {
-                    chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-                    console.log(chart_div.innerHTML);
-                    document.getElementById('png').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a > ';
+                    chart_div.innerHTML = '<img src="'+chart.getImageURI()+'">';
+                    document.getElementById('png_areaat').outerHTML = '<a href="'+ chart.getImageURI() +'">Versão para Impressão</a>';
+                });
+                chart.draw(data, options);
+            }
+        });
+    }
+
+    function carregaChartLocal() {
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: 'chart/chartLocal.php',
+            data: {}
+        }).done(function (data) {
+            $.each(data.data, function (key, value) {
+                chartLocal.push(new Array(new String(value.cidade_local).toString(), new Number(value.total).valueOf()));
+            });
+
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChartLocal);
+
+            function drawChartLocal() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Cidade');
+                data.addColumn('number', 'Quantidade');
+                data.addRows(chartLocal);
+
+                var options = {
+                    'title': 'Quantidade de Empresas dividida por Cidades',
+                    'width': 400,
+                    'height': 300
+                };
+
+                var chart_div = document.getElementById('chart_div_local');
+                var chart = new google.visualization.PieChart(chart_div);
+                google.visualization.events.addListener(chart, 'ready', function () {
+                    chart_div.innerHTML = '<img src="'+chart.getImageURI()+'">';
+                    document.getElementById('png_local').outerHTML = '<a href="'+ chart.getImageURI() +'">Versão para Impressão</a>';
                 });
                 chart.draw(data, options);
             }

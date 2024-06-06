@@ -112,21 +112,40 @@
             </div>
         </div>
     <?php } else { ?>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart">
-        Gráfico Área de Atuação
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart_areaat">
+            Gráfico Área de Atuação
         </button>
         <!-- Chart Modal -->
-        <div class="modal fade" id="chart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="chart_areaat" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAreaat">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                ariahidden="true">×</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Chart <?php echo $classe; ?></h4>
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabelAreaat">Gráfico Área de Atuação</h4>
                     </div>
                     <div class="modal-body">
-                        <div id="chart_div"></div>
-                        <div id="png"></div>
+                        <div id="chart_div_areaat"></div>
+                        <div id="png_areaat"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart_local">
+            Gráfico Locais das Empresas
+        </button>
+        <!-- Chart Modal -->
+        <div class="modal fade" id="chart_local" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLocal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabelLocal">Gráfico Locais das Empresas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chart_div_local"></div>
+                        <div id="png_local"></div>
                     </div>
                 </div>
             </div>
