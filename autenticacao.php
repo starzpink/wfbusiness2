@@ -1,5 +1,4 @@
 <?php
-$classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
 include_once './conn.php';
 include_once './usuario.php';
 session_start();
@@ -32,11 +31,11 @@ if (isset($_POST['email'])) {
 
 $usuario = $_SESSION['usuario'];
 
-if ($dados['cargo'] === 0){
+if ($dados['cargo'] == 0){   
     include 'administracao.php';
-} else if ($dados['cargo'] === 1) {
+} else if ($dados['cargo'] == 1) {
     include 'dashboard.php';
-} else if ($dados['cargo'] === 2) {
+} else if ($dados['cargo'] == 2) {
     include 'dashboard_emp.php';
 }
 ?>

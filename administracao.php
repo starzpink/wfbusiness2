@@ -1,3 +1,5 @@
+<?php $classe = isset($_GET["classe"]) ? $_GET["classe"] : ""; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +21,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="administracao.php">Home</a></li>
                 <li><a href="administracao.php?classe=Areaat">Áreas de Atuação</a></li>
                 <li><a href="administracao.php?classe=Competencia">Competências</a></li>
                 <li><a href="administracao.php?classe=Empresa">Empresas</a></li>
@@ -106,6 +108,8 @@
                 </div>
             </div>
         </div>
+    <?php } else { ?>
+
     <?php } ?>
 </body>
 
