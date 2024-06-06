@@ -187,6 +187,7 @@ $(document).ready(function () {
 
 
     });
+
     function carregaChart() {
         $.ajax({
             dataType: 'json',

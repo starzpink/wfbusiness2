@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Área do Administrador</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,6 +15,8 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <script src="javascript/javascript<?php echo $classe; ?>.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="javascript/javascriptChart.js"></script>
 </head>
 
 <body>
@@ -109,6 +112,25 @@
             </div>
         </div>
     <?php } else { ?>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart">
+        Gráfico Área de Atuação
+        </button>
+        <!-- Chart Modal -->
+        <div class="modal fade" id="chart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                ariahidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Chart <?php echo $classe; ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chart_div"></div>
+                        <div id="png"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <?php } ?>
 </body>
