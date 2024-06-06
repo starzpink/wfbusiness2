@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>Área do Administrador</title>
+<title>Área do Administrador</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
@@ -150,7 +150,25 @@
                 </div>
             </div>
         </div>
-
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart_coluna">
+            Empresas cadastradas ao longo do tempo
+        </button>
+        <!-- Chart Coluna Modal -->
+        <div class="modal fade" id="chart_coluna" tabindex="-1" role="dialog" aria-labelledby="myModalLabelColuna">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabelColuna">Gráfico Coluna</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chart_div_coluna"></div>
+                        <div id="png_coluna"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?php } ?>
 </body>
 
