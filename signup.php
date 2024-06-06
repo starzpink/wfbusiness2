@@ -35,7 +35,7 @@
             <label for="cnpj_emp">CNPJ</label>
             <input type="text" id="cnpj_emp" name="cnpj_emp" required></br>
 
-
+<!--segunda parte-->
             <label for="email">E-mail de Login:</label>
             <input type="email" id="email" name="email" required></br>
 

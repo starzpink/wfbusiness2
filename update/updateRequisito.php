@@ -1,6 +1,10 @@
 <?php
-include '../conn.php';
 session_start();
+$cod_usuario = $_SESSION['cod_usuario'];
+
+include '../conn.php';
+
+$conn->query("SET @cod_usuario = $cod_usuario");
 
 header('Content-type: application/json');
 
