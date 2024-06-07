@@ -18,7 +18,7 @@ if($conn->query($sql) === TRUE){
 } else {
     $msg = "Error: ".$sql."<br>".$conn->error;
 }
-
+//achar um jeito de incluir  $_SESSION['cod_emp'] ao inserir, atualizar e exibir dados de vagas, do rh e das modalidades nas vagas (alguém me ajuda)
 $conn->close();
 
 echo json_encode(['msg'=>$msg]);

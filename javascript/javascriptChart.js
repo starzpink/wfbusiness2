@@ -7,6 +7,7 @@ $(document).ready(function () {
         var chartAreaat = [];
         var chartLocal = [];
         var chartCadEmp = [];
+        var chartVagas = [];
 
         // Load charts when Google Charts library is ready
         google.charts.setOnLoadCallback(loadCharts);
@@ -15,6 +16,7 @@ $(document).ready(function () {
             carregaChartAreaat();
             carregaChartLocal();
             carregaChartCadEmp();
+            carregaChartVagas();
         }
         function carregaChartAreaat() {
             $.ajax({
@@ -143,6 +145,42 @@ $(document).ready(function () {
                 document.getElementById('png_coluna').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
             });
             chart.draw(data, options);
+        }
+        function carregaChartVagas() {
+            $.ajax({
+                dataType: 'json',
+                type: 'POST',
+                url: 'chart/chartVagas.php',
+                data: {}
+            }).done(function (data) {
+                $.each(data.data, function (key, value) {
+                    chartVagas.push(new Array(new String(value.titulo_vaga).toString(), new Number(value.total).valueOf()));
+                });
+
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChartVagas);
+
+                function drawChartVagas() {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Vaga');
+                    data.addColumn('number', 'Quantidade');
+                    data.addRows(chartVagas);
+
+                    var options = {
+                        'title': 'Quantidade de Vagas da Empresa',
+                        'width': 400,
+                        'height': 300
+                    };
+
+                    var chart_div = document.getElementById('chart_div_vagas');
+                    var chart = new google.visualization.PieChart(chart_div);
+                    google.visualization.events.addListener(chart, 'ready', function () {
+                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+                        document.getElementById('png_vagas').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
+                    });
+                    chart.draw(data, options);
+                }
+            });
         }
     });
 });
