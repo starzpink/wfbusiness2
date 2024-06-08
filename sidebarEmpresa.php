@@ -6,36 +6,37 @@
     </header>
     <div class="sb-menu">
         <ul class="sb-menu-opcoes">
-            <li class="sb-opcao">
-                <a href="suaempresa.php">
-                <i class="bx bx-building"></i>
-                <span>Empresa</span>
-                </a>
-            </li>
+            <a href="suaempresa.php">
+                <li class="sb-opcao">
+                    <i class="bx bx-building"></i>
+                    <span>Empresa</span>
+                </li>
+            </a>
             <a href="dashboard.php">
                 <li class="sb-opcao">
                     <i class="bx bxs-dashboard"></i>
-                    <span>Dashboard</span> 
+                    <span>Dashboard</span>
                 </li>
             </a>
-            <li class="sb-opcao">
-                <a>
-                <i class="bx bx-group"></i>
-                <span>Equipe RH</span>
-                </a>
-            </li>
-            <li class="sb-opcao">
-                <a href="vagas.php">
-                <i class="bx bx-notepad"></i>
-                <span>Vagas</span>
-                </a>
-            </li>
-            <li class="sb-opcao">
-                <a>
-                <i class="bx bx-log-out"></i>
-                <span>Sair</span>
-                </a>
-            </li>
+            <a>
+                <li class="sb-opcao">
+                    <a>
+                        <i class="bx bx-group"></i>
+                        <span>Equipe RH</span>
+                </li>
+            </a>
+            <a href="vagas.php">
+                <li class="sb-opcao">
+                    <i class="bx bx-notepad"></i>
+                    <span>Vagas</span>
+                </li>
+            </a>
+            <a>
+                <li class="sb-opcao">
+                    <i class="bx bx-log-out"></i>
+                    <span>Sair</span>
+                </li>
+            </a>
         </ul>
     </div>
 </nav>
