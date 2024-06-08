@@ -14,26 +14,32 @@
         </a>
     </nav>
     <div class="container">
-        <h1>Cadastre-se com e-mail</h1>
+        <h1>Cadastre-se</h1>
         <div class="formContainer">
         <form id="cadastroForm" action="process.php" method="post">
             <div class="campo">
+            <label for="nome_emp">Nome da Empresa:</label>
             <input type="text" id="nome_emp" name="nome_emp" placeholder="Nome da Empresa" required></br>
             </div>
             <div class="campo">
-            <input type="text" id="cod_local" name="cod_local" placeholder="Local" required></br>
+            <label for="cod_local">Local:</label>
+            <input type="text" id="cod_local" name="cod_local" required></br>
             </div>
             <div class="campo">
-            <input type="text" id="areaat_emp" name="areaat_emp" placeholder="Área de Atuação" required></br>
+            <label for="areaat_emp">Área de Atuação:</label>
+            <input type="text" id="areaat_emp" name="areaat_emp" required></br>
             </div>
             <div class="campo">
-            <textarea id="desc_emp" name="desc_emp" placeholder="Descrição"></textarea></br>
+            <label for="desc_emp">Descrição:</label>
+            <textarea id="desc_emp" name="desc_emp"></textarea></br>
             </div>
             <div class="campo">
-            <input type="email" id="email_emp" name="email_emp" placeholder="E-mail de contato" required></br>
+            <label for="email_emp">E-mail de contato:</label>
+            <input type="email" id="email_emp" name="email_emp" required></br>
             </div>
             <div class="campo">
-            <input type="text" id="site_emp" name="site_emp" placeholder="Site" required></br>
+            <label for="site_emp">Site:</label>
+            <input type="text" id="site_emp" name="site_emp" required></br>
             </div>
             <div class="campo">
             <label for="tel_emp">Telefone:</label>
