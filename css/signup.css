@@ -1,0 +1,100 @@
+/* css basico */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    color: #140101;
+}
+
+html {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color:#140101;
+}
+
+ul {
+    list-style: none;
+}
+
+/* main css */
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 1rem;
+    background: white;
+    align-items: center;
+}
+
+.formContainer {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.campo, .campo2 {
+    margin-bottom: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.navbar {
+    max-width: 100%;
+    margin: 0rem;
+    padding: 1.5rem 6.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color:#FFFFF0;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #ccc;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    color:#140101;
+}
+
+.nav-menu > a {
+    background-color: #FFFFF0;
+}
+
+.logo {
+    font-family: Quicksand;
+    display: flex;
+}
