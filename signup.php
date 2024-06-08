@@ -22,7 +22,7 @@
                 <div class="parte1">
                     <div class="campo">
                         <label for="nome_emp">Nome da Empresa:</label>
-                        <input type="text" id="nome_emp" name="nome_emp" placeholder="Nome da Empresa" required></br>
+                        <input type="text" id="nome_emp" name="nome_emp" required></br>
                     </div>
                     <div class="campo">
                         <label for="cod_local">Local:</label>
@@ -52,7 +52,7 @@
                         <label for="cnpj_emp">CNPJ</label>
                         <input type="text" id="cnpj_emp" name="cnpj_emp" required></br>
                     </div>
-                    <button type="submit" onclick="prox()">Próximo</button>
+                    <input type="submit" id="visible_submit" onclick="prox()" value="Próximo">
                 </div>
             </form>
             <form id="cadastroForm2" action="teste.php" method="post">
@@ -69,16 +69,25 @@
                         <label for="confirmaSenha">Confirme a Senha:</label>
                         <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
                     </div>
-                    <button type="submit" class="btCadastrar">Cadastrar</button>
+                    <input type="submit" class="btCadastrar" value="Cadastrar">
                 </div>
             </form>
         </div>
     </div>
     <script>
-        function prox() {
+        /*function prox() {
             document.querySelector('.parte2').style.display = 'flex';
             document.querySelector('.parte1').style.display = 'none';
-        }
+        }*/
+        var mySubmit = document.getElementById("visible_submit");
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            if (form.checkValidity()) {
+                document.querySelector('.parte2').style.display = 'flex';
+                document.querySelector('.parte1').style.display = 'none';
+            }
+            e.preventDefault();
+        })
     </script>
 </body>
 
