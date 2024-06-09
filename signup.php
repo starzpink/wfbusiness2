@@ -20,6 +20,23 @@
         <div class="formContainer">
             <form id="cadastroForm1" action="insert/insertEmpresa.php" method="post">
                 <div class="parte1">
+                    <div class="campo2">
+                        <label for="email">E-mail de Login:</label>
+                        <input type="email" id="email" name="email" required></br>
+                    </div>
+                    <div class="campo2">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" required></br>
+                    </div>
+                    <div class="campo2">
+                        <label for="confirmaSenha">Confirme a Senha:</label>
+                        <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
+                    </div>
+                    <input type="submit" id="visible_submit" onclick="prox()" value="Próximo">
+                </div>
+            </form>
+            <form id="cadastroForm2" action="insert/insertEmpresa.php" method="post">
+                <div class="parte2">
                     <div class="campo">
                         <label for="nome_emp">Nome da Empresa:</label>
                         <input type="text" id="nome_emp" name="nome_emp" required></br>
@@ -52,23 +69,7 @@
                         <label for="cnpj_emp">CNPJ</label>
                         <input type="text" id="cnpj_emp" name="cnpj_emp" required></br>
                     </div>
-                    <input type="submit" id="visible_submit" onclick="prox()" value="Próximo">
-                </div>
-            </form>
-            <form id="cadastroForm2" action="insert/insertEmpresa.php" method="post">
-                <div class="parte2">
-                    <div class="campo2">
-                        <label for="email">E-mail de Login:</label>
-                        <input type="email" id="email" name="email" required></br>
-                    </div>
-                    <div class="campo2">
-                        <label for="senha">Senha:</label>
-                        <input type="password" id="senha" name="senha" required></br>
-                    </div>
-                    <div class="campo2">
-                        <label for="confirmaSenha">Confirme a Senha:</label>
-                        <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
-                    </div>
+
                     <input type="submit" class="btCadastrar" value="Cadastrar">
                 </div>
             </form>
