@@ -55,7 +55,7 @@
                     <input type="submit" id="visible_submit" onclick="prox()" value="Próximo">
                 </div>
             </form>
-            <form id="cadastroForm2" action="insert/insertUsuario.php" method="post">
+            <form id="cadastroForm2" action="insert/insertEmpresa.php" method="post">
                 <div class="parte2">
                     <div class="campo2">
                         <label for="email">E-mail de Login:</label>
@@ -69,7 +69,6 @@
                         <label for="confirmaSenha">Confirme a Senha:</label>
                         <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
                     </div>
-                    <input type="hidden" name="cargo" value="2">
                     <input type="submit" class="btCadastrar" value="Cadastrar">
                 </div>
             </form>
