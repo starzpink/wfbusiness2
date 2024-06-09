@@ -18,7 +18,7 @@
     <div class="container">
         <h1>Cadastre-se</h1>
         <div class="formContainer">
-            <form id="cadastroForm1" action="process.php" method="post">
+            <form id="cadastroForm1" action="insert/insertEmpresa.php" method="post">
                 <div class="parte1">
                     <div class="campo">
                         <label for="nome_emp">Nome da Empresa:</label>
@@ -55,7 +55,7 @@
                     <input type="submit" id="visible_submit" onclick="prox()" value="Próximo">
                 </div>
             </form>
-            <form id="cadastroForm2" action="teste.php" method="post">
+            <form id="cadastroForm2" action="insert/insertUsuario.php" method="post">
                 <div class="parte2">
                     <div class="campo2">
                         <label for="email">E-mail de Login:</label>
@@ -63,12 +63,13 @@
                     </div>
                     <div class="campo2">
                         <label for="senha">Senha:</label>
-                        <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
+                        <input type="password" id="senha" name="senha" required></br>
                     </div>
                     <div class="campo2">
                         <label for="confirmaSenha">Confirme a Senha:</label>
                         <input type="password" id="confirmaSenha" name="confirmaSenha" required></br>
                     </div>
+                    <input type="hidden" name="cargo" value="2">
                     <input type="submit" class="btCadastrar" value="Cadastrar">
                 </div>
             </form>

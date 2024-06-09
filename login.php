@@ -22,7 +22,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <form action="autenticacao.php" method="POST">
-                        <h1>Entre com o e-mail</h1>
+                        <h1>Login</h1>
                         <?php if (isset($_SESSION['msg'])) { ?>
                             <p style="color: red;"><?php echo $_SESSION['msg']; ?></p>
                             <?php session_destroy(); ?>

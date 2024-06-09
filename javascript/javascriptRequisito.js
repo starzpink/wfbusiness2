@@ -10,6 +10,9 @@ $(document).ready(function () {
     createEditForm();
     createViewForm();
     manageData();
+    getDataSelect();
+    getVagaSelect();
+
 
     function manageData() {
 
@@ -78,13 +81,13 @@ $(document).ready(function () {
 
         var html = '';
         html = html + '<div class="form-group">';
-        html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="cod_comp">Competência</label>';
-        html = html + '<input type="text" name="cod_comp" class="form-control" data-error="Por favor, insira o código da competência." required />';
+        html = html + '<select name="cod_comp" id="cod_comp" class="form-control"></select>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
+        html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="cod_vaga">Vaga</label>';
-        html = html + '<input type="text" name="cod_vaga" class="form-control" data-error="Por favor, insira o código da vaga." required />';
+        html = html + '<select name="cod_vaga" id="cod_vaga" class="form-control"></select>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<button type="submit" class="btn crud-submit btn-success">Cadastrar</button>';
@@ -96,11 +99,12 @@ $(document).ready(function () {
         var html = '<input type="hidden" name="cod" class="edit-id">';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="cod_comp">Competência</label>';
-        html = html + '<input type="text" name="cod_comp" class="form-control" data-error="Por favor, insira o código da competência." required />';
+        html = html + '<select name="cod_comp" id="cod_comp_edit" class="form-control"></select>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
+        html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="cod_vaga">Vaga</label>';
-        html = html + '<input type="text" name="cod_vaga" class="form-control" data-error="Por favor, insira insira o código da vaga." required />';
+        html = html + '<select name="cod_vaga" id="cod_vaga_edit" class="form-control"></select>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<button type="submit" class="btn crud-submit-edit btn-success">Salvar</button>';
@@ -114,11 +118,11 @@ $(document).ready(function () {
         var html = '<input type="hidden" name="cod" class="view-id">';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="cod_comp">Competência</label>';
-        html = html + '<input type="text" name="cod_comp" class="form-control" readonly/>';
+        html = html + '<select id="cod_comp_view" name="cod_comp" class="form-control" disabled></select>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="cod_vaga">Vaga</label>';
-        html = html + '<input type="text" name="cod_vaga" class="form-control" readonly/>';
+        html = html + '<select id="cod_vaga_view" name="cod_vaga" class="form-control" disabled></select>';
         html = html + '</div>';
         $("#view-item").find("form").html(html);
 
@@ -190,5 +194,43 @@ $(document).ready(function () {
 
 
     });
+
+    function getDataSelect() {
+
+        $.ajax({
+            dataType: 'json',
+            url: 'get/getCompetencia.php',
+            data: {}
+        }).done(function (data) {
+
+            var htmlSelect = '';
+            $.each(data.data, function (key, value) {
+                htmlSelect = htmlSelect + '<option value="' + value.cod_comp + '"> ' + value.desc_comp + '</option>';
+            });
+            $("#cod_comp").html(htmlSelect);
+            $("#cod_comp_edit").html(htmlSelect);
+            $("#cod_comp_view").html(htmlSelect);
+
+        });
+    }
+
+    function getVagaSelect() {
+
+        $.ajax({
+            dataType: 'json',
+            url: 'get/getVaga.php',
+            data: {}
+        }).done(function (data) {
+
+            var htmlSelect = '';
+            $.each(data.data, function (key, value) {
+                htmlSelect = htmlSelect + '<option value="' + value.cod_vaga + '"> ' + value.titulo_vaga + '</option>';
+            });
+            $("#cod_vaga").html(htmlSelect);
+            $("#cod_vaga_edit").html(htmlSelect);
+            $("#cod_vaga_view").html(htmlSelect);
+
+        });
+    }
 
 });

@@ -1,20 +1,42 @@
 <?php
 include '../conn.php';
+session_start();
 
-$ini = isset($_GET['page'])?($_GET['page']-1)*10:0;
-$rh = isset($_POST['cod_rh'])?$_POST['cod_rh']:'';
-$emp = isset($_POST['cod_emp'])?$_POST['cod_emp']:'';
+// Verifica se o usuário está logado e se a sessão 'cod_emp' está definida
+if (!isset($_SESSION['cod_usuario'])) {
+    http_response_code(401); // Não autorizado
+    echo json_encode(['error' => 'Acesso não autorizado.']);
+    exit;
+}
 
-$total = mysqli_fetch_array($conn->query("select count(*) from vaga where cod_emp = ".$emp.""));
+$cod_emp = isset($_SESSION['cod_emp']) ? $_SESSION['cod_emp'] : null;
 
-$sql = ' select * from vaga where cod_emp = ' . $emp . 'limit ' . $ini . ', 10';
-$result = $conn->query($sql);
+if ($cod_emp === null) {
+    http_response_code(400); // Bad request
+    echo json_encode(['error' => 'Código da empresa não definido.']);
+    exit;
+}
 
-$rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// Paginação
+$ini = isset($_GET['page']) ? ($_GET['page'] - 1) * 10 : 0;
+
+// Conta o total de registros
+$stmt_total = $conn->prepare("SELECT COUNT(*) FROM vaga WHERE cod_emp = ?");
+$stmt_total->bind_param("i", $cod_emp);
+$stmt_total->execute();
+$total_result = $stmt_total->get_result();
+$total = $total_result->fetch_array()[0];
+
+// Busca os registros paginados
+$stmt = $conn->prepare("SELECT * FROM vaga WHERE cod_emp = ? LIMIT ?, 10");
+$stmt->bind_param("ii", $cod_emp, $ini);
+$stmt->execute();
+$result = $stmt->get_result();
+$rows = $result->fetch_all(MYSQLI_ASSOC);
 
 $conn->close();
 
+// Define o cabeçalho do conteúdo como JSON e retorna os dados
 header("Content-type: application/json");
-echo json_encode(['data'=>$rows,"total" => $total[0]]);
+echo json_encode(['data' => $rows, 'total' => (int)$total]);
 ?>
-

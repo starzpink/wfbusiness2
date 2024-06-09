@@ -8,6 +8,7 @@ $(document).ready(function () {
         var chartLocal = [];
         var chartCadEmp = [];
         var chartVagas = [];
+        var chartModalidade = [];
 
         // Load charts when Google Charts library is ready
         google.charts.setOnLoadCallback(loadCharts);
@@ -17,6 +18,7 @@ $(document).ready(function () {
             carregaChartLocal();
             carregaChartCadEmp();
             carregaChartVagas();
+            carregaChartModalidades();
         }
         function carregaChartAreaat() {
             $.ajax({
@@ -150,7 +152,7 @@ $(document).ready(function () {
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
-                url: 'chart/chartVagas.php',
+                url: 'chart/chartVaga.php',
                 data: {}
             }).done(function (data) {
                 $.each(data.data, function (key, value) {
@@ -177,6 +179,42 @@ $(document).ready(function () {
                     google.visualization.events.addListener(chart, 'ready', function () {
                         chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
                         document.getElementById('png_vagas').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
+                    });
+                    chart.draw(data, options);
+                }
+            });
+        }
+        function carregaChartModalidades() {
+            $.ajax({
+                dataType: 'json',
+                type: 'POST',
+                url: 'chart/chartModalidade.php',
+                data: {}
+            }).done(function (data) {
+                $.each(data.data, function (key, value) {
+                    chartModalidade.push(new Array(new String(value.titulo_vaga).toString(), new Number(value.total).valueOf()));
+                });
+
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChartVagas);
+
+                function drawChartVagas() {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Modalidade');
+                    data.addColumn('number', 'Quantidade');
+                    data.addRows(chartModalidade);
+
+                    var options = {
+                        'title': 'Modalidades das Vagas da Empresa',
+                        'width': 400,
+                        'height': 300
+                    };
+
+                    var chart_div = document.getElementById('chart_div_mod');
+                    var chart = new google.visualization.PieChart(chart_div);
+                    google.visualization.events.addListener(chart, 'ready', function () {
+                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+                        document.getElementById('png_mod').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
                     });
                     chart.draw(data, options);
                 }

@@ -13,6 +13,7 @@ $(document).ready(function () {
     createViewForm();
     manageData();
     getDataSelect();
+    getLocalSelect();
 
     function manageData() {
 
@@ -91,13 +92,13 @@ $(document).ready(function () {
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
-        html = html + '<label class="control-label" for="sede_emp">Sede</label>';
-        html = html + '<input type="text" name="sede_emp" class="form-control" data-error="Por favor, insira o código da sede." required></input>';
+        html = html + '<label class="control-label" for="cod_local">Local</label>';
+        html = html + '<input type="text" name="cod_local" class="form-control" data-error="Por favor, insira o código da sede." required></input>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="areaat_emp">Área de Atuação</label>';
-        html = html + '<select name="areaat_emp" id="cod_area" class="form-control"></select>';
+        html = html + '<select name="areaat_emp" id="areaat_emp" class="form-control"></select>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
@@ -143,8 +144,8 @@ $(document).ready(function () {
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
-        html = html + '<label class="control-label" for="sede_emp">Sede</label>';
-        html = html + '<input type="text" name="sede_emp" class="form-control" data-error="Por favor, insira o código da sede." required></input>';
+        html = html + '<label class="control-label" for="cod_local">Local</label>';
+        html = html + '<input type="text" name="cod_local" class="form-control" data-error="Por favor, insira o código da sede." required></input>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
@@ -195,12 +196,8 @@ $(document).ready(function () {
         html = html + '<input type="text" name="nome_emp" class="form-control" readonly/>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
-        html = html + '<label class="control-label" for="senha">Senha</label>';
-        html = html + '<input type="password" name="senha" class="form-control" readonly/>';
-        html = html + '</div>';
-        html = html + '<div class="form-group">';
-        html = html + '<label class="control-label" for="sede_emp">Sede</label>';
-        html = html + '<input type="text" name="sede_emp" class="form-control" readonly/>';
+        html = html + '<label class="control-label" for="cod_local">Local</label>';
+        html = html + '<select id="cod_local_view" name="cod_local" class="form-control" disabled></select>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="areaat_emp">Área de Atuação</label>';
@@ -234,8 +231,7 @@ $(document).ready(function () {
         e.preventDefault();
         var form_action = $("#create-item").find("form").attr("action");
         var nome_emp = $("#create-item").find("input[name='nome_emp']").val();
-        var senha = $("#create-item").find("input[name='senha']").val();
-        var sede_emp = $("#create-item").find("input[name='sede_emp']").val();
+        var cod_local = $("#create-item").find("select[name='cod_local']").val();
         var areaat_emp = $("#create-item").find("select[name='areaat_emp']").val();
         var desc_emp = $("#create-item").find("textarea[name='desc_emp']").val();
         var email_emp  = $("#create-item").find("input[name='email_emp']").val();
@@ -247,12 +243,11 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {cod_emp: cod_emp, nome_emp: nome_emp, senha: senha, sede_emp: sede_emp, areaat_emp: areaat_emp, desc_emp: desc_emp, email_emp: email_emp, site_emp: site_emp, tel_emp: tel_emp, cnpj_emp: cnpj_emp}
+            data: {cod_emp: cod_emp, nome_emp: nome_emp, cod_local: cod_local, areaat_emp: areaat_emp, desc_emp: desc_emp, email_emp: email_emp, site_emp: site_emp, tel_emp: tel_emp, cnpj_emp: cnpj_emp}
         }).done(function (data) {
 
             $("#create-item").find("input[name='nome_emp']").val('');
-            $("#create-item").find("input[name='senha']").val('');
-            $("#create-item").find("input[name='sede_emp']").val('');
+            $("#create-item").find("select[name='cod_local']").val('');
             $("#create-item").find("select[name='areaat_emp']").val('');
             getPageData();
             $(".modal").modal('hide');
@@ -269,7 +264,7 @@ $(document).ready(function () {
 
             $("#create-item").find("input[name='nome_emp']").val('');
             $("#create-item").find("input[name='senha']").val('');
-            $("#create-item").find("input[name='sede_emp']").val('');
+            $("#create-item").find("input[name='cod_local']").val('');
             $("#create-item").find("select[name='areaat_emp']").val('');
             getPageData();
             $(".modal").modal('hide');
@@ -283,8 +278,7 @@ $(document).ready(function () {
 
         var cod_emp = dataCon[index].cod_emp;
         var nome_emp = dataCon[index].nome_emp;
-        var senha = dataCon[index].senha;
-        var sede_emp = dataCon[index].sede_emp;
+        var cod_local = dataCon[index].cod_local;
         var areaat_emp = dataCon[index].areaat_emp;
         var desc_emp = dataCon[index].desc_emp;
         var email_emp  = dataCon[index].email_emp;
@@ -294,8 +288,7 @@ $(document).ready(function () {
 
         $("#edit-item").find("input[name='cod_emp']").val(cod_emp);
         $("#edit-item").find("input[name='nome_emp']").val(nome_emp);
-        $("#edit-item").find("input[name='senha']").val(senha);
-        $("#edit-item").find("input[name='sede_emp']").val(sede_emp);
+        $("#edit-item").find("select[name='cod_local']").val(cod_local);
         $("#edit-item").find("select[name='areaat_emp']").val(areaat_emp);
         $("#edit-item").find("textarea[name='desc_emp']").val(desc_emp);
         $("#edit-item").find("input[name='email_emp']").val(email_emp);
@@ -309,8 +302,7 @@ $(document).ready(function () {
 
         var cod_emp = dataCon[index].cod_emp;
         var nome_emp = dataCon[index].nome_emp;
-        var senha = dataCon[index].senha;
-        var sede_emp = dataCon[index].sede_emp;
+        var cod_local = dataCon[index].cod_local;
         var areaat_emp = dataCon[index].areaat_emp;
         var desc_emp = dataCon[index].desc_emp;
         var email_emp  = dataCon[index].email_emp;
@@ -320,8 +312,7 @@ $(document).ready(function () {
 
         $("#view-item").find("input[name='cod_emp']").val(cod_emp);
         $("#view-item").find("input[name='nome_emp']").val(nome_emp);
-        $("#view-item").find("input[name='senha']").val(senha);
-        $("#view-item").find("input[name='sede_emp']").val(sede_emp);
+        $("#view-item").find("select[name='cod_local']").val(cod_local);
         $("#view-item").find("select[name='areaat_emp']").val(areaat_emp);
         $("#view-item").find("textarea[name='desc_emp']").val(desc_emp);
         $("#view-item").find("input[name='email_emp']").val(email_emp);
@@ -336,8 +327,7 @@ $(document).ready(function () {
         var form_action = $("#edit-item").find("form").attr("action");
 
         var nome_emp = $("#edit-item").find("input[name='nome_emp']").val();
-        var senha = $("#edit-item").find("input[name='senha']").val();
-        var sede_emp = $("#edit-item").find("input[name='sede_emp']").val();
+        var cod_local = $("#edit-item").find("input[name='cod_local']").val();
         var areaat_emp = $("#edit-item").find("select[name='areaat_emp']").val();
         var desc_emp = $("#edit-item").find("textarea[name='desc_emp']").val();
         var email_emp  = $("#edit-item").find("input[name='email_emp']").val();
@@ -349,7 +339,7 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {cod_emp: cod_emp, nome_emp: nome_emp, senha: senha, sede_emp: sede_emp, areaat_emp: areaat_emp, desc_emp: desc_emp, email_emp: email_emp, site_emp: site_emp, tel_emp: tel_emp, cnpj_emp: cnpj_emp}
+            data: {cod_emp: cod_emp, nome_emp: nome_emp, cod_local: cod_local, areaat_emp: areaat_emp, desc_emp: desc_emp, email_emp: email_emp, site_emp: site_emp, tel_emp: tel_emp, cnpj_emp: cnpj_emp}
 
         }).done(function (data) {
 
@@ -376,6 +366,25 @@ $(document).ready(function () {
             $("#cod_area").html(htmlSelect);
             $("#cod_area_edit").html(htmlSelect);
             $("#cod_area_view").html(htmlSelect);
+
+        });
+    }
+
+    function getLocalSelect() {
+
+        $.ajax({
+            dataType: 'json',
+            url: 'get/getLocaltrabalho.php',
+            data: {}
+        }).done(function (data) {
+
+            var htmlSelect = '';
+            $.each(data.data, function (key, value) {
+                htmlSelect = htmlSelect + '<option value="' + value.cod_local + '"> ' + value.cidade_local + '</option>';
+            });
+            $("#cod_local").html(htmlSelect);
+            $("#cod_local_edit").html(htmlSelect);
+            $("#cod_local_view").html(htmlSelect);
 
         });
     }

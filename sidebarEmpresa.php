@@ -12,7 +12,7 @@
                     <span>Empresa</span>
                 </li>
             </a>
-            <a href="dashboard.php">
+            <a href="dashboard_emp.php">
                 <li class="sb-opcao">
                     <i class="bx bxs-dashboard"></i>
                     <span>Dashboard</span>
