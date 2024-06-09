@@ -6,7 +6,7 @@ include '../conn.php';
 header('Content-type: application/json');
 
 $sql_usuario = "INSERT INTO usuario (email, senha, cargo) "
-        . "VALUES ('".$_POST['email']."', MD5('".$_POST['senha']."'), 3)"; // Defina o cargo como desejado, no caso 3
+        . "VALUES ('".$_POST['email']."', MD5('".$_POST['senha']."'), 2)";
 if($conn->query($sql_usuario) === TRUE){
     $cod_usuario = $conn->insert_id; // Recupera o ID gerado pelo banco de dados
 
