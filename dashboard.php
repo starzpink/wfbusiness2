@@ -10,7 +10,7 @@
 </head>
 <body class="v-body">
     <nav class="nav-sidebar">
-                <?php include 'sidebarRh.php'; ?>
+                <?php include 'sidebar.php'; ?>
     </nav>
     <div class="v-principal">
         <h1>Dashboard</h1>

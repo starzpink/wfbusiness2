@@ -12,11 +12,11 @@ if (!isset($_SESSION['cod_usuario'])) {
 $cod_usuario = $_SESSION['cod_usuario'];
 $cod_emp = isset($_SESSION['cod_emp']) ? $_SESSION['cod_emp'] : null;
 
-// Prepara a consulta para buscar vagas do código da empresa, se houver
-$sql = "SELECT desc_mod, COUNT(cod_vaga) AS total 
-        FROM modalidade, vaga 
-        WHERE vaga.cod_emp = ?
-        GROUP BY vaga.cod_mod"; // Agrupado pelo título da vaga
+$sql = "SELECT modalidade.desc_mod, COUNT(vaga.cod_vaga) AS total 
+FROM modalidade 
+JOIN vaga ON vaga.cod_mod = modalidade.cod_mod
+WHERE vaga.cod_emp = ?
+GROUP BY modalidade.desc_mod";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $cod_emp);

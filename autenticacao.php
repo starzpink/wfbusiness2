@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
     $usuario = null;
 
     if ($dados) {
-        $usuario = new Usuario($dados["cod_usuario"], $dados["email"], $dados["senha"], $dados['cargo']);
+        $usuario = new Usuario($dados["cod_usuario"], $dados["email"], $dados["senha"], $dados["cargo"]);
     }
 
     if ($usuario && $usuario->validaEmailSenha($email, $senha)) {

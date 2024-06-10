@@ -48,10 +48,6 @@ $(document).ready(function () {
 
                     var chart_div = document.getElementById('chart_div_areaat');
                     var chart = new google.visualization.PieChart(chart_div);
-                    google.visualization.events.addListener(chart, 'ready', function () {
-                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-                        document.getElementById('png_areaat').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
-                    });
                     chart.draw(data, options);
                 }
             });
@@ -85,10 +81,6 @@ $(document).ready(function () {
 
                     var chart_div = document.getElementById('chart_div_local');
                     var chart = new google.visualization.PieChart(chart_div);
-                    google.visualization.events.addListener(chart, 'ready', function () {
-                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-                        document.getElementById('png_local').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
-                    });
                     chart.draw(data, options);
                 }
             });
@@ -142,10 +134,6 @@ $(document).ready(function () {
     
             var chart_div = document.getElementById('chart_div_coluna');
             var chart = new google.visualization.ColumnChart(chart_div);
-            google.visualization.events.addListener(chart, 'ready', function () {
-                chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-                document.getElementById('png_coluna').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
-            });
             chart.draw(data, options);
         }
         function carregaChartVagas() {
@@ -176,10 +164,6 @@ $(document).ready(function () {
 
                     var chart_div = document.getElementById('chart_div_vagas');
                     var chart = new google.visualization.PieChart(chart_div);
-                    google.visualization.events.addListener(chart, 'ready', function () {
-                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-                        document.getElementById('png_vagas').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
-                    });
                     chart.draw(data, options);
                 }
             });
@@ -192,7 +176,7 @@ $(document).ready(function () {
                 data: {}
             }).done(function (data) {
                 $.each(data.data, function (key, value) {
-                    chartModalidade.push(new Array(new String(value.titulo_vaga).toString(), new Number(value.total).valueOf()));
+                    chartModalidade.push(new Array(new String(value.desc_mod).toString(), new Number(value.total).valueOf()));
                 });
 
                 google.charts.load('current', { 'packages': ['corechart'] });
@@ -212,10 +196,6 @@ $(document).ready(function () {
 
                     var chart_div = document.getElementById('chart_div_mod');
                     var chart = new google.visualization.PieChart(chart_div);
-                    google.visualization.events.addListener(chart, 'ready', function () {
-                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-                        document.getElementById('png_mod').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a>';
-                    });
                     chart.draw(data, options);
                 }
             });

@@ -9,7 +9,8 @@ $sql_usuario = "INSERT INTO usuario (email, senha, cargo) "
         . "VALUES ('".$_POST['email']."', MD5('".$_POST['senha']."'), 2)";
 if($conn->query($sql_usuario) === TRUE){
     $cod_usuario = $conn->insert_id; // Recupera o ID gerado pelo banco de dados
-
+    
+    $conn->query("SET @cod_usuario = $cod_usuario");
     // Insere a empresa na tabela 'empresa'
     $sql_empresa = "INSERT INTO empresa(nome_emp, cod_local, areaat_emp, desc_emp, email_emp, site_emp, tel_emp, cnpj_emp, cod_usuario) "
         . "VALUES ('".$_POST['nome_emp']."',"

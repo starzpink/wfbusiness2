@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+
+    <script src="javascript/javascriptRh.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
 
@@ -25,14 +26,14 @@
 
 <body class="v-body">
     <nav class="nav-sidebar">
-        <?php include 'sidebarEmpresa.php'; ?>
+        <?php include 'sidebar.php'; ?>
     </nav>
     <div class="v-principal">
         <h1>Dashboard</h1>
         <div class="dash-top">
             <div class="dash-vagas-abertas">
                 <h2>vagas</h2>
-                
+
             </div>
             <div class="dash-portfolios-recebidos">
                 <h2>portfolios recebidos</h2>
@@ -86,9 +87,26 @@
                 </div>
             </div>
         </div>
+        <div class="tabela">
+            <table class="table table-bordered table-style">
+                <thead style="background-color: #EEE8AA;">
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
         <div class="dash-bot">
             <div class="dash-ano">
                 <h2>fome</h2>
+
+                <?php
+
+                echo $_SESSION['cod_emp'];
+                echo $_SESSION['cargo'];
+
+                ?>
+
+
             </div>
         </div>
     </div>

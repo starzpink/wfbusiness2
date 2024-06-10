@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>Área do Administrador</title>
+<title>Área do Administrador</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
@@ -17,7 +17,6 @@
     <script src="javascript/javascript<?php echo $classe; ?>.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/dash_admin.css">
 </head>
 
 <body>
@@ -113,19 +112,62 @@
             </div>
         </div>
     <?php } else { ?>
-        <!-- Chart Área At -->
-        <div class="graficos1">
-            <div class="divinha">
-                <div id="chart_div_areaat"></div>
-            </div >
-            <!-- Chart Modal -->
-            <div class="divinha">
-                <div id="chart_div_local"></div>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart_areaat">
+            Gráfico Área de Atuação
+        </button>
+        <!-- Chart Modal -->
+        <div class="modal fade" id="chart_areaat" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAreaat">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabelAreaat">Gráfico Área de Atuação</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chart_div_areaat"></div>
+                        <div id="png_areaat"></div>
+                    </div>
+                </div>
             </div>
         </div>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart_local">
+            Gráfico Locais das Empresas
+        </button>
+        <!-- Chart Modal -->
+        <div class="modal fade" id="chart_local" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLocal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabelLocal">Gráfico Locais das Empresas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chart_div_local"></div>
+                        <div id="png_local"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#chart_coluna">
+            Empresas cadastradas ao longo do tempo
+        </button>
         <!-- Chart Coluna Modal -->
-        <div>
-            <div id="chart_div_coluna"></div>
+        <div class="modal fade" id="chart_coluna" tabindex="-1" role="dialog" aria-labelledby="myModalLabelColuna">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabelColuna">Gráfico Coluna</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chart_div_coluna"></div>
+                        <div id="png_coluna"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <li><a href="relatorios/pdfCadEmp.php" target="blank"> PDF CadEmp</a></li>
     <?php } ?>
