@@ -74,10 +74,11 @@
     </div>
     <script>
         function prox() {
+            const emailz = document.getElementById('email');
             // Verifica se todos os campos da primeira parte do formulário estão preenchidos
             var camposPreenchidos = true;
             document.querySelectorAll('.parte1 input').forEach(function (input) {
-                if (input.value === '') {
+                if (input.value === ''|| !emailz.checkValidity()) {
                     camposPreenchidos = false;
                     return;
                 }
@@ -87,7 +88,7 @@
                 document.querySelector('.parte2').style.display = 'block';
                 document.querySelector('.parte1').style.display = 'none';
             } else {
-                alert('Preencha todos os campos antes de prosseguir.');
+                alert('Preencha todos os campos corretamente antes de prosseguir.');
             }
         }
 
