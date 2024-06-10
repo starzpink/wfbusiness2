@@ -7,28 +7,42 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $cargo = $_SESSION['cargo'];
 $cod_usuario = $_SESSION['cod_usuario'];
+$cod_emp = $_SESSION['cod_emp']; // Adicionando cod_emp para uso posterior
 
 $nome_emp = '';
 $nome_rh = '';
 
-$QueryEmp = "SELECT nome_emp FROM empresa WHERE cod_usuario = " . $cod_usuario;
-$QueryRh = "SELECT nome_rh FROM rh WHERE cod_usuario = " . $cod_usuario;
-
-$companyResult = $conn->query($QueryEmp);
-if ($companyResult->num_rows > 0) {
-    $row_emp = $companyResult->fetch_assoc();
-    $nome_emp = $row_emp['nome_emp'];
-}
-
-$rhResult = $conn->query($QueryRh);
-if ($rhResult->num_rows > 0) {
-    $row_rh = $rhResult->fetch_assoc();
-    $nome_rh = $row_rh['nome_rh'];
-}
-
-
 if ($cargo == 1) {
-    ?>
+    // RH: Recuperar o nome da empresa e do RH
+    $QueryEmp = "SELECT e.nome_emp, r.nome_rh 
+                 FROM empresa e 
+                 INNER JOIN rh r ON e.cod_emp = r.cod_emp 
+                 WHERE r.cod_usuario = ?";
+    $stmt = $conn->prepare($QueryEmp);
+    $stmt->bind_param("i", $cod_usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nome_emp = $row['nome_emp'];
+        $nome_rh = $row['nome_rh'];
+    }
+} elseif ($cargo == 2) {
+    // Empresa: Recuperar o nome da empresa
+    $QueryEmp = "SELECT nome_emp FROM empresa WHERE cod_usuario = ?";
+    $stmt = $conn->prepare($QueryEmp);
+    $stmt->bind_param("i", $cod_usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nome_emp = $row['nome_emp'];
+    }
+}
+
+?>
+
+<?php if ($cargo == 1) { ?>
     <nav class="sidebar">
         <header>
             <div class="sb-header">
@@ -86,7 +100,7 @@ if ($cargo == 1) {
                         <span>Empresa</span>
                     </li>
                 </a>
-                <a href="dashboard_emp.php">
+                <a href="dashboard.php">
                     <li class="sb-opcao">
                         <i class="bx bxs-dashboard"></i>
                         <span>Dashboard</span>
@@ -94,7 +108,7 @@ if ($cargo == 1) {
                 </a>
                 <a>
                     <li class="sb-opcao">
-                        <a href= "rh.php">
+                        <a href="rh.php">
                             <i class="bx bx-group"></i>
                             <span>Equipe RH</span>
                     </li>
