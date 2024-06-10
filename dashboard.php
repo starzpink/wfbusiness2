@@ -84,7 +84,9 @@ $conn->close();
                 </table>
             </div>
         </div>
-
+        <li><a href="relatorios/pdfVagasFechadas.php" target="blank"> Relatório Vagas Fechadas</a></li>
+        <li><a href="relatorios/pdfVagasAbertas.php" target="blank"> Relatório Vagas Abertas</a></li>
+        <li><a href="relatorios/pdfRh.php" target="blank"> Relatório RH</a></li>
 </body>
 
 </html>
