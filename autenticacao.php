@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         // Redireciona o usuário para a página correta
         if ($usuario->getCargo() == 0) {
             header("Location: administracao.php");
-        } elseif ($usuario->getCargo() == 1) {
-            header("Location: dashboard.php");
-        } elseif ($usuario->getCargo() == 2) {
+        } elseif ($usuario->getCargo() == 1 || $usuario->getCargo() == 2) {
             header("Location: dashboard_emp.php");
+        /*} elseif ($usuario->getCargo() == 2) {
+            header("Location: dashboard_emp.php");*/
         }
         exit;
     } else {
