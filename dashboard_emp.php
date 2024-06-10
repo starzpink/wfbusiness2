@@ -1,3 +1,29 @@
+<?php
+include './conn.php';
+session_start();
+
+// Verifica se o usuário está logado e se a sessão 'cod_emp' está definida
+if (!isset($_SESSION['cod_usuario'])) {
+    http_response_code(401); // Não autorizado
+    echo json_encode(['error' => 'Acesso não autorizado.']);
+    exit;
+}
+
+$cod_usuario = $_SESSION['cod_usuario'];
+$cod_emp = isset($_SESSION['cod_emp']) ? $_SESSION['cod_emp'] : null;
+
+// Consulta para contar as vagas abertas
+$sql = "SELECT COUNT(*) AS total FROM vaga WHERE cod_emp = ? AND situacao_vaga = 'Aberta'";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $cod_emp);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$vagas_abertas_count = $row['total'];
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,7 +43,7 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
-    <script src="javascript/javascriptRh.js"></script>
+    <script src="javascript/javascriptVagadash.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
 
@@ -32,14 +58,13 @@
         <h1>Dashboard</h1>
         <div class="dash-top">
             <div class="dash-vagas-abertas">
-                <h2>vagas</h2>
-
+                <p>Vagas Abertas: <?php echo $vagas_abertas_count; ?></p>
             </div>
             <div class="dash-portfolios-recebidos">
-                <h2>portfolios recebidos</h2>
+                <h2>Portfolios Recebidos</h2>
             </div>
             <div class="dash-contratados">
-                <h2>contrat<h2>
+                <h2>Contratados</h2>
             </div>
         </div>
         <div class="dash-meio">
@@ -95,22 +120,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="dash-bot">
-            <div class="dash-ano">
-                <h2>fome</h2>
-
-                <?php
-
-                echo $_SESSION['cod_emp'];
-                echo $_SESSION['cargo'];
-
-                ?>
-
-
-            </div>
-        </div>
     </div>
 
 </body>
-
 </html>

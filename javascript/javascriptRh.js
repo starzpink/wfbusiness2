@@ -58,7 +58,6 @@ $(document).ready(function () {
             rows = rows + '<td data-id="' + i++ + '">';
             rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Editar</button> ';
             rows = rows + '<button data-toggle="modal" data-target="#view-item" class="btn btn-primary edit-item">Visualizar</button> ';
-            rows = rows + '<button class="btn btn-danger remove-item">Deletar</button>';
             rows = rows + '</td>';
             rows = rows + '</tr>';
         });

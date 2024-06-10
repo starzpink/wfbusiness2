@@ -1,7 +1,10 @@
 <?php
 include './conn.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $cargo = $_SESSION['cargo'];
 $cod_usuario = $_SESSION['cod_usuario'];
 
