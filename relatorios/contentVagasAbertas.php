@@ -5,7 +5,7 @@
             <td style="width: 25%;">
             </td>
             <td style="width: 50%; color: #111199; font-size: 16pt; font-weight: bold;">
-                Relatório de Cadastro de Empresa
+                Relatório de Vagas Abertas
             </td>
             <td style="width: 25%;"></td>
         </tr>
@@ -16,8 +16,8 @@
         <thead>
             <tr style="font-size: 14pt; font-weight: bold; border-spacing: 100pt;">
                 <td style="width:25%;"></td>
-                <td style="width:40%;">Empresa</td>
-                <td style="width:15%">Data do Cadastro</td>
+                <td style="width:40%;">Título da Vaga</td>
+                <td style="width:15%">Situação</td>
             </tr>
         </thead>
         <br>
@@ -25,7 +25,7 @@
         <tbody>
             <?php
             include '../conn.php';
-            $sql = "SELECT cod_emp, nome_emp, DATE_FORMAT(data_registro_emp, '%d-%m-%Y') as data_registro FROM empresa ORDER BY data_registro_emp";
+            $sql = "SELECT cod_vaga, titulo_vaga, situacao_vaga, FROM vagas WHERE situacao_vaga = 'Aberta' ORDER BY cod_vaga";
             $result = $conn->query($sql);
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $conn->close();
@@ -33,11 +33,11 @@
                 ?>
                 <tr>
                     <td style="width:25%;">
-                        <barcode dimension="1D" type="S25" value="<?php echo $linha['cod_emp'] ?>" label="label"
+                        <barcode dimension="1D" type="S25" value="<?php echo $linha['cod_vaga'] ?>" label="label"
                             style="width:25mm; height:6mm; color: #0000FF; font-size: 4mm" />
                     </td>
-                    <td style="width:4%;"><?php echo $linha['nome_emp'] ?></td>
-                    <td style="width:15%"><?php echo $linha['data_registro'] ?></td>
+                    <td style="width:4%;"><?php echo $linha['titulo_emp'] ?></td>
+                    <td style="width:15%"><?php echo $linha['situacao_vaga'] ?></td>
                 </tr>
             <?php } ?>
         </tbody>

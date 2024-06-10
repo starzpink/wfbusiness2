@@ -5,7 +5,7 @@
             <td style="width: 25%;">
             </td>
             <td style="width: 50%; color: #111199; font-size: 16pt; font-weight: bold;">
-                Relatório de Cadastro de Empresa
+                Relatório de RH
             </td>
             <td style="width: 25%;"></td>
         </tr>
@@ -16,16 +16,17 @@
         <thead>
             <tr style="font-size: 14pt; font-weight: bold; border-spacing: 100pt;">
                 <td style="width:25%;"></td>
-                <td style="width:40%;">Empresa</td>
-                <td style="width:15%">Data do Cadastro</td>
+                <td style="width:40%;">Nome do colaborador</td>
+                <td style="width:15%">E-mail</td>
             </tr>
         </thead>
         <br>
         <br>
         <tbody>
+            <!-- FALTA ARRUMAR AQUI!!! -->
             <?php
             include '../conn.php';
-            $sql = "SELECT cod_emp, nome_emp, DATE_FORMAT(data_registro_emp, '%d-%m-%Y') as data_registro FROM empresa ORDER BY data_registro_emp";
+            $sql = "SELECT cod_rh, nome_rh, email_rh, FROM rh WHERE cod_emp = $cod_emp ORDER BY cod_rh";
             $result = $conn->query($sql);
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $conn->close();
@@ -33,11 +34,11 @@
                 ?>
                 <tr>
                     <td style="width:25%;">
-                        <barcode dimension="1D" type="S25" value="<?php echo $linha['cod_emp'] ?>" label="label"
+                        <barcode dimension="1D" type="S25" value="<?php echo $linha['cod_rh'] ?>" label="label"
                             style="width:25mm; height:6mm; color: #0000FF; font-size: 4mm" />
                     </td>
-                    <td style="width:4%;"><?php echo $linha['nome_emp'] ?></td>
-                    <td style="width:15%"><?php echo $linha['data_registro'] ?></td>
+                    <td style="width:4%;"><?php echo $linha['nome_rh'] ?></td>
+                    <td style="width:15%"><?php echo $linha['email_rh'] ?></td>
                 </tr>
             <?php } ?>
         </tbody>

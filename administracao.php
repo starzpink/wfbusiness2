@@ -127,7 +127,7 @@
         <div>
             <div id="chart_div_coluna"></div>
         </div>
-        <li><a href="relatorios/pdfCadEmp.php" target="blank"> PDF CadEmp</a></li>
+        <li><a href="relatorios/pdfCadEmp.php" target="blank"> Relatório CadEmp</a></li>
     <?php } ?>
 </body>
 
