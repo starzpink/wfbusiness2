@@ -61,10 +61,10 @@ $conn->close();
                 <p>Vagas Abertas: <?php echo $vagas_abertas_count; ?></p>
             </div>
             <div class="dash-portfolios-recebidos">
-                <h2>Portfolios Recebidos</h2>
+                <p>Portfolios Recebidos: </p>
             </div>
             <div class="dash-contratados">
-                <h2>Contratados</h2>
+                <p>Contratados: </p>
             </div>
         </div>
         <div class="dash-meio">
