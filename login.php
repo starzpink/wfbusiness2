@@ -1,46 +1,44 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/login.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
     <nav class="navbar">
         <a href="index.php">
-        <span class="logo">Workfolio for Business</span>
+            <span class="logo">Workfolio for Business</span>
         </a>
     </nav>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form action="autenticacao.php" method="POST">
-                        <h1>Login</h1>
-                        <?php if (isset($_SESSION['msg'])) { ?>
-                            <p style="color: red;"><?php echo $_SESSION['msg']; ?></p>
-                            <?php session_destroy(); ?>
-                        <?php } ?>
-                        <div class="form-group">
-                            <p>E-mail</p>
-                            <input type="text" name="email" placeholder="nome@exemplo.com" required>
-                        </div>
-                        <div class="form-group">
-                            <p>Senha</p>
-                            <input type="password" name="senha" placeholder="***********" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Entrar">
-                        </div>
-                    </form>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="formContainer">
+            <form action="autenticacao.php" method="POST">
+                <div class="parte1">
+                    <?php if (isset($_SESSION['msg'])) { ?>
+                        <p style="color: red;"><?php echo $_SESSION['msg']; ?></p>
+                        <?php session_destroy(); ?>
+                    <?php } ?>
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" placeholder="nome@exemplo.com" required>
+                    </div>
+                    <div class="campo">
+                        <p>Senha</p>
+                        <input type="password" name="senha" placeholder="***********" required>
+                    </div>
+                    <div class="campo">
+                        <input type="submit" value="Entrar">
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
