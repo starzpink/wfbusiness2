@@ -5,7 +5,6 @@
 
 <head>
     <title>Área do Administrador</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
@@ -17,12 +16,71 @@
     <script src="javascript/javascript<?php echo $classe; ?>.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/dash_admin.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/sbstyle.css">
 </head>
 
-<body>
-
-    <nav class="navbar navbar-inverse">
+<body class="v-body">
+    <nav class="sidebar">
+        <header>
+            <div class="sb-header">
+                <span class="sb-nome"><?php //echo htmlspecialchars($nome_adm); ?></span>
+            </div>
+        </header>
+        <div class="sb-menu">
+            <ul class="sb-menu-opcoes">
+                <li class="sb-opcao">
+                    <a href="administracao.php">
+                        <i class="bx bx-user"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <a href="administracao.php?classe=Areaat">
+                    <li class="sb-opcao">
+                        <i class="bx bxs-dashboard"></i>
+                        <span>Área de Atuação</span>
+                    </li>
+                </a>
+                <li class="sb-opcao">
+                    <a href="administracao.php?classe=Empresa">
+                        <i class="bx bx-notepad"></i>
+                        <span>Empresas</span>
+                    </a>
+                </li>
+                <li class="sb-opcao">
+                    <a href="administracao.php?classe=Localtrabalho">
+                        <i class="bx bx-log-out"></i>
+                        <span>Locais de trabalho</span>
+                    </a>
+                </li>
+                <li class="sb-opcao">
+                    <a href="administracao.php?classe=Modalidade">
+                        <i class="bx bx-log-out"></i>
+                        <span>Modalidades</span>
+                    </a>
+                </li>
+                <li class="sb-opcao">
+                    <a href="administracao.php?classe=Sede">
+                        <i class="bx bx-log-out"></i>
+                        <span>Sedes</span>
+                    </a>
+                </li>
+                <li class="sb-opcao">
+                    <a href="administracao.php?classe=Tipovaga">
+                        <i class="bx bx-log-out"></i>
+                        <span>Tipos de Vagas</span>
+                    </a>
+                </li>
+                <li class="sb-opcao">
+                    <a href="logout.php">
+                        <i class="bx bx-log-out"></i>
+                        <span>Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!---<nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li><a href="administracao.php">Home</a></li>
@@ -37,7 +95,7 @@
                 <li><a href="logout.php">Sair</a></li>
             </ul>
         </div>
-    </nav>
+    </nav>-->
     <?php if (!empty($classe)) { ?>
         <div class="container">
             <div class="row">
@@ -55,7 +113,7 @@
                 </div>
             </div>
             <table class="table table-bordered table-style">
-                <thead style="background-color: #EEE8AA;">
+                <thead>
                 </thead>
                 <tbody>
                 </tbody>
@@ -117,7 +175,7 @@
         <div class="graficos1">
             <div class="divinha">
                 <div id="chart_div_areaat"></div>
-            </div >
+            </div>
             <!-- Chart Modal -->
             <div class="divinha">
                 <div id="chart_div_local"></div>

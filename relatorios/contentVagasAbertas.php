@@ -41,7 +41,7 @@ include '../conn.php';
                         <barcode dimension="1D" type="S25" value="<?php echo $linha['cod_vaga'] ?>" label="label"
                             style="width:25mm; height:6mm; color: #0000FF; font-size: 4mm" />
                     </td>
-                    <td style="width:4%;"><?php echo $linha['titulo_emp'] ?></td>
+                    <td style="width:4%;"><?php echo $linha['titulo_vaga'] ?></td>
                     <td style="width:15%"><?php echo $linha['situacao_vaga'] ?></td>
                 </tr>
             <?php } ?>

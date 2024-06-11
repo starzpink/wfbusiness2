@@ -59,9 +59,9 @@ $(document).ready(function () {
 
     function createHeadTable() {
         var rows = '<tr>';
-        rows += '<th>Código</th>';
-        rows += '<th>Título da Vaga</th>';
-        rows += '<th>Situação da Vaga</th>';
+        rows += '<th class="thcod">Código</th>';
+        rows += '<th class="thtitulo">Título da Vaga</th>';
+        rows += '<th class="thsitu">Situação da Vaga</th>';
         rows += '</tr>';
         $("thead").html(rows);
     }

@@ -82,7 +82,7 @@ $(document).ready(function () {
         var html = '';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="titulo_vaga">Título da Vaga</label>';
-        html = html + '<input type="text" name="titulo_vaga" class="form-control" data-error="Por favor, insira o nome da vaga." required />';
+        html = html + '<input type="text" name="titulo_vaga" class="form-control" data-error="Por favor, insira o título da vaga." required />';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
@@ -115,6 +115,11 @@ $(document).ready(function () {
         html = html + '<input type="text" name="horario_vaga" class="form-control" data-error="Por favor, insira o horário da vaga." required></input>';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
+        html = html + '<div class="form-group">';
+        html = html + '<label class="control-label" for="situacao_vaga">Situação da Vaga</label>';
+        html = html + '<input type="text" name="situacao_vaga" class="form-control" data-error="Por favor, insira a situação da vaga." required></input>';
+        html = html + '<div class="help-block with-errors"></div>';
+        html = html + '</div>';
         html = html + '<button type="submit" class="btn crud-submit btn-success">Cadastrar</button>';
         html = html + '</div>';
         $("#create-item").find("form").html(html);
@@ -123,8 +128,12 @@ $(document).ready(function () {
 
         var html = '<input type="hidden" name="cod" class="edit-id">';
         html = html + '<div class="form-group">';
+        html = html + '<label class="control-label" for="cod_vaga">Código da Vaga</label>';
+        html = html + '<input type="text" name="cod_vaga" class="form-control" readonly/>';
+        html = html + '</div>';
+        html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="titulo_vaga">Título da Vaga</label>';
-        html = html + '<input type="text" name="titulo_vaga" class="form-control" data-error="Por favor, insira o nome da vaga." required />';
+        html = html + '<input type="text" name="titulo_vaga" class="form-control" data-error="Por favor, insira o título da vaga." required />';
         html = html + '<div class="help-block with-errors"></div>';
         html = html + '</div>';
         html = html + '<div class="form-group">';
@@ -172,6 +181,9 @@ $(document).ready(function () {
 
         var html = '<input type="hidden" name="cod" class="view-id">';
         html = html + '<div class="form-group">';
+        html = html + '<label class="control-label" for="cod_vaga">Código da Vaga</label>';
+        html = html + '<input type="text" name="cod_vaga" class="form-control" readonly/>';
+        html = html + '</div>';
         html = html + '<div class="form-group">';
         html = html + '<label class="control-label" for="titulo_vaga">Título da Vaga</label>';
         html = html + '<input type="text" name="titulo_vaga" class="form-control" readonly/>';
@@ -219,58 +231,54 @@ $(document).ready(function () {
         var cod_tipo = $("#create-item").find("select[name='cod_tipo']").val();
         var horario_vaga  = $("#create-item").find("input[name='horario_vaga']").val();
         var situacao_vaga  = $("#create-item").find("input[name='situacao_vaga']").val();
-        var cod_emp = $("#create-item").find("input[name='cod_emp']").val();
-    
+
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga, cod_emp: cod_emp}
+            data: {titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga}
         }).done(function (data) {
+
             $("#create-item").find("input[name='titulo_vaga']").val('');
             $("#create-item").find("textarea[name='descricao_vaga']").val('');
             $("#create-item").find("input[name='salario_vaga']").val('');
-            $("#create-item").find("select[name='cod_local']").val('');
+            $("#create-item").find("select[name='cod_local]").val('');
             $("#create-item").find("select[name='cod_mod']").val('');
             $("#create-item").find("select[name='cod_tipo']").val('');
             $("#create-item").find("input[name='horario_vaga']").val('');
             $("#create-item").find("input[name='situacao_vaga']").val('');
-            $("#create-item").find("input[name='cod_emp']").val('');
             getPageData();
             $(".modal").modal('hide');
             toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+
         });
-    });
-    
-    $(".crud-submit-edit").click(function (e) {
-        e.preventDefault();
-        var form_action = $("#edit-item").find("form").attr("action");
-    
-        var cod_vaga = $("#edit-item").find("input[name='cod_vaga']").val();
-        var titulo_vaga = $("#edit-item").find("input[name='titulo_vaga']").val();
-        var descricao_vaga = $("#edit-item").find("textarea[name='descricao_vaga']").val();
-        var salario_vaga = $("#edit-item").find("input[name='salario_vaga']").val();
-        var cod_local = $("#edit-item").find("select[name='cod_local']").val();
-        var cod_mod = $("#edit-item").find("select[name='cod_mod']").val();
-        var cod_tipo = $("#edit-item").find("select[name='cod_tipo']").val();
-        var horario_vaga  = $("#edit-item").find("input[name='horario_vaga']").val();
-        var situacao_vaga  = $("#edit-item").find("input[name='situacao_vaga']").val();
-        var cod_emp = $("#edit-item").find("input[name='cod_emp']").val();
-    
+
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {cod_vaga: cod_vaga, titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga, cod_emp: cod_emp}
+            data: {titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga}
         }).done(function (data) {
+
+            $("#create-item").find("input[name='titulo_vaga']").val('');
+            $("#create-item").find("textarea[name='descricao_vaga']").val('');
+            $("#create-item").find("input[name='salario_vaga']").val('');
+            $("#create-item").find("select[name='cod_local]").val('');
+            $("#create-item").find("select[name='cod_mod']").val('');
+            $("#create-item").find("select[name='cod_tipo']").val('');
+            $("#create-item").find("input[name='horario_vaga']").val('');
+            $("#create-item").find("input[name='situacao_vaga']").val('');
             getPageData();
             $(".modal").modal('hide');
             toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+
         });
+
     });
     $("body").on("click", ".edit-item", function () {
         var index = $(this).parent("td").data('id');
-    
+
+        var cod_vaga = dataCon[index].cod_vaga;
         var titulo_vaga = dataCon[index].titulo_vaga;
         var descricao_vaga = dataCon[index].descricao_vaga;
         var salario_vaga = dataCon[index].salario_vaga;
@@ -279,8 +287,8 @@ $(document).ready(function () {
         var cod_tipo = dataCon[index].cod_tipo;
         var horario_vaga  = dataCon[index].horario_vaga;
         var situacao_vaga  = dataCon[index].situacao_vaga;
-        var cod_emp = dataCon[index].cod_emp;
-    
+
+        $("#edit-item").find("input[name='cod_vaga']").val(cod_vaga);
         $("#edit-item").find("input[name='titulo_vaga']").val(titulo_vaga);
         $("#edit-item").find("textarea[name='descricao_vaga']").val(descricao_vaga);
         $("#edit-item").find("input[name='salario_vaga']").val(salario_vaga);
@@ -289,34 +297,62 @@ $(document).ready(function () {
         $("#edit-item").find("select[name='cod_tipo']").val(cod_tipo);
         $("#edit-item").find("input[name='horario_vaga']").val(horario_vaga);
         $("#edit-item").find("input[name='situacao_vaga']").val(situacao_vaga);
-        $("#edit-item").find("input[name='cod_emp']").val(cod_emp);
     });
-    
+
     $("body").on("click", ".view-item", function () {
         var index = $(this).parent("td").data('id');
-    
+
+        var cod_vaga = dataCon[index].cod_vaga;
         var titulo_vaga = dataCon[index].titulo_vaga;
         var descricao_vaga = dataCon[index].descricao_vaga;
         var salario_vaga = dataCon[index].salario_vaga;
         var cod_local = dataCon[index].cod_local;
         var cod_mod = dataCon[index].cod_mod;
         var cod_tipo = dataCon[index].cod_tipo;
-        var horario_vaga = dataCon[index].horario_vaga;
-        var situacao_vaga = dataCon[index].situacao_vaga;
-        var cod_emp = dataCon[index].cod_emp;
-    
+        var horario_vaga  = dataCon[index].horario_vaga;
+        var situacao_vaga  = dataCon[index].situacao_vaga;
+
+        $("#view-item").find("input[name='cod_vaga']").val(cod_vaga);
         $("#view-item").find("input[name='titulo_vaga']").val(titulo_vaga);
         $("#view-item").find("textarea[name='descricao_vaga']").val(descricao_vaga);
         $("#view-item").find("input[name='salario_vaga']").val(salario_vaga);
-        $("#view-item").find("input[name='cod_local']").val(cod_local);
-        $("#view-item").find("input[name='cod_mod']").val(cod_mod);
-        $("#view-item").find("input[name='cod_tipo']").val(cod_tipo);
+        $("#view-item").find("select[name='cod_local']").val(cod_local);
+        $("#view-item").find("select[name='cod_mod']").val(cod_mod);
+        $("#view-item").find("select[name='cod_tipo']").val(cod_tipo);
         $("#view-item").find("input[name='horario_vaga']").val(horario_vaga);
         $("#view-item").find("input[name='situacao_vaga']").val(situacao_vaga);
-        $("#view-item").find("input[name='cod_emp']").val(cod_emp);
-    
-        $("#view-item").find("input, textarea").attr("readonly", true);
-        $("#view-item").find("select").prop("disabled", true);
+
+    });
+
+    $(".crud-submit-edit").click(function (e) {
+
+        e.preventDefault();
+        var form_action = $("#edit-item").find("form").attr("action");
+
+        var cod_vaga = $("#edit-item").find("input[name='cod_vaga']").val();
+        var titulo_vaga = $("#edit-item").find("input[name='titulo_vaga']").val();
+        var descricao_vaga = $("#edit-item").find("textarea[name='descricao_vaga']").val();
+        var salario_vaga = $("#edit-item").find("input[name='salario_vaga']").val();
+        var cod_local = $("#edit-item").find("select[name='cod_local']").val();
+        var cod_mod = $("#edit-item").find("select[name='cod_mod']").val();
+        var cod_tipo = $("#edit-item").find("select[name='cod_tipo']").val();
+        var horario_vaga = $("#edit-item").find("input[name='horario_vaga']").val();
+        var situacao_vaga = $("#edit-item").find("input[name='situacao_vaga']").val();
+
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: form_action,
+            data: {cod_vaga: cod_vaga, titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga}
+
+        }).done(function (data) {
+
+            getPageData();
+            $(".modal").modal('hide');
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+        });
+
+
     });
 
     function getLocalSelect() {

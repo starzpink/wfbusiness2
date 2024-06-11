@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/sbstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
@@ -32,16 +31,16 @@
                         <h2>Cadastro de Rh</h2>
                     </div>
                     <div class="pull-right">
-                        <div class="div-link">
-                            <a href="criarRh.php">Criar Rh</a>
-                            <a href="relatorios/pdfRh.php" target="blank"> Relatório RH</a>
+                        <div class="linkz">
+                            <a href="criarRh.php" class="btn btn-success">Criar Rh</a>
+                            <a href="relatorios/pdfRh.php" target="blank" class="btn btn-primary"> Relatório RH</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <table class="table table-bordered table-style">
-            <thead style="background-color: #EEE8AA;">
+            <thead>
             </thead>
             <tbody>
             </tbody>

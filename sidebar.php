@@ -42,90 +42,109 @@ if ($cargo == 1) {
 
 ?>
 
-<?php if ($cargo == 1) { ?>
-    <nav class="sidebar">
-        <header>
-            <div class="sb-header">
-                <span class="sb-nome"><?php echo htmlspecialchars($nome_emp); ?></span>
-                <span class="sb-nomerh"><?php echo htmlspecialchars($nome_rh); ?></span>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+</head>
+
+<body>
+
+    <?php if ($cargo == 1) { ?>
+        <nav class="sidebar">
+            <header>
+                <div class="sb-header">
+                    <span class="sb-nome"><?php echo htmlspecialchars($nome_emp); ?></span>
+                    <span class="sb-nomerh"><?php echo htmlspecialchars($nome_rh); ?></span>
+                </div>
+            </header>
+            <div class="sb-menu">
+                <ul class="sb-menu-opcoes">
+                    <li class="sb-opcao">
+                        <a href="perfilrh.php">
+                            <i class="bx bx-user"></i>
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="dashboard.php">
+                            <i class="bx bxs-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="perfilempresa.php">
+                            <i class="bx bx-building"></i>
+                            <span>Empresa</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="vagas.php">
+                            <i class="bx bx-notepad"></i>
+                            <span>Vagas</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="logout.php">
+                            <i class="bx bx-log-out"></i>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </header>
-        <div class="sb-menu">
-            <ul class="sb-menu-opcoes">
-                <li class="sb-opcao">
-                    <a href="perfilrh.php">
-                        <i class="bx bx-user"></i>
-                        <span>Perfil</span>
-                    </a>
-                </li>
-                <a href="dashboard.php">
+        </nav>
+    <?php } elseif ($cargo == 2) { ?>
+        <nav class="sidebar">
+            <header>
+                <div class="sb-header">
+                    <span class="sb-nome"><?php echo htmlspecialchars($nome_emp); ?></span>
+                </div>
+            </header>
+            <div class="sb-menu">
+                <ul class="sb-menu-opcoes">
                     <li class="sb-opcao">
-                        <i class="bx bxs-dashboard"></i>
-                        <span>Dashboard</span>
+                        <a href="perfilempresa.php">
+                            <i class="bx bx-building"></i>
+                            <span>Empresa</span>
+                        </a>
                     </li>
-                </a>
-                <li class="sb-opcao">
-                    <a href="perfilempresa.php">
-                        <i class="bx bx-building"></i>
-                        <span>Empresa</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="vagas.php">
-                        <i class="bx bx-notepad"></i>
-                        <span>Vagas</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="logout.php">
-                        <i class="bx bx-log-out"></i>
-                        <span>Sair</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-<?php } elseif ($cargo == 2) { ?>
-    <nav class="sidebar">
-        <header>
-            <div class="sb-header">
-                <span class="sb-nome"><?php echo htmlspecialchars($nome_emp); ?></span>
-            </div>
-        </header>
-        <div class="sb-menu">
-            <ul class="sb-menu-opcoes">
-                <a href="perfilempresa.php">
                     <li class="sb-opcao">
-                        <i class="bx bx-building"></i>
-                        <span>Empresa</span>
+                        <a href="dashboard.php">
+                            <i class="bx bxs-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
                     </li>
-                </a>
-                <a href="dashboard.php">
-                    <li class="sb-opcao">
-                        <i class="bx bxs-dashboard"></i>
-                        <span>Dashboard</span>
-                    </li>
-                </a>
-                <a>
                     <li class="sb-opcao">
                         <a href="rh.php">
                             <i class="bx bx-group"></i>
                             <span>Equipe RH</span>
+                        </a>
                     </li>
-                </a>
-                <a href="vagas.php">
                     <li class="sb-opcao">
-                        <i class="bx bx-notepad"></i>
-                        <span>Vagas</span>
+                        <a href="vagas.php">
+                            <i class="bx bx-notepad"></i>
+                            <span>Vagas</span>
+                        </a>
                     </li>
-                </a>
-                <a href="logout.php">
                     <li class="sb-opcao">
-                        <i class="bx bx-log-out"></i>
-                        <span>Sair</span>
+                        <a href="logout.php">
+                            <i class="bx bx-log-out"></i>
+                            <span>Sair</span>
+                        </a>
                     </li>
-                </a>
-            </ul>
-        </div>
-    </nav>
-<?php } ?>
+                </ul>
+            </div>
+        </nav>
+    <?php } ?>
+
+
+
+
+
+</body>
+
+
+</html>

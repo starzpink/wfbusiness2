@@ -157,9 +157,10 @@ $(document).ready(function () {
                     data.addRows(chartVagas);
 
                     var options = {
-                        'title': 'Quantidade de Vagas da Empresa',
                         'width': 400,
-                        'height': 300
+                        'height': 350,
+                        'chartArea': {'width': '100%', 'height': '80%'},
+                        'legend': {'position': 'bottom'}
                     };
 
                     var chart_div = document.getElementById('chart_div_vagas');
@@ -189,9 +190,10 @@ $(document).ready(function () {
                     data.addRows(chartModalidade);
 
                     var options = {
-                        'title': 'Modalidades das Vagas da Empresa',
                         'width': 400,
-                        'height': 300
+                        'height': 350,
+                        'chartArea': {'width': '100%', 'height': '80%'},
+                        'legend': {'position': 'bottom'}
                     };
 
                     var chart_div = document.getElementById('chart_div_mod');

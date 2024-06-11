@@ -48,17 +48,12 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/sbstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-
     <script src="javascript/javascriptVagadash.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
@@ -73,46 +68,47 @@ $conn->close();
     <div class="v-principal">
         <h1>Dashboard</h1>
         <div class="dash-top">
-            <div class="dash-vagas-abertas">
-                <p>Vagas Abertas: <?php echo $vagas_abertas_count; ?></p>
+            <div class="dash-caixas">
+                <h2 class="dash-subtitulo">Vagas Abertas</h2>
+                <div class="dash-info">
+                    <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#ff0000'> $vagas_abertas_count </div>"; ?></p>
+                </div>
             </div>
-            <div class="dash-portfolios-recebidos">
-                <p>Portfolios Recebidos: </p>
+            <div class="dash-caixas">
+                <h2 class="dash-subtitulo">Portfolios Recebidos</h2>
+                <div class="dash-info">
+                    <p> </p>
+                </div>
             </div>
-            <div class="dash-contratados">
-                <p>Contratados: </p>
+            <div class="dash-caixas">
+                <h2 class="dash-subtitulo">Contratados</h2>
+                <div class="dash-info">
+                    <p> </p>
+                </div>
             </div>
         </div>
         <div class="dash-meio">
             <div class="dash-graf-vagas">
                 <div id="chart_div_vagas"></div>
-                <div id="png_vagas"></div>
             </div>
             <div class="dash-graf-modali">
                 <div id="chart_div_mod"></div>
-                <div id="png_mod"></div>
-            </div>
-            <div class="tabela">
-                <table class="table table-bordered table-style">
-                    <thead style="background-color: #EEE8AA;">
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div class="dash-ano">
-                <div class="echo">
-                    <div>Cargo: <?php echo $_SESSION['cargo']; ?></div>
-                    <div>Cod_Emp: <?php echo $_SESSION['cod_emp']; ?></div>
-                </div>
             </div>
         </div>
-        <br>
-        <div class="relatorios">
-            <li><a href="relatorios/pdfVagasFechadas.php" target="blank"> Relatório Vagas Fechadas</a></li>
-            <li><a href="relatorios/pdfVagasAbertas.php" target="blank"> Relatório Vagas Abertas</a></li>
+        <div class="tabela">
+            <table class="table table-bordered table-style">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
-
+        <div class="dash-botoes">
+            <a href="relatorios/pdfVagasFechadas.php" class="btn btn-primary" target="blank"> Relatório Vagas
+                Fechadas</a>
+            <a href="relatorios/pdfVagasAbertas.php" class="btn btn-primary" target="blank"> Relatório Vagas Abertas</a>
+        </div>
+    </div>
 </body>
 
 </html>

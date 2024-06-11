@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/sbstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
@@ -25,79 +24,76 @@
         <?php include 'sidebar.php'; ?>
     </nav>
     <div class="v-principal">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 margin-tb">
-                        <div class="pull-left">
-                            <h2>Cadastro de Vaga</h2>
-                        </div>
-                        <div class="pull-right">
-                            
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item">
-                                    Criar Vaga
-                                </button>
-                            
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <div class="pull-left">
+                        <h2>Cadastro de Vaga</h2>
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item">
+                            Criar Vaga
+                        </button>
                     </div>
                 </div>
-                <table class="table table-bordered table-style">
-                    <thead style="background-color: #EEE8AA;">
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+            </div>
+            <table class="table table-bordered table-style">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <ul id="pagination" class="pagination-sm"></ul>
+            <!-- Criação de Item Modal -->
+            <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Criar Vaga</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form data-toggle="validator" action="insert/insertVaga.php" method="POST">
 
-                <ul id="pagination" class="pagination-sm"></ul>
-                <!-- Criação de Item Modal -->
-                <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">×</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Criar Vaga</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form data-toggle="validator" action="insert/insertVaga.php" method="POST">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Edição de Item Modal -->
-                <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">×</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Editar Vaga</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form data-toggle="validator" action="update/updateVaga.php" method="POST">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Visualização de Item Modal -->
-                <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">×</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Visualizar Vaga</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form data-toggle="validator" action="get/getVaga.php" method="POST">
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Edição de Item Modal -->
+            <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Editar Vaga</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form data-toggle="validator" action="update/updateVaga.php" method="POST">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Visualização de Item Modal -->
+            <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Visualizar Vaga</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form data-toggle="validator" action="get/getVaga.php" method="POST">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
