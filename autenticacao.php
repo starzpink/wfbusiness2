@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
             $stmt->execute();
             $result = $stmt->get_result();
             $rh = $result->fetch_assoc();
-            
+
             if ($rh) {
                 $_SESSION['cod_emp'] = $rh['cod_emp'];
                 // Debug print para cod_emp (RH)
@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         }
 
         // Verifica e redireciona o usuário para a página correta
+        // Verifica e redireciona o usuário para a página correta
         switch ($usuario->getCargo()) {
             case 0:
                 header("Location: administracao.php");
@@ -76,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
                 break;
         }
         exit;
+
     } else {
         $_SESSION['msg'] = "E-mail ou senha incorretos.";
         header("Location: login.php");

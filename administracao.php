@@ -1,4 +1,21 @@
-<?php $classe = isset($_GET["classe"]) ? $_GET["classe"] : ""; ?>
+<?php $classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
+
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    $_SESSION['msg'] = "É necessário logar antes de acessar.";
+    header("Location: login.php");
+    exit;
+}
+
+$cargo_permitido = [0]; // Cargos permitidos para esta página
+if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
+    $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
+    header("Location: login.php");
+    exit;
+}
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -103,7 +120,7 @@
                 <div class="dash-caixas">
                     <h2 class="dash-subtitulo">Áreas de Atuação</h2>
                     <div class="dash-info">
-                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#ff0000'>x</div>"; ?>
+                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>x</div>"; ?>
                         </p>
                     </div>
                 </div>

@@ -5,7 +5,19 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Verifica se o usuário está logado e se a sessão 'cod_emp' está definida
+if (!isset($_SESSION['usuario'])) {
+    $_SESSION['msg'] = "É necessário logar antes de acessar.";
+    header("Location: login.php");
+    exit;
+}
+
+$cargo_permitido = [1,2]; // Cargos permitidos para esta página
+if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
+    $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
+    header("Location: login.php");
+    exit;
+}
+
 if (!isset($_SESSION['cod_usuario'])) {
     http_response_code(401); // Não autorizado
     echo json_encode(['error' => 'Acesso não autorizado.']);
@@ -15,12 +27,10 @@ if (!isset($_SESSION['cod_usuario'])) {
 $cod_usuario = $_SESSION['cod_usuario'];
 $cod_emp = isset($_SESSION['cod_emp']) ? $_SESSION['cod_emp'] : null;
 
-// Debugging: Verificação das variáveis de sessão
 if (is_null($cod_emp)) {
     echo "Erro: 'cod_emp' não está definido na sessão.<br>";
 }
 
-// Consulta para contar as vagas abertas
 $sql = "SELECT COUNT(*) AS total FROM vaga WHERE cod_emp = ? AND situacao_vaga = 'Aberta'";
 $stmt = $conn->prepare($sql);
 
