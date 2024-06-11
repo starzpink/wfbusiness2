@@ -7,13 +7,14 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $cargo = $_SESSION['cargo'];
 $cod_usuario = $_SESSION['cod_usuario'];
-$cod_emp = $_SESSION['cod_emp']; // Adicionando cod_emp para uso posterior
+if ($cargo === '1' || $cargo === '2') {
+    $cod_emp = $_SESSION['cod_emp'];
+}
 
 $nome_emp = '';
 $nome_rh = '';
 
 if ($cargo == 1) {
-    // RH: Recuperar o nome da empresa e do RH
     $QueryEmp = "SELECT e.nome_emp, r.nome_rh 
                  FROM empresa e 
                  INNER JOIN rh r ON e.cod_emp = r.cod_emp 
@@ -28,7 +29,6 @@ if ($cargo == 1) {
         $nome_rh = $row['nome_rh'];
     }
 } elseif ($cargo == 2) {
-    // Empresa: Recuperar o nome da empresa
     $QueryEmp = "SELECT nome_emp FROM empresa WHERE cod_usuario = ?";
     $stmt = $conn->prepare($QueryEmp);
     $stmt->bind_param("i", $cod_usuario);
@@ -52,8 +52,61 @@ if ($cargo == 1) {
 </head>
 
 <body>
-
-    <?php if ($cargo == 1) { ?>
+    <?php if ($cargo == 0) { ?>
+        <nav class="sidebar">
+            <header>
+                <div class="sb-header">
+                    <span class="sb-nome"><?php //echo htmlspecialchars($nome_adm); ?></span>
+                </div>
+            </header>
+            <div class="sb-menu">
+                <ul class="sb-menu-opcoes">
+                    <li class="sb-opcao">
+                        <a href="administracao.php">
+                            <i class="bx bx-user"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <a href="administracao.php?classe=Areaat">
+                        <li class="sb-opcao">
+                            <i class="bx bxs-dashboard"></i>
+                            <span>Área de Atuação</span>
+                        </li>
+                    </a>
+                    <li class="sb-opcao">
+                        <a href="administracao.php?classe=Empresa">
+                            <i class="bx bx-notepad"></i>
+                            <span>Empresas</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="administracao.php?classe=Localtrabalho">
+                            <i class="bx bx-log-out"></i>
+                            <span>Locais de trabalho</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="administracao.php?classe=Modalidade">
+                            <i class="bx bx-log-out"></i>
+                            <span>Modalidades</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="administracao.php?classe=Tipovaga">
+                            <i class="bx bx-log-out"></i>
+                            <span>Tipos de Vagas</span>
+                        </a>
+                    </li>
+                    <li class="sb-opcao">
+                        <a href="logout.php">
+                            <i class="bx bx-log-out"></i>
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    <?php } elseif ($cargo == 1) { ?>
         <nav class="sidebar">
             <header>
                 <div class="sb-header">

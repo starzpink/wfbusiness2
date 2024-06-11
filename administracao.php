@@ -21,82 +21,8 @@
 </head>
 
 <body class="v-body">
-    <nav class="sidebar">
-        <header>
-            <div class="sb-header">
-                <span class="sb-nome"><?php //echo htmlspecialchars($nome_adm); ?></span>
-            </div>
-        </header>
-        <div class="sb-menu">
-            <ul class="sb-menu-opcoes">
-                <li class="sb-opcao">
-                    <a href="administracao.php">
-                        <i class="bx bx-user"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <a href="administracao.php?classe=Areaat">
-                    <li class="sb-opcao">
-                        <i class="bx bxs-dashboard"></i>
-                        <span>Área de Atuação</span>
-                    </li>
-                </a>
-                <li class="sb-opcao">
-                    <a href="administracao.php?classe=Empresa">
-                        <i class="bx bx-notepad"></i>
-                        <span>Empresas</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="administracao.php?classe=Localtrabalho">
-                        <i class="bx bx-log-out"></i>
-                        <span>Locais de trabalho</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="administracao.php?classe=Modalidade">
-                        <i class="bx bx-log-out"></i>
-                        <span>Modalidades</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="administracao.php?classe=Sede">
-                        <i class="bx bx-log-out"></i>
-                        <span>Sedes</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="administracao.php?classe=Tipovaga">
-                        <i class="bx bx-log-out"></i>
-                        <span>Tipos de Vagas</span>
-                    </a>
-                </li>
-                <li class="sb-opcao">
-                    <a href="logout.php">
-                        <i class="bx bx-log-out"></i>
-                        <span>Sair</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!---<nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="administracao.php">Home</a></li>
-                <li><a href="administracao.php?classe=Areaat">Áreas de Atuação</a></li>
-                <li><a href="administracao.php?classe=Competencia">Competências</a></li>
-                <li><a href="administracao.php?classe=Empresa">Empresas</a></li>
-                <li><a href="administracao.php?classe=Localtrabalho">Locais de Trabalho</a></li>
-                <li><a href="administracao.php?classe=Modalidade">Modalidades</a></li>
-                <li><a href="administracao.php?classe=Requisito">Requisitos</a></li>
-                <li><a href="administracao.php?classe=Sede">Sedes</a></li>
-                <li><a href="administracao.php?classe=Tipovaga">Tipos de Vagas</a></li>
-                <li><a href="logout.php">Sair</a></li>
-            </ul>
-        </div>
-    </nav>-->
-    <?php if (!empty($classe)) { ?>
+    <?php include 'sidebar.php';
+    if (!empty($classe)) { ?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 margin-tb">
@@ -171,21 +97,46 @@
             </div>
         </div>
     <?php } else { ?>
-        <!-- Chart Área At -->
-        <div class="graficos1">
-            <div class="divinha">
-                <div id="chart_div_areaat"></div>
+        <div class="v-principal">
+            <h1>Dashboard</h1>
+            <div class="dash-top">
+                <div class="dash-caixas">
+                    <h2 class="dash-subtitulo">Áreas de Atuação</h2>
+                    <div class="dash-info">
+                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#ff0000'>x</div>"; ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="dash-caixas">
+                    <h2 class="dash-subtitulo">Empresas</h2>
+                    <div class="dash-info">
+                        <p> </p>
+                    </div>
+                </div>
             </div>
-            <!-- Chart Modal -->
-            <div class="divinha">
-                <div id="chart_div_local"></div>
+            <div class="dash-meio">
+                <div class="dash-graf-areaat">
+                    <div id="chart_div_areaat"></div>
+                </div>
+                <div class="dash-graf-local">
+                    <div id="chart_div_local"></div>
+                </div>
+                <div class="dash-graf-cad-emp">
+                    <div id="chart_div_coluna"></div>
+                </div>
+            </div>
+            <div class="tabela">
+                <table class="table table-bordered table-style">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="dash-botoes">
+                <a href="relatorios/pdfCadEmp.php" class="btn btn-primary" target="blank"> Relatório CadEmp</a>
             </div>
         </div>
-        <!-- Chart Coluna Modal -->
-        <div>
-            <div id="chart_div_coluna"></div>
-        </div>
-        <li><a href="relatorios/pdfCadEmp.php" target="blank"> Relatório CadEmp</a></li>
     <?php } ?>
 </body>
 
