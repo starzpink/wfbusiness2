@@ -1,27 +1,36 @@
 <?php
 session_start();
-$cod_usuario = $_SESSION['cod_usuario'];
-
 include '../conn.php';
-
-$conn->query("SET @cod_usuario = $cod_usuario");
 
 header('Content-type: application/json');
 
-$sql = "UPDATE rh SET 
-cod_emp = " . (int) $_POST['cod_emp'] . ",
-nome_rh = '" . $_POST['nome_rh'] . "',
-cpf_rh = '" . $_POST['cpf_rh'] . "',
-email_rh = '" . $_POST['email_rh'] . "',
-tel_rh = '" . $_POST['tel_rh'] . "'
-WHERE cod_rh = " . (int) $_POST['cod_rh'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['cod_usuario'])) {
+    $cod_usuario = intval($_SESSION['cod_usuario']);
 
-if ($conn->query($sql) === TRUE) {
-    $msg = "RH atualizado com sucesso!";
+    $conn->query("SET @cod_usuario = $cod_usuario");
+
+    // Atualiza a tabela usuário
+    $sql_usuario = "UPDATE usuario SET email = '" . $_POST['email'] . "', senha = MD5('" . $_POST['senha'] . "') WHERE cod_usuario = $cod_usuario";
+
+    if ($conn->query($sql_usuario) === TRUE) {
+        // Atualiza a tabela RH
+        $sql_rh = "UPDATE rh SET nome_rh = '" . $_POST['nome_rh'] . "', cpf_rh = '" . $_POST['cpf_rh'] . "', email_rh = '" . $_POST['email_rh'] . "', tel_rh = '" . $_POST['tel_rh'] . "' WHERE cod_usuario = $cod_usuario";
+
+        if ($conn->query($sql_rh) === TRUE) {
+            $msg = "Dados do RH atualizados com sucesso!";
+        } else {
+            $msg = "Erro ao atualizar os dados do RH: " . $conn->error;
+        }
+    } else {
+        $msg = "Erro ao atualizar os dados do usuário: " . $conn->error;
+    }
+
+    $conn->close();
+
+    echo json_encode(['msg' => $msg]);
+    exit;
 } else {
-    //$msg = "Error: ".$sql."<br>".$conn-error;    
-    $msg = "Erro";
+    echo json_encode(['msg' => 'Método de requisição inválido ou cod_usuario não encontrado na sessão.']);
+    exit;
 }
-$conn->close();
-echo json_encode(['msg' => $msg]);
 ?>

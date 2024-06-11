@@ -1,4 +1,6 @@
-<?php $classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
+<?php 
+include './conn.php';
+$classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
 
 session_start();
 
@@ -14,6 +16,35 @@ if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
     header("Location: login.php");
     exit;
 }
+
+$sql_areaat = "SELECT COUNT(*) AS total FROM areaat";
+$stmt = $conn->prepare($sql_areaat);
+
+if ($stmt === false) {
+    echo "Erro na preparação da consulta: " . htmlspecialchars($conn->error) . "<br>";
+    exit;
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$areaat_count = $row['total'] ?? 0;
+
+$sql_empresa = "SELECT COUNT(*) AS total FROM empresa";
+$stmt = $conn->prepare($sql_empresa);
+
+if ($stmt === false) {
+    echo "Erro na preparação da consulta: " . htmlspecialchars($conn->error) . "<br>";
+    exit;
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$empresa_count = $row['total'] ?? 0;
+
+$stmt->close();
+$conn->close();
 
 ?>
 
@@ -120,14 +151,13 @@ if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
                 <div class="dash-caixas">
                     <h2 class="dash-subtitulo">Áreas de Atuação</h2>
                     <div class="dash-info">
-                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>x</div>"; ?>
-                        </p>
+                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>$areaat_count</div>"; ?></p>
                     </div>
                 </div>
                 <div class="dash-caixas">
                     <h2 class="dash-subtitulo">Empresas</h2>
                     <div class="dash-info">
-                        <p> </p>
+                    <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>$empresa_count</div>"; ?></p>
                     </div>
                 </div>
             </div>
