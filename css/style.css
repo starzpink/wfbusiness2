@@ -37,7 +37,7 @@ h1 {
     margin-bottom: 1rem;
 }
 
-.navbar {
+.navbarMINHA {
     max-width: 100%;
     margin: 0rem;
     padding: 1.5rem 6.5rem;
@@ -438,19 +438,6 @@ a.bg-danger:hover {
     padding-bottom: 9px;
     margin: 40px 0 20px;
     border-bottom: 1px solid #eee
-}
-
-ol,
-ul {
-    margin-top: 0;
-    margin-bottom: 10px
-}
-
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-    margin-bottom: 0
 }
 
 .list-unstyled {
@@ -3860,12 +3847,12 @@ textarea.input-group-sm>.input-group-btn>.btn {
     border-top-right-radius: 0
 }
 
-.navbar {
+/*.navbar {
     position: relative;
     min-height: 50px;
     margin-bottom: 20px;
     border: 1px solid transparent
-}
+} 
 
 @media (min-width:768px) {
     .navbar {
@@ -3877,7 +3864,7 @@ textarea.input-group-sm>.input-group-btn>.btn {
     .navbar-header {
         float: left
     }
-}
+} */
 
 .navbar-collapse {
     padding-right: 15px;
