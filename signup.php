@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Cadastro</title>
     <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script defer src="script.js"></script>
 </head>
 
@@ -18,7 +19,7 @@
     <div class="container">
         <h1>Cadastre-se</h1>
         <div class="formContainer">
-            <form id="cadastroForm" action="insert/insertEmpresa.php" method="post">
+            <form id="cadastroForm" onsubmit="return comparaSenha()" action="insert/insertEmpresa.php" method="post">
                 <div class="parte1">
                     <div class="campo">
                         <label for="email">E-mail de Login:</label>
@@ -29,8 +30,9 @@
                         <input type="password" id="senha" name="senha" required>
                     </div>
                     <div class="campo">
-                        <label for="confirmaSenha">Confirme a Senha:</label>
-                        <input type="password" id="confirmaSenha" name="confirmaSenha" required>
+                        <label for="confirmarSenha">Confirme a Senha:</label>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                        <span class="senhadiferente"></span>
                     </div>
                     <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo" disabled>
                 </div>
@@ -77,8 +79,8 @@
             const emailz = document.getElementById('email');
             // Verifica se todos os campos da primeira parte do formulário estão preenchidos
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
-                if (input.value === ''|| !emailz.checkValidity()) {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
+                if (input.value === '' || !emailz.checkValidity()) {
                     camposPreenchidos = false;
                     return;
                 }
@@ -93,10 +95,10 @@
         }
 
         // Habilita o botão "Próximo" se todos os campos da parte 1 estiverem preenchidos
-        document.querySelector('.parte1').addEventListener('input', function () {
+        document.querySelector('.parte1').addEventListener('input', function() {
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
-                if (input.value === '') {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
+                if (input.value === '' || senha.value != confirmaSenha.value) {
                     camposPreenchidos = false;
                     return;
                 }
@@ -104,6 +106,33 @@
 
             document.getElementById('visible_submit').disabled = !camposPreenchidos;
         });
+
+        let senha = document.getElementById('senha');
+        let confirmaSenha = document.getElementById('confirmarSenha')
+        let senhadiferente = document.querySelector('.senhadiferente')
+        let form = document.getElementById('cadastroForm')
+
+        function comparaSenha() {
+            if (confirmaSenha.value) {
+                if (senha.value != confirmaSenha.value) {
+                    senhadiferente.style.display = 'block'
+                    senhadiferente.style.color = 'red'
+                    senhadiferente.innerHTML = 'As senhas não são iguais'
+                    return false
+                    e.preventDefault()
+                } else {
+                    senhadiferente.style.display = 'none'
+                }
+            }
+        }
+
+        confirmaSenha.addEventListener('keyup', () => {
+            comparaSenha()
+        })
+
+        senha.addEventListener('keyup', () => {
+            comparaSenha()
+        })
     </script>
 </body>
 

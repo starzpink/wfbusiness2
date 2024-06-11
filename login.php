@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Cadastro</title>
+    <title>Login - Workfolio</title>
     <link rel="stylesheet" type="text/css" href="css/signup.css">
     <script defer src="script.js"></script>
 </head>
