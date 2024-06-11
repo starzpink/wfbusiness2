@@ -34,68 +34,70 @@
                     <div class="pull-right">
                         <div class="div-link">
                             <a href="criarRh.php">Criar Rh</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <table class="table table-bordered table-style">
-                <thead style="background-color: #EEE8AA;">
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <ul id="pagination" class="pagination-sm"></ul>
-            <!-- Criação de Item Modal -->
-            <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Criar Rh</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form data-toggle="validator" action="insert/insertRh.php" method="POST">
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Edição de Item Modal -->
-            <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Editar Rh</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form data-toggle="validator" action="update/updateRh.php" method="POST">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Visualização de Item Modal -->
-            <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Visualizar Rh</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form data-toggle="validator" action="selectRh.php" method="POST">
-                            </form>
+                            <a href="relatorios/pdfRh.php" target="blank"> Relatório RH</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <table class="table table-bordered table-style">
+            <thead style="background-color: #EEE8AA;">
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <ul id="pagination" class="pagination-sm"></ul>
+        <!-- Criação de Item Modal -->
+        <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Criar Rh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form data-toggle="validator" action="insert/insertRh.php" method="POST">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edição de Item Modal -->
+        <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Editar Rh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form data-toggle="validator" action="update/updateRh.php" method="POST">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Visualização de Item Modal -->
+        <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Visualizar Rh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form data-toggle="validator" action="selectRh.php" method="POST">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 

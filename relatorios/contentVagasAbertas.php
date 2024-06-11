@@ -1,3 +1,9 @@
+<?php 
+session_start();
+$cod_emp = $_SESSION['cod_emp'];
+
+include '../conn.php';
+?>
 <page backcolor="#FEFEFE" backtop="0" backbottom="30mm" footer="date;time;page" style="fontsize: 12pt">
     <bookmark title="Lettre" level="0"></bookmark>
     <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
@@ -24,8 +30,7 @@
         <br>
         <tbody>
             <?php
-            include '../conn.php';
-            $sql = "SELECT cod_vaga, titulo_vaga, situacao_vaga, FROM vagas WHERE situacao_vaga = 'Aberta' ORDER BY cod_vaga";
+            $sql = "SELECT cod_vaga, titulo_vaga, situacao_vaga FROM vaga WHERE situacao_vaga = 'Aberta' and cod_emp=" . $cod_emp . " ORDER BY cod_vaga";
             $result = $conn->query($sql);
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $conn->close();

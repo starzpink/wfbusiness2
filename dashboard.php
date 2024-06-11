@@ -107,9 +107,12 @@ $conn->close();
                 </div>
             </div>
         </div>
-        <li><a href="relatorios/pdfVagasFechadas.php" target="blank"> Relatório Vagas Fechadas</a></li>
-        <li><a href="relatorios/pdfVagasAbertas.php" target="blank"> Relatório Vagas Abertas</a></li>
-        <li><a href="relatorios/pdfRh.php" target="blank"> Relatório RH</a></li>
+        <br>
+        <div class="relatorios">
+            <li><a href="relatorios/pdfVagasFechadas.php" target="blank"> Relatório Vagas Fechadas</a></li>
+            <li><a href="relatorios/pdfVagasAbertas.php" target="blank"> Relatório Vagas Abertas</a></li>
+        </div>
+
 </body>
 
 </html>

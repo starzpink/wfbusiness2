@@ -1,3 +1,9 @@
+<?php 
+session_start();
+$cod_emp = $_SESSION['cod_emp'];
+
+include '../conn.php';
+?>
 <page backcolor="#FEFEFE" backtop="0" backbottom="30mm" footer="date;time;page" style="fontsize: 12pt">
     <bookmark title="Lettre" level="0"></bookmark>
     <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
@@ -23,10 +29,8 @@
         <br>
         <br>
         <tbody>
-            <!-- FALTA ARRUMAR AQUI!!! -->
             <?php
-            include '../conn.php';
-            $sql = "SELECT cod_rh, nome_rh, email_rh, FROM rh WHERE cod_emp = $cod_emp ORDER BY cod_rh";
+            $sql = "SELECT cod_rh, nome_rh, email_rh FROM rh WHERE cod_emp = ". $cod_emp ." ORDER BY cod_rh";
             $result = $conn->query($sql);
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $conn->close();

@@ -4,7 +4,6 @@ $cod_usuario = $_SESSION['cod_usuario'];
 
 include '../conn.php';
 
-$conn->query("SET @cod_usuario = $cod_usuario");
 
 $conn->query("SET @cod_usuario = $cod_usuario");
 
