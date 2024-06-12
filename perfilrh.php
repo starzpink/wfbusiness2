@@ -48,7 +48,7 @@ $conn->close();
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
+<body class="v-body">
     <nav class="nav-sidebar">
         <?php include 'sidebar.php'; ?>
     </nav>

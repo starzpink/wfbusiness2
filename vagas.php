@@ -89,6 +89,7 @@
                         <div class="modal-body">
                             <form data-toggle="validator" action="get/getVaga.php" method="POST">
                             </form>
+                            <a class= "btn btn-info" href="candidatos.php">Ver candidatos</a>
                         </div>
                     </div>
                 </div>
