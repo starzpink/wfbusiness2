@@ -193,11 +193,6 @@ if ($cargo == 1) {
         </nav>
     <?php } ?>
 
-
-
-
-
 </body>
-
 
 </html>

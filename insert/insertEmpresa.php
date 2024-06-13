@@ -11,7 +11,7 @@ if ($conn->query($sql_usuario) === TRUE) {
     $cod_usuario = $conn->insert_id; // Recupera o ID gerado pelo banco de dados
 
     $conn->query("SET @cod_usuario = $cod_usuario");
-    // Insere a empresa na tabela 'empresa'
+
     $sql_empresa = "INSERT INTO empresa(nome_emp, cod_local, areaat_emp, desc_emp, email_emp, site_emp, tel_emp, cnpj_emp, cod_usuario) "
         . "VALUES ('" . $_POST['nome_emp'] . "',"
         . $_POST['cod_local'] . "," . $_POST['areaat_emp'] . ",'" . $_POST['desc_emp'] . "','" . $_POST['email_emp'] . "','"

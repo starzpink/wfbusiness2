@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,36 @@
     <meta name="description" content="Contrate o colaborador ideal para sua empresa na Workfolio for Business">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
     <header>
-    <?php include 'navbar-menu.php'; ?>
+        <?php include 'navbar-menu.php'; ?>
     </header>
     <main>
         <div class="principal">
             <section class="hero">
                 <div class="hero-cadastro">
-                <h1>Centenas de empresas estão na Workfolio for Business</h1>
+                    <h1>Centenas de empresas estão na Workfolio for Business</h1>
                     <h2>Cadastre sua empresa hoje, comece a contratar já.</h2>
                     <div class="botoes">
                         <a href="signup.php">
                             <img src="assets/user-plus-svgrepo-com.svg" />
                             <p>Cadastre-se com e-mail</p>
                         </a>
-                        <p class="entrar">Sua empresa já tem uma conta? <a href="login.php" class="a-entrar">Entrar</a></p>
-                        <p>Está procurando por vagas? <a class="a-entrar">Confira nossa plataforma voltada à candidatos</a></p>
+                        <p class="entrar">Sua empresa já tem uma conta? <a href="login.php" class="a-entrar">Entrar</a>
+                        </p>
+                        <p>Está procurando por vagas? <a class="a-entrar">Confira nossa plataforma voltada à
+                                candidatos</a></p>
                     </div>
                 </div>
                 <figure class="imagem-container">
-                    <img src="assets/business.png"/>
+                    <img src="assets/business.png" />
                 </figure>
             </section>
             <section class="sobre">
                 <header>
-                <h2>Sobre a Workfolio for Business</h2>
-                <p>Entenda porque mais e mais empresas migram para nossa plataforma</p>
+                    <h2>Sobre a Workfolio for Business</h2>
+                    <p>Entenda porque mais e mais empresas migram para nossa plataforma</p>
                 </header>
                 <div class="sobre-card-container">
                     <div class="sobre-card">
@@ -50,8 +54,9 @@
                     </div>
                 </div>
 
-            </section>     
+            </section>
         </div>
     </main>
 </body>
+
 </html>

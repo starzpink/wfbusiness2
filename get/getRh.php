@@ -16,4 +16,3 @@ $conn->close();
 header("Content-type: application/json");
 echo json_encode(['data'=>$rows,"total" => $total[0]]);
 ?>
-

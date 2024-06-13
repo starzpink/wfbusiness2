@@ -44,7 +44,7 @@
                 </tbody>
             </table>
             <ul id="pagination" class="pagination-sm"></ul>
-            <!-- Criação de Item Modal -->
+
             <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Edição de Item Modal -->
+
             <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Visualização de Item Modal -->
+
             <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -89,6 +89,7 @@
                         <div class="modal-body">
                             <form data-toggle="validator" action="get/getVaga.php" method="POST">
                             </form>
+                            <a class="btn btn-info" href="candidatos.php">Ver candidatos</a>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="pt-br">
 
 <head>
@@ -20,18 +21,19 @@
         <div class="formContainer">
             <form action="autenticacao.php" method="POST">
                 <div class="parte1">
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="nome@exemplo.com" autocomplete="email"
+                            required>
+                    </div>
+                    <div class="campo">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="***********" required>
+                    </div>
                     <?php if (isset($_SESSION['msg'])) { ?>
                         <p style="color: red;"><?php echo $_SESSION['msg']; ?></p>
                         <?php session_destroy(); ?>
                     <?php } ?>
-                    <div class="campo">
-                        <label for="email">E-mail</label>
-                        <input type="email" name="email" placeholder="nome@exemplo.com" required>
-                    </div>
-                    <div class="campo">
-                        <p>Senha</p>
-                        <input type="password" name="senha" placeholder="***********" required>
-                    </div>
                     <div class="campo">
                         <input type="submit" value="Entrar">
                     </div>

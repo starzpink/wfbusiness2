@@ -7,7 +7,6 @@ $(document).ready(function () {
     var dataCon;
     createHeadTable();
     createForm();
-    createEditForm();
     createViewForm();
     manageData();
 
@@ -57,7 +56,6 @@ $(document).ready(function () {
             rows = rows + '<td>' + value.cod_rh + '</td>';
             rows = rows + '<td>' + value.nome_rh + '</td>';
             rows = rows + '<td data-id="' + i++ + '">';
-            rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Editar</button> ';
             rows = rows + '<button data-toggle="modal" data-target="#view-item" class="btn btn-primary view-item">Visualizar</button> ';
             rows = rows + '</td>';
             rows = rows + '</tr>';
@@ -70,7 +68,7 @@ $(document).ready(function () {
         var rows = '<tr>';
         rows = rows + '<th> Código </th>';
         rows = rows + '<th> Nome </th>';
-        rows = rows + '<th width="200px">Ação</th>'
+        rows = rows + '<th width="105px">Ação</th>'
         rows = rows + '</tr>'
         $("thead").html(rows);
     }
