@@ -20,7 +20,7 @@ html {
 
 a {
     text-decoration: none;
-    color: #140101;
+    color:#140101;
 }
 
 ul {
@@ -48,8 +48,7 @@ ul {
 }
 
 
-.campo,
-.campo2 {
+.campo, .campo2 {
     margin-bottom: 0.3rem;
     display: flex;
     flex-direction: column;
@@ -59,7 +58,7 @@ ul {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-select {
+select{
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
@@ -94,7 +93,7 @@ input[type="submit"] {
     margin-top: 0.5rem;
 }
 
-.visible_submit {
+.visible_submit{
     width: 100%;
     padding: 10px;
     background-color: #008080;
@@ -104,7 +103,6 @@ input[type="submit"] {
     cursor: pointer;
     margin-top: 0.5rem;
 }
-
 .navbar {
     max-width: 100%;
     margin: 0rem;
@@ -114,7 +112,7 @@ input[type="submit"] {
     justify-content: center;
     align-items: center;
     background-color: white;
-    color: #FFFFF0;
+    color:#FFFFF0;
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: #ccc;
@@ -124,10 +122,10 @@ input[type="submit"] {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    color: #140101;
+    color:#140101;
 }
 
-.nav-menu>a {
+.nav-menu > a {
     background-color: #FFFFF0;
 }
 

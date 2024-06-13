@@ -1,5 +1,5 @@
-<?php
-include './bd/conn.php';
+<?php 
+include './conn.php';
 $classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
 
 session_start();
@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-$cargo_permitido = [0];
+$cargo_permitido = [0]; // Cargos permitidos para esta página
 if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
     $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
     header("Location: login.php");
@@ -94,7 +94,7 @@ $conn->close();
             </table>
 
             <ul id="pagination" class="pagination-sm"></ul>
-
+            <!-- Criação de Item Modal -->
             <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -111,7 +111,7 @@ $conn->close();
                     </div>
                 </div>
             </div>
-
+            <!-- Edição de Item Modal -->
             <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -127,7 +127,7 @@ $conn->close();
                     </div>
                 </div>
             </div>
-
+            <!-- Visualização de Item Modal -->
             <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -151,15 +151,13 @@ $conn->close();
                 <div class="dash-caixas">
                     <h2 class="dash-subtitulo">Áreas de Atuação</h2>
                     <div class="dash-info">
-                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>$areaat_count</div>"; ?>
-                        </p>
+                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>$areaat_count</div>"; ?></p>
                     </div>
                 </div>
                 <div class="dash-caixas">
                     <h2 class="dash-subtitulo">Empresas</h2>
                     <div class="dash-info">
-                        <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>$empresa_count</div>"; ?>
-                        </p>
+                    <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080'>$empresa_count</div>"; ?></p>
                     </div>
                 </div>
             </div>

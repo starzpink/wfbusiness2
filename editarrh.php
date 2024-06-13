@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './bd/conn.php';
+include './conn.php';
 
 if (!isset($_SESSION['cod_usuario'])) {
     echo "ID do usuário não fornecido.";
@@ -102,6 +102,7 @@ $conn->close();
     </div>
     <script>
         function prox() {
+            // Verifica se todos os campos da primeira parte do formulário estão preenchidos
             var camposPreenchidos = true;
             document.querySelectorAll('.parte1 input').forEach(function (input) {
                 if (input.value === '') {
@@ -119,5 +120,4 @@ $conn->close();
         }
     </script>
 </body>
-
 </html>

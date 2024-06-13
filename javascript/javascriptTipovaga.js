@@ -16,7 +16,7 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'get/getTipovaga.php',
-            data: { page: page }
+            data: {page: page}
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
             current_page = page;
@@ -41,7 +41,7 @@ $(document).ready(function () {
             dataType: 'json',
             url: 'getTipovaga.php',
 
-            data: { page: page }
+            data: {page: page}
         }).done(function (data) {
             manageRow(data.data);
         });
@@ -124,12 +124,12 @@ $(document).ready(function () {
         var form_action = $("#create-item").find("form").attr("action");
         var cod_tipo = $("#create-item").find("input[name='cod_tipo']").val();
         var desc_tipo = $("#create-item").find("input[name='desc_tipo']").val();
-
+        
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: { cod_tipo: cod_tipo, desc_tipo: desc_tipo }
+            data: {cod_tipo: cod_tipo, desc_tipo: desc_tipo}
         }).done(function (data) {
 
             $("#create-item").find("input[name='cod_tipo']").val('');
@@ -137,7 +137,7 @@ $(document).ready(function () {
 
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
 
         });
 
@@ -174,13 +174,13 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: { cod_tipo: cod_tipo, desc_tipo: desc_tipo }
+            data: {cod_tipo: cod_tipo, desc_tipo: desc_tipo}
 
         }).done(function (data) {
 
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
         });
 
 

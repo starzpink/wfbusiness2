@@ -2,7 +2,7 @@
 session_start();
 $cod_usuario = $_SESSION['cod_usuario'];
 
-include './bd/conn.php';
+include '../conn.php';
 
 $conn->query("SET @cod_usuario = $cod_usuario");
 

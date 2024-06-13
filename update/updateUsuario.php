@@ -2,7 +2,8 @@
 session_start();
 $cod_usuario = $_SESSION['cod_usuario'];
 
-include './bd/conn.php';
+include '../conn.php';
+
 
 $conn->query("SET @cod_usuario = $cod_usuario");
 
@@ -12,7 +13,7 @@ $sql = "UPDATE usuario SET
     email = '" . $_POST['email'] . "', 
     senha = '" . md5($_POST['senha']) . "', 
     cargo = " . (int) $_POST['cargo'] . " 
-    WHERE cod_usuario = " . (int) $_POST['cod_usuario'];
+    WHERE cod_usuario = " . (int)$_POST['cod_usuario'];
 
 if ($conn->query($sql) === TRUE) {
     $msg = 'Usuário atualizado com sucesso!';

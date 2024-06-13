@@ -1,5 +1,5 @@
 <?php
-include './bd/conn.php';
+include './conn.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -192,6 +192,12 @@ if ($cargo == 1) {
             </div>
         </nav>
     <?php } ?>
+
+
+
+
+
 </body>
+
 
 </html>

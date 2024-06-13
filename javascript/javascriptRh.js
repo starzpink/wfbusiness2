@@ -16,7 +16,7 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'get/getRh.php',
-            data: { page: page }
+            data: {page: page}
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
             current_page = page;
@@ -41,7 +41,7 @@ $(document).ready(function () {
             dataType: 'json',
             url: 'getRh.php',
 
-            data: { page: page }
+            data: {page: page}
         }).done(function (data) {
             manageRow(data.data);
         });
@@ -158,14 +158,14 @@ $(document).ready(function () {
         var form_action = $("#create-item").find("form").attr("action");
         var nome_rh = $("#create-item").find("input[name='nome_rh']").val();
         var cpf_rh = $("#create-item").find("input[name='cpf_rh']").val();
-        var email_rh = $("#create-item").find("input[name='email_rh']").val();
-        var tel_rh = $("#create-item").find("input[name='tel_rh']").val();
+        var email_rh  = $("#create-item").find("input[name='email_rh']").val();
+        var tel_rh  = $("#create-item").find("input[name='tel_rh']").val();
 
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: { nome_rh: nome_rh, cpf_rh: cpf_rh, email_rh: email_rh, tel_rh: tel_rh }
+            data: {nome_rh: nome_rh, cpf_rh: cpf_rh, email_rh: email_rh, tel_rh: tel_rh}
         }).done(function (data) {
 
             $("#create-item").find("input[name='nome_rh']").val('');
@@ -174,7 +174,7 @@ $(document).ready(function () {
             $("#create-item").find("input[name='tel_rh']").val('');
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
 
         });
 
@@ -182,7 +182,7 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: { nome_rh: nome_rh, cpf_rh: cpf_rh, email_rh: email_rh, tel_rh: tel_rh }
+            data: {nome_rh: nome_rh, cpf_rh: cpf_rh, email_rh: email_rh, tel_rh: tel_rh}
         }).done(function (data) {
 
             $("#create-item").find("input[name='nome_rh']").val('');
@@ -191,7 +191,7 @@ $(document).ready(function () {
             $("#create-item").find("input[name='tel_rh']").val('');
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
 
         });
 
@@ -202,7 +202,7 @@ $(document).ready(function () {
         var nome_rh = dataCon[index].nome_rh;
         var cpf_rh = dataCon[index].cpf_rh;
         var email_rh = dataCon[index].email_rh;
-        var tel_rh = dataCon[index].tel_rh;
+        var tel_rh  = dataCon[index].tel_rh;
 
         $("#edit-item").find("input[name='nome_rh']").val(nome_rh);
         $("#edit-item").find("input[name='cpf_rh']").val(cpf_rh);
@@ -217,7 +217,7 @@ $(document).ready(function () {
         var nome_rh = dataCon[index].nome_rh;
         var cpf_rh = dataCon[index].cpf_rh;
         var email_rh = dataCon[index].email_rh;
-        var tel_rh = dataCon[index].tel_rh;
+        var tel_rh  = dataCon[index].tel_rh;
 
         $("#view-item").find("input[name='nome_rh']").val(nome_rh);
         $("#view-item").find("input[name='cpf_rh']").val(cpf_rh);
@@ -233,19 +233,19 @@ $(document).ready(function () {
         var nome_rh = $("#edit-item").find("input[name='nome_rh']").val();
         var cpf_rh = $("#edit-item").find("input[name='cpf_rh']").val();
         var email_rh = $("#edit-item").find("input[name='email_rh']").val();
-        var tel_rh = $("#edit-item").find("input[name='tel_rh']").val();
+        var tel_rh  = $("#edit-item").find("input[name='tel_rh']").val();
 
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: { nome_rh: nome_rh, cpf_rh: cpf_rh, email_rh: email_rh, tel_rh: tel_rh }
+            data: {nome_rh: nome_rh, cpf_rh: cpf_rh, email_rh: email_rh, tel_rh: tel_rh}
 
         }).done(function (data) {
 
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
+            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
         });
 
 

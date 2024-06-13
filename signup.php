@@ -83,7 +83,7 @@
             function getLocalSelect() {
                 $.ajax({
                     dataType: 'json',
-                    url: './get/getLocaltrabalho.php',
+                    url: 'get/getLocaltrabalho.php',
                     data: {}
                 }).done(function (data) {
 

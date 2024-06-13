@@ -182,5 +182,8 @@ $(document).ready(function () {
             $(".modal").modal('hide');
             toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
         });
+
+
     });
+
 });

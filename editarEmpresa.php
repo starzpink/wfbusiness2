@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './bd/conn.php';
+include './conn.php';
 
 if (!isset($_SESSION['cod_usuario'])) {
     echo "ID do usuário não fornecido.";
@@ -55,11 +55,11 @@ $conn->close();
             function getLocalSelect() {
                 $.ajax({
                     dataType: 'json',
-                    url: 'get/getLocaltrabalho.php',
+                    url: 'get/getLocaltrabalho.php', // Ensure this path is correct
                     data: {}
                 }).done(function (data) {
                     var htmlSelect = '';
-                    var currentCodLocal = <?php echo json_encode($cod_local); ?>;
+                    var currentCodLocal = <?php echo json_encode($cod_local); ?>; // Get the current cod_local value from PHP
                     $.each(data.data, function (key, value) {
                         var selected = value.cod_local == currentCodLocal ? 'selected' : '';
                         htmlSelect += '<option value="' + value.cod_local + '" ' + selected + '>' + value.cidade_local + '</option>';
@@ -73,11 +73,11 @@ $conn->close();
             function getAreaAtuacaoSelect() {
                 $.ajax({
                     dataType: 'json',
-                    url: 'get/getAreaat.php',
+                    url: 'get/getAreaat.php', // Ensure this path is correct
                     data: {}
                 }).done(function (data) {
                     var htmlSelect = '';
-                    var currentAreaAtuacao = <?php echo json_encode($areaat_emp); ?>;
+                    var currentAreaAtuacao = <?php echo json_encode($areaat_emp); ?>; // Get the current areaat_emp value from PHP
                     $.each(data.data, function (key, value) {
                         var selected = value.cod_area == currentAreaAtuacao ? 'selected' : '';
                         htmlSelect += '<option value="' + value.cod_area + '" ' + selected + '>' + value.desc_area + '</option>';
@@ -122,6 +122,7 @@ $conn->close();
         });
 
         function prox() {
+            // Verifica se todos os campos da primeira parte do formulário estão preenchidos
             var camposPreenchidos = true;
             document.querySelectorAll('.parte1 input').forEach(function (input) {
                 if (input.value === '') {

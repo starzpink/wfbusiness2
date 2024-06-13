@@ -1,8 +1,8 @@
-<?php
+<?php 
 session_start();
 $cod_emp = $_SESSION['cod_emp'];
 
-include './bd/conn.php';
+include '../conn.php';
 ?>
 <page backcolor="#FEFEFE" backtop="0" backbottom="30mm" footer="date;time;page" style="fontsize: 12pt">
     <bookmark title="Lettre" level="0"></bookmark>

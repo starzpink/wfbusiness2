@@ -32,8 +32,7 @@
                         <label for="confirmaSenha">Confirme a Senha:</label>
                         <input type="password" id="confirmaSenha" name="confirmaSenha" required><br>
                     </div>
-                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo"
-                        disabled>
+                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo" disabled>
                 </div>
                 <div class="parte2" style="display:none;">
                     <div class="campo">
@@ -58,10 +57,13 @@
         </div>
     </div>
     <script>
+
+
         function prox() {
             const emailz = document.getElementById('email');
+            // Verifica se todos os campos da primeira parte do formulário estão preenchidos
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
                 if (input.value === '' || !emailz.checkValidity()) {
                     camposPreenchidos = false;
                     return;
@@ -76,9 +78,10 @@
             }
         }
 
-        document.querySelector('.parte1').addEventListener('input', function () {
+        // Habilita o botão "Próximo" se todos os campos da parte 1 estiverem preenchidos
+        document.querySelector('.parte1').addEventListener('input', function() {
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
                 if (input.value === '') {
                     camposPreenchidos = false;
                     return;

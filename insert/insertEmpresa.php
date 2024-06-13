@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include './bd/conn.php';
+include '../conn.php';
 
 header('Content-type: application/json');
 

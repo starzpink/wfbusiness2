@@ -1,13 +1,16 @@
 $(document).ready(function () {
     $(document).ready(function () {
+        // Load the Google Charts library
         google.charts.load('current', { 'packages': ['corechart'] });
 
+        // Chart data arrays
         var chartAreaat = [];
         var chartLocal = [];
         var chartCadEmp = [];
         var chartVagas = [];
         var chartModalidade = [];
 
+        // Load charts when Google Charts library is ready
         google.charts.setOnLoadCallback(loadCharts);
 
         function loadCharts() {
@@ -86,7 +89,7 @@ $(document).ready(function () {
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
-                url: 'chart/chartCadEmp.php',
+                url: 'chart/chartCadEmp.php', // Altere este URL para o correto
                 data: {}
             }).done(function (data) {
                 $.each(data.data, function (key, value) {
@@ -95,12 +98,13 @@ $(document).ready(function () {
                 drawChartCadEmp();
             });
         }
-
+    
         function drawChartCadEmp() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Data de Registro');
             data.addColumn('number', 'Quantidade de Empresas');
-
+    
+            // Agrupa os dados por data
             var groupedData = chartCadEmp.reduce(function (acc, curr) {
                 var date = curr[0];
                 if (!acc[date]) {
@@ -109,16 +113,17 @@ $(document).ready(function () {
                 acc[date]++;
                 return acc;
             }, {});
-
+    
+            // Converte o objeto agrupado em um array
             var rows = [];
             for (var date in groupedData) {
                 if (groupedData.hasOwnProperty(date)) {
                     rows.push([date, groupedData[date]]);
                 }
             }
-
+    
             data.addRows(rows);
-
+    
             var options = {
                 title: 'Empresas Cadastradas ao Longo do Tempo',
                 bar: { groupWidth: '95%' },
@@ -126,7 +131,7 @@ $(document).ready(function () {
                 width: 400,
                 height: 300
             };
-
+    
             var chart_div = document.getElementById('chart_div_coluna');
             var chart = new google.visualization.ColumnChart(chart_div);
             chart.draw(data, options);
@@ -154,8 +159,8 @@ $(document).ready(function () {
                     var options = {
                         'width': 400,
                         'height': 350,
-                        'chartArea': { 'width': '100%', 'height': '80%' },
-                        'legend': { 'position': 'bottom' }
+                        'chartArea': {'width': '100%', 'height': '80%'},
+                        'legend': {'position': 'bottom'}
                     };
 
                     var chart_div = document.getElementById('chart_div_vagas');
@@ -187,8 +192,8 @@ $(document).ready(function () {
                     var options = {
                         'width': 400,
                         'height': 350,
-                        'chartArea': { 'width': '100%', 'height': '80%' },
-                        'legend': { 'position': 'bottom' }
+                        'chartArea': {'width': '100%', 'height': '80%'},
+                        'legend': {'position': 'bottom'}
                     };
 
                     var chart_div = document.getElementById('chart_div_mod');
