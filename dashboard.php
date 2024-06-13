@@ -88,15 +88,14 @@ $conn->close();
             </div>
             <div class="dash-caixas">
                 <h2 class="dash-subtitulo">Portfolios Recebidos</h2>
-                <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080;margin-top:0.6rem'> $candidatos_count </div>"; ?>
                 <div class="dash-info">
-                    <p> </p>
+                    <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080;margin-top:0.6rem'> 1 </div>"; ?></p>
                 </div>
             </div>
             <div class="dash-caixas">
                 <h2 class="dash-subtitulo">Contratados</h2>
                 <div class="dash-info">
-                    <p> </p>
+                    <p><p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080;margin-top:0.6rem'> 2 </div>"; ?></p></p>
                 </div>
             </div>
         </div>
