@@ -1,3 +1,40 @@
+<?php
+session_start();
+include './conn.php';
+
+if (!isset($_GET['cod_vaga'])) {
+    echo "ID de não fornecido.";
+    exit;
+}
+
+$cod_vaga = intval(($_GET['cod_vaga']));
+
+$sql = "SELECT c.cod_cand, c.nome_cand, c.link_port, c.cod_vaga, v.cod_vaga
+        FROM candidato c
+        JOIN vaga v ON c.cod_vaga = v.cod_vaga
+        WHERE c.cod_vaga = ?";
+
+$stmt = $conn->prepare($sql);
+
+if ($stmt === false) {
+    echo "Erro na preparação da consulta: " . htmlspecialchars($conn->error) . "<br>";
+    exit;
+}
+
+$stmt->bind_param("i", $cod_vaga);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $empresa = $result->fetch_assoc();
+} else {
+    echo "Empresa não encontrada.";
+    exit;
+}
+
+$stmt->close();
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,8 +52,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-    <script src="javascript/javascriptVaga.js"></script>
-    <title>Vagas</title>
+    <script src="javascript/javascriptCandidato.js"></script>
+    <title>Candidatos</title>
 </head>
 
 <body class="v-body">
@@ -28,12 +65,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
-                        <h2>Vagas</h2>
-                    </div>
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item">
-                            Criar Vaga
-                        </button>
+                        <h2>Candidatos</h2>
                     </div>
                 </div>
             </div>
@@ -45,46 +77,13 @@
             </table>
             <ul id="pagination" class="pagination-sm"></ul>
 
-            <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Criar Vaga</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form data-toggle="validator" action="insert/insertVaga.php" method="POST">
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Editar Vaga</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form data-toggle="validator" action="update/updateVaga.php" method="POST">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Visualizar Vaga</h4>
+                            <h4 class="modal-title" id="myModalLabel">Visualizar Candidato</h4>
                         </div>
                         <div class="modal-body">
                             <form data-toggle="validator" action="get/getVaga.php" method="POST">

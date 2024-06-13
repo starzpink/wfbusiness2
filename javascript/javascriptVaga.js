@@ -19,7 +19,7 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'get/getVaga.php',
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
             current_page = page;
@@ -44,7 +44,7 @@ $(document).ready(function () {
             dataType: 'json',
             url: 'getVaga.php',
 
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
             manageRow(data.data);
         });
@@ -62,6 +62,7 @@ $(document).ready(function () {
             rows = rows + '<td data-id="' + i++ + '">';
             rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Editar</button> ';
             rows = rows + '<button data-toggle="modal" data-target="#view-item" class="btn btn-primary view-item">Visualizar</button> ';
+            rows = rows + '<button class="btn btn-primary view-candidates" data-cod_vaga="' + value.cod_vaga + '">Ver Candidatos</button>';
             rows = rows + '</td>';
             rows = rows + '</tr>';
         });
@@ -73,7 +74,7 @@ $(document).ready(function () {
         var rows = '<tr>';
         rows = rows + '<th> Código </th>';
         rows = rows + '<th> Título da Vaga </th>';
-        rows = rows + '<th width="200px">Ação</th>'
+        rows = rows + '<th width="300px">Ação</th>'
         rows = rows + '</tr>'
         $("thead").html(rows);
     }
@@ -229,14 +230,14 @@ $(document).ready(function () {
         var cod_local = $("#create-item").find("select[name='cod_local']").val();
         var cod_mod = $("#create-item").find("select[name='cod_mod']").val();
         var cod_tipo = $("#create-item").find("select[name='cod_tipo']").val();
-        var horario_vaga  = $("#create-item").find("input[name='horario_vaga']").val();
-        var situacao_vaga  = $("#create-item").find("input[name='situacao_vaga']").val();
+        var horario_vaga = $("#create-item").find("input[name='horario_vaga']").val();
+        var situacao_vaga = $("#create-item").find("input[name='situacao_vaga']").val();
 
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga}
+            data: { titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga }
         }).done(function (data) {
 
             $("#create-item").find("input[name='titulo_vaga']").val('');
@@ -249,7 +250,7 @@ $(document).ready(function () {
             $("#create-item").find("input[name='situacao_vaga']").val('');
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
 
         });
 
@@ -257,7 +258,7 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga}
+            data: { titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga }
         }).done(function (data) {
 
             $("#create-item").find("input[name='titulo_vaga']").val('');
@@ -270,7 +271,7 @@ $(document).ready(function () {
             $("#create-item").find("input[name='situacao_vaga']").val('');
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
 
         });
 
@@ -285,8 +286,8 @@ $(document).ready(function () {
         var cod_local = dataCon[index].cod_local;
         var cod_mod = dataCon[index].cod_mod;
         var cod_tipo = dataCon[index].cod_tipo;
-        var horario_vaga  = dataCon[index].horario_vaga;
-        var situacao_vaga  = dataCon[index].situacao_vaga;
+        var horario_vaga = dataCon[index].horario_vaga;
+        var situacao_vaga = dataCon[index].situacao_vaga;
 
         $("#edit-item").find("input[name='cod_vaga']").val(cod_vaga);
         $("#edit-item").find("input[name='titulo_vaga']").val(titulo_vaga);
@@ -309,8 +310,8 @@ $(document).ready(function () {
         var cod_local = dataCon[index].cod_local;
         var cod_mod = dataCon[index].cod_mod;
         var cod_tipo = dataCon[index].cod_tipo;
-        var horario_vaga  = dataCon[index].horario_vaga;
-        var situacao_vaga  = dataCon[index].situacao_vaga;
+        var horario_vaga = dataCon[index].horario_vaga;
+        var situacao_vaga = dataCon[index].situacao_vaga;
 
         $("#view-item").find("input[name='cod_vaga']").val(cod_vaga);
         $("#view-item").find("input[name='titulo_vaga']").val(titulo_vaga);
@@ -343,13 +344,13 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {cod_vaga: cod_vaga, titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga}
+            data: { cod_vaga: cod_vaga, titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga }
 
         }).done(function (data) {
 
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
         });
 
 
@@ -412,4 +413,8 @@ $(document).ready(function () {
         });
     }
 
+    $(document).on('click', '.view-candidates', function () {
+        var cod_vaga = $(this).data('cod_vaga');
+        window.location.href = 'candidatos.php?cod_vaga=' + cod_vaga;
+    });
 });

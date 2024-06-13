@@ -1,5 +1,7 @@
 <?php
 include './conn.php';
+include './countCandidato.php';
+include './countVagasAbertas.php';
 session_start();
 
 error_reporting(E_ALL);
@@ -87,6 +89,7 @@ $conn->close();
             </div>
             <div class="dash-caixas">
                 <h2 class="dash-subtitulo">Portfolios Recebidos</h2>
+                <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080;margin-top:0.6rem'> $candidatos_count </div>"; ?>
                 <div class="dash-info">
                     <p> </p>
                 </div>

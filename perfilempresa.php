@@ -35,6 +35,7 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -84,7 +85,9 @@ $conn->close();
             <div class="campo">
                 <p><strong>CNPJ:</strong> <?php echo htmlspecialchars($empresa['cnpj_emp']); ?></p>
             </div>
-            <a href="editarEmpresa.php?cod_usuario=<?php echo $cod_usuario; ?>"><button>Editar</button></a>
+        </div>
+        <div class="dash-botoes">
+            <a href="editarEmpresa.php?cod_usuario=<?php echo $cod_usuario; ?>" class="btn btn-primary">Editar</a>
         </div>
     </div>
 </body>

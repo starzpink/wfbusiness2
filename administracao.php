@@ -1,4 +1,3 @@
-@ -1,191 +1,193 @@
 <?php
 include './conn.php';
 $classe = isset($_GET["classe"]) ? $_GET["classe"] : "";
