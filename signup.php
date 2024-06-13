@@ -34,8 +34,7 @@
                         <input type="password" id="confirmarSenha" name="confirmarSenha" required>
                         <span class="senhadiferente"></span>
                     </div>
-                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo"
-                        disabled>
+                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo" disabled>
                 </div>
                 <div class="parte2" style="display:none;">
                     <div class="campo">
@@ -44,11 +43,11 @@
                     </div>
                     <div class="campo">
                         <label for="cod_local">Local:</label>
-                        <select id="cod_local" name="cod_local" required></select>
+                        <input type="text" id="cod_local" name="cod_local" required>
                     </div>
                     <div class="campo">
                         <label for="areaat_emp">Área de Atuação:</label>
-                        <select id="areaat_emp" name="areaat_emp" required></select>
+                        <input type="text" id="areaat_emp" name="areaat_emp" required>
                     </div>
                     <div class="campo">
                         <label for="desc_emp">Descrição:</label>
@@ -76,46 +75,11 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            getLocalSelect();
-            getDataSelect();
-
-            function getLocalSelect() {
-                $.ajax({
-                    dataType: 'json',
-                    url: 'get/getLocaltrabalho.php',
-                    data: {}
-                }).done(function (data) {
-
-                    var htmlSelect = '';
-                    $.each(data.data, function (key, value) {
-                        htmlSelect = htmlSelect + '<option value="' + value.cod_local + '"> ' + value.cidade_local + '</option>';
-                    });
-                    $("#cod_local").html(htmlSelect);
-                });
-            }
-
-            function getDataSelect() {
-
-                $.ajax({
-                    dataType: 'json',
-                    url: 'get/getAreaat.php',
-                    data: {}
-                }).done(function (data) {
-
-                    var htmlSelect = '';
-                    $.each(data.data, function (key, value) {
-                        htmlSelect = htmlSelect + '<option value="' + value.cod_area + '"> ' + value.desc_area + '</option>';
-                    });
-                    $("#areaat_emp").html(htmlSelect);
-                });
-            }
-        });
         function prox() {
             const emailz = document.getElementById('email');
             // Verifica se todos os campos da primeira parte do formulário estão preenchidos
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
                 if (input.value === '' || !emailz.checkValidity()) {
                     camposPreenchidos = false;
                     return;
@@ -131,9 +95,9 @@
         }
 
         // Habilita o botão "Próximo" se todos os campos da parte 1 estiverem preenchidos
-        document.querySelector('.parte1').addEventListener('input', function () {
+        document.querySelector('.parte1').addEventListener('input', function() {
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
                 if (input.value === '' || senha.value != confirmaSenha.value) {
                     camposPreenchidos = false;
                     return;
