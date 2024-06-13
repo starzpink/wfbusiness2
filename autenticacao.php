@@ -1,6 +1,6 @@
 <?php
-include_once './conn.php';
-include_once './usuario.php';
+include './bd/conn.php';
+include_once './bd/usuario.php';
 session_start();
 
 error_reporting(E_ALL);
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
         $_SESSION['cod_usuario'] = $usuario->getCodUsuario();
         $_SESSION['cargo'] = $usuario->getCargo();
 
-        // Debug print para cargo
+
         echo "Cargo do usuário: " . $_SESSION['cargo'] . "<br>";
 
         if ($usuario->getCargo() == 1) { // RH
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
 
             if ($rh) {
                 $_SESSION['cod_emp'] = $rh['cod_emp'];
-                // Debug print para cod_emp (RH)
+
                 echo "Código da empresa (RH): " . $_SESSION['cod_emp'] . "<br>";
             } else {
                 echo "Erro ao recuperar o código da empresa para RH<br>";
@@ -53,15 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_PO
 
             if ($empresa) {
                 $_SESSION['cod_emp'] = $empresa['cod_emp'];
-                // Debug print para cod_emp (Empresa)
+
                 echo "Código da empresa (Empresa): " . $_SESSION['cod_emp'] . "<br>";
             } else {
                 echo "Erro ao recuperar o código da empresa para Empresa<br>";
             }
         }
 
-        // Verifica e redireciona o usuário para a página correta
-        // Verifica e redireciona o usuário para a página correta
         switch ($usuario->getCargo()) {
             case 0:
                 header("Location: administracao.php");

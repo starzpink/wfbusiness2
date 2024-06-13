@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../conn.php';
+include './bd/conn.php';
 
 header('Content-type: application/json');
 
@@ -9,11 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['cod_usuario'])) {
 
     $conn->query("SET @cod_usuario = $cod_usuario");
 
-    // Atualiza a tabela usuário
     $sql_usuario = "UPDATE usuario SET email = '" . $_POST['email'] . "', senha = MD5('" . $_POST['senha'] . "') WHERE cod_usuario = $cod_usuario";
 
     if ($conn->query($sql_usuario) === TRUE) {
-        // Atualiza a tabela RH
         $sql_rh = "UPDATE rh SET nome_rh = '" . $_POST['nome_rh'] . "', cpf_rh = '" . $_POST['cpf_rh'] . "', email_rh = '" . $_POST['email_rh'] . "', tel_rh = '" . $_POST['tel_rh'] . "' WHERE cod_usuario = $cod_usuario";
 
         if ($conn->query($sql_rh) === TRUE) {

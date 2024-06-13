@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './conn.php';
+include './bd/conn.php';
 
 if (!isset($_SESSION['cod_usuario'])) {
     echo "ID do usuário não fornecido.";

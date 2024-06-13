@@ -1,8 +1,7 @@
 <?php
-include '../conn.php';
+include './bd/conn.php';
 session_start();
 
-// Verifica se o usuário está logado e se a sessão 'cod_emp' está definida
 if (!isset($_SESSION['cod_usuario'])) {
     http_response_code(401); // Não autorizado
     echo json_encode(['error' => 'Acesso não autorizado.']);
@@ -26,7 +25,6 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 $conn->close();
 
-// Define o cabeçalho do conteúdo como JSON e retorna os dados
 header("Content-type: application/json");
 echo json_encode(['data' => $rows]);
 ?>

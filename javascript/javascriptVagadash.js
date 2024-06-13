@@ -12,7 +12,7 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'get/getVaga.php',
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
             current_page = page;
@@ -36,7 +36,7 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'get/getVaga.php',
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
             manageRow(data.data);
         });

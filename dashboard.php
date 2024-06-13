@@ -1,5 +1,5 @@
 <?php
-include './conn.php';
+include './bd/conn.php';
 session_start();
 
 error_reporting(E_ALL);
@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-$cargo_permitido = [1,2]; // Cargos permitidos para esta página
+$cargo_permitido = [1, 2]; // Cargos permitidos para esta página
 if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
     $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
     header("Location: login.php");
@@ -81,7 +81,8 @@ $conn->close();
             <div class="dash-caixas">
                 <h2 class="dash-subtitulo">Vagas Abertas</h2>
                 <div class="dash-info">
-                    <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080;margin-top:0.6rem'> $vagas_abertas_count </div>"; ?></p>
+                    <p><?php echo "<div style ='font:4rem Arial,tahoma,sans-serif;color:#008080;margin-top:0.6rem'> $vagas_abertas_count </div>"; ?>
+                    </p>
                 </div>
             </div>
             <div class="dash-caixas">

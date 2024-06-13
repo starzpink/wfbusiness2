@@ -16,7 +16,7 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'get/getLocaltrabalho.php',
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
             total_page = Math.ceil(data.total / 10);
             current_page = page;
@@ -41,7 +41,7 @@ $(document).ready(function () {
             dataType: 'json',
             url: 'getLocaltrabalho.php',
 
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
             manageRow(data.data);
         });
@@ -150,12 +150,12 @@ $(document).ready(function () {
         var cep_local = $("#create-item").find("input[name='cep_local']").val();
         var cidade_local = $("#create-item").find("input[name='cidade_local']").val();
         var estado_local = $("#create-item").find("input[name='estado_local']").val();
-        
+
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {cod_local: cod_local, cep_local: cep_local, cidade_local: cidade_local, estado_local: estado_local}
+            data: { cod_local: cod_local, cep_local: cep_local, cidade_local: cidade_local, estado_local: estado_local }
         }).done(function (data) {
 
             $("#create-item").find("input[name='cod_local']").val('');
@@ -165,7 +165,7 @@ $(document).ready(function () {
 
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
 
         });
 
@@ -212,13 +212,13 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: {cod_local: cod_local, cep_local: cep_local, cidade_local: cidade_local, estado_local: estado_local}
+            data: { cod_local: cod_local, cep_local: cep_local, cidade_local: cidade_local, estado_local: estado_local }
 
         }).done(function (data) {
 
             getPageData();
             $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', {timeOut: 5000});
+            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
         });
 
 

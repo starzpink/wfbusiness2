@@ -24,7 +24,7 @@
         <br>
         <tbody>
             <?php
-            include '../conn.php';
+            include './bd/conn.php';
             $sql = "SELECT cod_emp, nome_emp, DATE_FORMAT(data_registro_emp, '%d-%m-%Y') as data_registro FROM empresa ORDER BY data_registro_emp";
             $result = $conn->query($sql);
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);

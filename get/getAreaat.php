@@ -1,6 +1,6 @@
 <?php
 
-include '../conn.php';
+include './bd/conn.php';
 
 $ini = isset($_GET['page']) ? ($_GET['page'] - 1) * 10 : 0;
 
