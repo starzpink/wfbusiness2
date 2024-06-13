@@ -78,7 +78,7 @@
     <script>
         $(document).ready(function () {
             getLocalSelect();
-            getDataSelect();
+            getAreaAtuacaoSelect();
 
             function getLocalSelect() {
                 $.ajax({
@@ -95,7 +95,7 @@
                 });
             }
 
-            function getDataSelect() {
+            function getAreaAtuacaoSelect() {
 
                 $.ajax({
                     dataType: 'json',
