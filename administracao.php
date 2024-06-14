@@ -166,15 +166,12 @@ $conn->close();
             <div class="dash-meio">
                 <div class="dash-graf-areaat">
                     <div id="chart_div_areaat"></div>
-                    <div id="png_areaat"></div>
                 </div>
                 <div class="dash-graf-local">
                     <div id="chart_div_local"></div>
-                    <div id="png_local"></div>
                 </div>
                 <div class="dash-graf-cad-emp">
                     <div id="chart_div_coluna"></div>
-                    <div id="png_coluna"></div>
                 </div>
             </div>
             <div class="tabela">
