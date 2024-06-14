@@ -12,27 +12,30 @@ $(document).ready(function () {
     getLocalSelect();
 
     function manageData() {
-
         $.ajax({
             dataType: 'json',
             url: 'get/getEmpresa.php',
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
+            console.log('Initial data:', data);  // Log initial data for debugging
             total_page = Math.ceil(data.total / 10);
             current_page = page;
-            $('#pagination').twbsPagination({
-                totalPages: total_page,
-                visiblePages: current_page,
-                onPageClick: function (event, pageL) {
-                    page = pageL;
-                    if (is_ajax_fire != 0) {
-                        getPageData();
-                    }
-                }
-            });
 
+            if (is_ajax_fire === 0) {
+                $('#pagination').twbsPagination({
+                    totalPages: total_page,
+                    visiblePages: 5,  // Assuming you want to show 5 visible pages
+                    onPageClick: function (event, pageL) {
+                        page = pageL;
+                        if (is_ajax_fire != 0) {
+                            getPageData();
+                        }
+                    }
+                });
+                is_ajax_fire = 1;
+            }
+            
             manageRow(data.data);
-            is_ajax_fire = 1;
         });
     }
 
@@ -40,9 +43,9 @@ $(document).ready(function () {
         $.ajax({
             dataType: 'json',
             url: 'getEmpresa.php',
-
-            data: {page: page}
+            data: { page: page }
         }).done(function (data) {
+            console.log('Page data:', data);  // Log page data for debugging
             manageRow(data.data);
         });
     }

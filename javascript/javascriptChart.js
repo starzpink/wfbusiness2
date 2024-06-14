@@ -45,6 +45,11 @@ $(document).ready(function () {
 
                     var chart_div = document.getElementById('chart_div_areaat');
                     var chart = new google.visualization.PieChart(chart_div);
+                    google.visualization.events.addListener(chart, 'ready', function () {
+                        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+                        console.log(chart_div.innerHTML);
+                        document.getElementById('png_areaat').outerHTML = '<a href="' + chart.getImageURI() + '">Versão para Impressão</a > ';
+                    });
                     chart.draw(data, options);
                 }
             });

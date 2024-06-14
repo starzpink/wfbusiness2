@@ -12,37 +12,40 @@ $(document).ready(function () {
     manageData();
 
     function manageData() {
-
         $.ajax({
             dataType: 'json',
             url: 'get/getAreaat.php',
             data: { page: page }
         }).done(function (data) {
+            console.log('Initial data:', data);
             total_page = Math.ceil(data.total / 10);
             current_page = page;
-            $('#pagination').twbsPagination({
-                totalPages: total_page,
-                visiblePages: current_page,
-                onPageClick: function (event, pageL) {
-                    page = pageL;
-                    if (is_ajax_fire != 0) {
-                        getPageData();
-                    }
-                }
-            });
 
+            if (is_ajax_fire === 0) {
+                $('#pagination').twbsPagination({
+                    totalPages: total_page,
+                    visiblePages: 5,
+                    onPageClick: function (event, pageL) {
+                        page = pageL;
+                        if (is_ajax_fire != 0) {
+                            getPageData();
+                        }
+                    }
+                });
+                is_ajax_fire = 1;
+            }
+            
             manageRow(data.data);
-            is_ajax_fire = 1;
         });
     }
 
     function getPageData() {
         $.ajax({
             dataType: 'json',
-            url: 'getAreaat.php',
-
+            url: 'get/getAreaat.php',
             data: { page: page }
         }).done(function (data) {
+            console.log('Page data:', data);
             manageRow(data.data);
         });
     }
