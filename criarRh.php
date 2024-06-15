@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Cadastro</title>
     <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="script.js"></script>
 </head>
 
@@ -32,8 +33,7 @@
                         <label for="confirmaSenha">Confirme a Senha:</label>
                         <input type="password" id="confirmaSenha" name="confirmaSenha" required><br>
                     </div>
-                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo"
-                        disabled>
+                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo">
                 </div>
                 <div class="parte2" style="display:none;">
                     <div class="campo">
@@ -52,40 +52,86 @@
                         <label for="tel_rh">Telefone:</label>
                         <input type="text" id="tel_rh" name="tel_rh" required><br>
                     </div>
+                    <div id="toast"></div>
                     <input type="submit" class="btCadastrar" value="Cadastrar">
                 </div>
             </form>
         </div>
     </div>
+    
     <script>
-        function prox() {
-            const emailz = document.getElementById('email');
-            var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
-                if (input.value === '' || !emailz.checkValidity()) {
-                    camposPreenchidos = false;
-                    return;
-                }
-            });
-
-            if (camposPreenchidos) {
-                document.querySelector('.parte2').style.display = 'block';
-                document.querySelector('.parte1').style.display = 'none';
-            } else {
-                alert('Preencha todos os campos corretamente antes de prosseguir.');
+        $(document).ready(function () {
+            function showToast(message) {
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                toast.innerHTML = message;
+                setTimeout(function () {
+                    toast.className = toast.className.replace("show", "");
+                }, 3000);
             }
-        }
 
-        document.querySelector('.parte1').addEventListener('input', function () {
-            var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
-                if (input.value === '') {
-                    camposPreenchidos = false;
-                    return;
+            function handleFormSubmit(event) {
+                event.preventDefault();
+
+                var form = document.getElementById('cadastroForm');
+                var formData = new FormData(form);
+
+                fetch('insert/insertRh.php', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.text())
+                    .then(responseText => {
+                        showToast(responseText);
+                        console.log(responseText);  // Log para inspecionar a resposta
+
+                        if (responseText.trim() === 'Sucesso') {
+                            setTimeout(function () {
+                                window.location.href = 'rh.php'; // Redireciona após 3 segundos
+                            }, 3000);
+                        }
+                    }).catch(error => {
+                        showToast('Erro no envio. Tente novamente.');
+                        console.error(error);  // Log para inspecionar erros
+                    });
+            }
+
+            document.getElementById('cadastroForm').addEventListener('submit', handleFormSubmit);
+
+            function checkPart1Fields() {
+                let allFilled = true;
+                $('.parte1 input').each(function () {
+                    if ($(this).val() === '') {
+                        allFilled = false;
+                        return false;
+                    }
+                });
+                return allFilled;
+            }
+
+            $('.parte1 input').on('input', function () {
+                if (checkPart1Fields()) {
+                    $('#visible_submit').removeAttr('disabled');
+                } else {
+                    $('#visible_submit').attr('disabled', 'disabled');
                 }
             });
 
-            document.getElementById('visible_submit').disabled = !camposPreenchidos;
+            window.prox = function () {
+                if (checkPart1Fields()) {
+                    var senha = $('#senha').val();
+                    var confirmaSenha = $('#confirmaSenha').val();
+
+                    if (senha !== confirmaSenha) {
+                        alert('As senhas não coincidem.');
+                        return;
+                    }
+
+                    $('.parte2').show();
+                    $('.parte1').hide();
+                } else {
+                    alert('Preencha todos os campos corretamente antes de prosseguir.');
+                }
+            }
         });
     </script>
 </body>
