@@ -243,28 +243,7 @@ $(document).ready(function () {
             $("#create-item").find("input[name='titulo_vaga']").val('');
             $("#create-item").find("textarea[name='descricao_vaga']").val('');
             $("#create-item").find("input[name='salario_vaga']").val('');
-            $("#create-item").find("select[name='cod_local]").val('');
-            $("#create-item").find("select[name='cod_mod']").val('');
-            $("#create-item").find("select[name='cod_tipo']").val('');
-            $("#create-item").find("input[name='horario_vaga']").val('');
-            $("#create-item").find("input[name='situacao_vaga']").val('');
-            getPageData();
-            $(".modal").modal('hide');
-            toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
-
-        });
-
-        $.ajax({
-            dataType: 'json',
-            type: 'POST',
-            url: form_action,
-            data: { titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga }
-        }).done(function (data) {
-
-            $("#create-item").find("input[name='titulo_vaga']").val('');
-            $("#create-item").find("textarea[name='descricao_vaga']").val('');
-            $("#create-item").find("input[name='salario_vaga']").val('');
-            $("#create-item").find("select[name='cod_local]").val('');
+            $("#create-item").find("select[name='cod_local']").val('');
             $("#create-item").find("select[name='cod_mod']").val('');
             $("#create-item").find("select[name='cod_tipo']").val('');
             $("#create-item").find("input[name='horario_vaga']").val('');

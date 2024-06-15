@@ -30,6 +30,6 @@ $conn->close();
 
 echo json_encode(['msg' => $msg]);
 
-header("Location: perfilempresa.php");
+header("Location: ../perfilempresa.php");
 exit;
 ?>
