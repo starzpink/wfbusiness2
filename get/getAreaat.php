@@ -11,7 +11,7 @@ $totalRow = mysqli_fetch_assoc($totalResult);
 $total = $totalRow['count'];
 
 // Fetch records for the current page
-$sql = 'SELECT * FROM areaat LIMIT ' . $ini . ', 10';
+$sql = 'SELECT * FROM areaat LIMIT ' . $ini . ', 30';
 $result = $conn->query($sql);
 
 // Fetch rows
