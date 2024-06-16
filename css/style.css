@@ -49,6 +49,12 @@ h1 {
     color: #FFFFF0;
 }
 
+.nav-sidebar {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+}
+
 .nav-menu {
     display: flex;
     flex-direction: row;
