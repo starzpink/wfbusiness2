@@ -45,6 +45,7 @@ $stmt->close();
 $conn->close();
 ?>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,6 +57,7 @@ $conn->close();
 
 <body class="v-body">
     <nav class="nav-sidebar">
+        <?php include 'sidebar.php'; ?>
     </nav>
     <div class="v-principal">
         <h1>Perfil do RH</h1>
