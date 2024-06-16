@@ -12,15 +12,6 @@
     max-height: 100vh;
 }
 
-.fodase {
-    overflow: visible;
-    display: initial;
-}
-
-.v-body {
-    overflow: visible;
-    display: initial;
-}
 
 .sb-header {
     display: flex;
