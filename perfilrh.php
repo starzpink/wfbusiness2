@@ -62,21 +62,26 @@ $conn->close();
         <h1>Perfil do RH</h1>
         <div class="parte1">
             <div class="campo">
-                <p><strong>Email do Usuário:</strong> <?php echo htmlspecialchars($rh['email']); ?></p>
+                <label>Email do Usuário:</label>
+                <p><?php echo htmlspecialchars($rh['email']); ?></p>
             </div>
         </div>
         <div class="parte2">
             <div class="campo">
-                <p><strong>Nome:</strong> <?php echo htmlspecialchars($rh['nome_rh']); ?></p>
+                <label>Nome:</label>
+                <p><?php echo htmlspecialchars($rh['nome_rh']); ?></p>
             </div>
             <div class="campo">
-                <p><strong>CPF:</strong> <?php echo htmlspecialchars($rh['cpf_rh']); ?></p>
+                <label>CPF:</label>
+                <p><?php echo htmlspecialchars($rh['cpf_rh']); ?></p>
             </div>
             <div class="campo">
-                <p><strong>E-mail:</strong> <?php echo htmlspecialchars($rh['email_rh']); ?></p>
+                <label>E-mail:</label>
+                <p><?php echo htmlspecialchars($rh['email_rh']); ?></p>
             </div>
             <div class="campo">
-                <p><strong>Telefone:</strong> <?php echo htmlspecialchars($rh['tel_rh']); ?></p>
+                <label>Telefone:</label>
+                <p><?php echo htmlspecialchars($rh['tel_rh']); ?></p>
             </div>
             <div class="dash-botoes">
                 <a href="editarrh.php?cod_usuario=<?php echo $cod_usuario; ?>" class="btn btn-primary">Editar</a>
