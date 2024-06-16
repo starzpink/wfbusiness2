@@ -157,32 +157,6 @@ input[type="submit"] {
     white-space: nowrap;
 }
 
-/* .toast #img {
-    width: 50px;
-    height: 50px;
-
-    float: left;
-
-    padding-top: 16px;
-    padding-bottom: 16px;
-
-    box-sizing: border-box;
-
-
-    background-color: #111;
-    color: #fff;
-}
-
-.toast .desc {
-    color: #fff;
-
-    padding: 16px;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-} */
-
 .toast.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
