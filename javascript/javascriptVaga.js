@@ -305,9 +305,10 @@ $(document).ready(function () {
     });
 
     $(".crud-submit-edit").click(function (e) {
-
         e.preventDefault();
+
         var form_action = $("#edit-item").find("form").attr("action");
+        console.log("Form action URL:", form_action);
 
         var cod_vaga = $("#edit-item").find("input[name='cod_vaga']").val();
         var titulo_vaga = $("#edit-item").find("input[name='titulo_vaga']").val();
@@ -319,21 +320,46 @@ $(document).ready(function () {
         var horario_vaga = $("#edit-item").find("input[name='horario_vaga']").val();
         var situacao_vaga = $("#edit-item").find("input[name='situacao_vaga']").val();
 
+        console.log("Form data:", {
+            cod_vaga: cod_vaga,
+            titulo_vaga: titulo_vaga,
+            descricao_vaga: descricao_vaga,
+            salario_vaga: salario_vaga,
+            cod_local: cod_local,
+            cod_mod: cod_mod,
+            cod_tipo: cod_tipo,
+            horario_vaga: horario_vaga,
+            situacao_vaga: situacao_vaga
+        });
+
         $.ajax({
             dataType: 'json',
             type: 'POST',
             url: form_action,
-            data: { cod_vaga: cod_vaga, titulo_vaga: titulo_vaga, descricao_vaga: descricao_vaga, salario_vaga: salario_vaga, cod_local: cod_local, cod_mod: cod_mod, cod_tipo: cod_tipo, horario_vaga: horario_vaga, situacao_vaga: situacao_vaga }
-
+            data: {
+                cod_vaga: cod_vaga,
+                titulo_vaga: titulo_vaga,
+                descricao_vaga: descricao_vaga,
+                salario_vaga: salario_vaga,
+                cod_local: cod_local,
+                cod_mod: cod_mod,
+                cod_tipo: cod_tipo,
+                horario_vaga: horario_vaga,
+                situacao_vaga: situacao_vaga
+            }
         }).done(function (data) {
-
+            console.log("Server response:", data);
             getPageData();
             $(".modal").modal('hide');
             toastr.success(data.msg, 'Alerta de Sucesso', { timeOut: 5000 });
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            console.error("AJAX request failed:", textStatus, errorThrown);
+            console.error("Response text:", jqXHR.responseText);
+            toastr.error('An error occurred while processing your request.', 'Error', { timeOut: 5000 });
         });
 
-
     });
+
 
     function getLocalSelect() {
 

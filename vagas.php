@@ -87,7 +87,7 @@
                             <h4 class="modal-title" id="myModalLabel">Visualizar Vaga</h4>
                         </div>
                         <div class="modal-body">
-                            <form data-toggle="validator" action="get/getVaga.php" method="POST">
+                            <form data-toggle="validator" method="POST">
                             </form>
                         </div>
                     </div>
