@@ -1,50 +1,5 @@
-<?php
-include './conn.php';
-
-session_start();
-
-if (!isset($_SESSION['usuario'])) {
-    $_SESSION['msg'] = "É necessário logar antes de acessar.";
-    header("Location: login.php");
-    exit;
-}
-
-$cargo_permitido = [1];
-if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
-    $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
-    header("Location: login.php");
-    exit;
-}
-
-$cod_usuario = intval($_SESSION['cod_usuario']);
-
-$sql = "SELECT rh.cod_emp, rh.nome_rh, rh.cpf_rh, rh.email_rh, rh.tel_rh, u.email
-        FROM rh
-        JOIN usuario u ON rh.cod_usuario = u.cod_usuario
-        WHERE rh.cod_usuario = ?";
-
-$stmt = $conn->prepare($sql);
-
-if ($stmt === false) {
-    echo "Erro na preparação da consulta: " . htmlspecialchars($conn->error) . "<br>";
-    exit;
-}
-
-$stmt->bind_param("i", $cod_usuario);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $rh = $result->fetch_assoc();
-} else {
-    echo "RH não encontrado.";
-    exit;
-}
-
-$stmt->close();
-$conn->close();
-?>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
