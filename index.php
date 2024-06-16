@@ -27,7 +27,7 @@
                         </a>
                         <p class="entrar">Sua empresa já tem uma conta? <a href="login.php" class="a-entrar">Entrar</a>
                         </p>
-                        <p>Está procurando por vagas? <a class="a-entrar">Confira nossa plataforma voltada à
+                        <p class="procurando">Está procurando por vagas? <a class="a-entrar">Confira nossa plataforma voltada à
                                 candidatos</a></p>
                     </div>
                 </div>

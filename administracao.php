@@ -63,7 +63,6 @@ $conn->close();
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/sbstyle.css">
 </head>
 
 <body class="v-body">

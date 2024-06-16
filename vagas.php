@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/sbstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <script type="text/javascript"
@@ -44,7 +43,6 @@
                 </tbody>
             </table>
             <ul id="pagination" class="pagination-sm"></ul>
-
             <div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -55,13 +53,11 @@
                         </div>
                         <div class="modal-body">
                             <form data-toggle="validator" action="insert/insertVaga.php" method="POST">
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="modal fade" id="edit-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -77,7 +73,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -96,5 +91,4 @@
         </div>
     </div>
 </body>
-
 </html>

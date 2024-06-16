@@ -114,6 +114,7 @@ $conn->close();
             </form>
         </div>
     </div>
+    <!-- Não criar um arquivo separado pra esse script -->
     <script>
         $(document).ready(function() {
             getLocalSelect();

@@ -89,10 +89,14 @@ main {
     padding-top: 3rem;
 }
 
+.procurando {
+    color: #36454F;
+}
+
 .hero-cadastro>h2 {
     display: flex;
     font-size: 1.8rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 0.8rem;
     justify-content: left;
 }
@@ -175,6 +179,7 @@ main {
 
 .titulo-cad {
     margin-bottom: 0.3rem;
+    color: #008080;
 }
 
 .foot {
