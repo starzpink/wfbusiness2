@@ -113,7 +113,7 @@
         });
         function prox() {
             const emailz = document.getElementById('email');
-            // Verifica se todos os campos da primeira parte do formulário estão preenchidos
+
             var camposPreenchidos = true;
             document.querySelectorAll('.parte1 input').forEach(function (input) {
                 if (input.value === '' || !emailz.checkValidity()) {
@@ -130,7 +130,6 @@
             }
         }
 
-        // Habilita o botão "Próximo" se todos os campos da parte 1 estiverem preenchidos
         document.querySelector('.parte1').addEventListener('input', function () {
             var camposPreenchidos = true;
             document.querySelectorAll('.parte1 input').forEach(function (input) {

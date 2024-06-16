@@ -1,9 +1,18 @@
 <?php
-session_start();
 include './conn.php';
 
-if (!isset($_SESSION['cod_usuario'])) {
-    echo "ID do usuário não fornecido.";
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    $_SESSION['msg'] = "É necessário logar antes de acessar.";
+    header("Location: login.php");
+    exit;
+}
+
+$cargo_permitido = [1];
+if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
+    $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
+    header("Location: login.php");
     exit;
 }
 
