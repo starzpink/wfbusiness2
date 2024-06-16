@@ -14,7 +14,19 @@ if ($cargo === '1' || $cargo === '2') {
 $nome_emp = '';
 $nome_rh = '';
 
-if ($cargo == 1) {
+if ($cargo == 0) {
+    $QueryAdm = "SELECT nome_adm
+    FROM administrador
+    WHERE cod_usuario = ?";
+    $stmt = $conn->prepare($QueryAdm);
+    $stmt->bind_param("i", $cod_usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nome_adm = $row['nome_adm'];
+    }
+} else if ($cargo == 1) {
     $QueryEmp = "SELECT e.nome_emp, r.nome_rh 
                  FROM empresa e 
                  INNER JOIN rh r ON e.cod_emp = r.cod_emp 
@@ -56,7 +68,7 @@ if ($cargo == 1) {
         <nav class="sidebar">
             <header>
                 <div class="sb-header">
-                    <span class="sb-nome"><?php //echo htmlspecialchars($nome_adm); ?></span>
+                    <span class="sb-nome"><?php echo htmlspecialchars($nome_adm); ?></span>
                 </div>
             </header>
             <div class="sb-menu">

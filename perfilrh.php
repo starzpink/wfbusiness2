@@ -35,9 +35,7 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $conn->close();
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +46,7 @@ $conn->close();
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
+<body class="v-body">
     <nav class="nav-sidebar">
         <?php include 'sidebar.php'; ?>
     </nav>
@@ -72,7 +70,9 @@ $conn->close();
             <div class="campo">
                 <p><strong>Telefone:</strong> <?php echo htmlspecialchars($rh['tel_rh']); ?></p>
             </div>
-            <a href="editarrh.php?cod_usuario=<?php echo $cod_usuario; ?>"><button>Editar</button></a>
+            <div class="dash-botoes">
+                <a href="editarrh.php?cod_usuario=<?php echo $cod_usuario; ?>" class="btn btn-primary">Editar</a>
+            </div>
         </div>
     </div>
 </body>
