@@ -7,7 +7,6 @@
     <title>Workfolio for Business</title>
     <meta name="description" content="Contrate o colaborador ideal para sua empresa na Workfolio for Business">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 </head>
 
 <body>
