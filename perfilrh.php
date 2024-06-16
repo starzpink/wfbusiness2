@@ -57,7 +57,9 @@ $conn->close();
 </head>
 
 <body class="v-body">
+    <nav class="fodase">
         <?php include 'sidebar.php'; ?>
+    </nav>
     <div class="v-principal">
         <div class="container-perfil">
             <h1>Perfil do RH</h1>
