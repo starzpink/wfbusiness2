@@ -8,7 +8,6 @@ $conn->query("SET @cod_usuario = $cod_usuario");
 
 header('Content-type: application/json');
 
-// Prepare and bind
 $stmt = $conn->prepare("UPDATE vaga SET 
     titulo_vaga = ?, 
     descricao_vaga = ?, 
@@ -23,7 +22,6 @@ $stmt = $conn->prepare("UPDATE vaga SET
 
 $stmt->bind_param("sssiiiiisi", $titulo_vaga, $descricao_vaga, $salario_vaga, $cod_local, $cod_mod, $cod_tipo, $horario_vaga, $situacao_vaga, $cod_emp, $cod_vaga);
 
-// Set parameters and execute
 $cod_vaga = $_POST['cod_vaga'];
 $titulo_vaga = $_POST['titulo_vaga'];
 $descricao_vaga = $_POST['descricao_vaga'];
