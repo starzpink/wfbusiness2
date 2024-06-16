@@ -7,6 +7,7 @@
     <title>Workfolio for Business</title>
     <meta name="description" content="Contrate o colaborador ideal para sua empresa na Workfolio for Business">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 </head>
 
 <body>
@@ -41,22 +42,36 @@
                 </header>
                 <div class="sobre-card-container">
                     <div class="sobre-card">
-                        <h3>Temos a eumppappa</h3>
+                        <h3>Eficiência no Recrutamento</h3>
                         <div class="texto-card">
-                            <p>Eumppappa ipsum lorem gyuvin kim gyuvin shimkongz</p>
+                            <p>Encontre talentos rapidamente com Workfolio. Gerencie vagas e candidatos de forma eficiente, reduzindo o tempo de triagem.
+                            </p>
                         </div>
                     </div>
                     <div class="sobre-card">
-                        <h3>Temos a eumppappa</h3>
+                        <h3>Segurança de Dados</h3>
                         <div class="texto-card">
-                            <p>Eumppappa ipsum lorem gyuvin kim gyuvin shimkongz</p>
+                            <p>Proteja seus dados com senhas criptografadas e controle de acesso rigoroso. Somente membros autorizados podem acessar informações sensíveis.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="sobre-card">
+                        <h3>Usabilidade Intuitiva</h3>
+                        <div class="texto-card">
+                            <p>Desfrute de uma interface amigável e fácil de usar. Realize tarefas de cadastro e gestão com simplicidade e eficiência.</p>
+                        </div>
+                    </div>
+                    <div class="sobre-card">
+                        <h3>Confiabilidade e Performance</h3>
+                        <div class="texto-card">
+                            <p>Experimente um sistema robusto e eficiente. A integridade e consistência dos dados são garantidas com testes contínuos.</p>
                         </div>
                     </div>
                 </div>
-
             </section>
         </div>
     </main>
+    <footer class="foot">Workfolio for Business© 2024</footer>
 </body>
 
 </html>
