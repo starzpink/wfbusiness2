@@ -57,7 +57,7 @@ $conn->close();
 </head>
 
 <body class="v-body">
-    <nav class="nav-sidebar">
+    <nav>
         <?php include 'sidebar.php'; ?>
     </nav>
     <div class="v-principal">

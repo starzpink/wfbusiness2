@@ -3,16 +3,14 @@
 body {
     position: sticky;
     top: 0;
+    max-height: 100vh;
 }
 
 .sidebar {
     width: 12rem;
     background-color: #040D12;
     gap: 1rem;
-    max-height: 100vh;
-    position: sticky;
     font-family: 'Open Sans', sans-serif;
-    top: 0;
 }
 
 .sb-header {
