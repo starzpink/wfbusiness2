@@ -9,7 +9,17 @@
     position: sticky;
     top: 0;
     height: 100vh;
-    max-height: 300vh;
+    max-height: 100vh;
+}
+
+.fodase {
+    overflow: visible;
+    display: initial;
+}
+
+v-body {
+    overflow: visible;
+    display: initial;
 }
 
 .sb-header {
