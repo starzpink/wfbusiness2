@@ -42,27 +42,27 @@
                 </header>
                 <div class="sobre-card-container">
                     <div class="sobre-card">
-                        <h3>Eficiência no Recrutamento</h3>
+                        <h3 class="titulo-cad">Eficiência no Recrutamento</h3>
                         <div class="texto-card">
                             <p>Encontre talentos rapidamente com Workfolio. Gerencie vagas e candidatos de forma eficiente, reduzindo o tempo de triagem.
                             </p>
                         </div>
                     </div>
                     <div class="sobre-card">
-                        <h3>Segurança de Dados</h3>
+                        <h3 class="titulo-cad">Segurança de Dados</h3>
                         <div class="texto-card">
                             <p>Proteja seus dados com senhas criptografadas e controle de acesso rigoroso. Somente membros autorizados podem acessar informações sensíveis.
                             </p>
                         </div>
                     </div>
                     <div class="sobre-card">
-                        <h3>Usabilidade Intuitiva</h3>
+                        <h3 class="titulo-cad">Usabilidade Intuitiva</h3>
                         <div class="texto-card">
                             <p>Desfrute de uma interface amigável e fácil de usar. Realize tarefas de cadastro e gestão com simplicidade e eficiência.</p>
                         </div>
                     </div>
                     <div class="sobre-card">
-                        <h3>Confiabilidade e Performance</h3>
+                        <h3 class="titulo-cad">Confiabilidade e Performance</h3>
                         <div class="texto-card">
                             <p>Experimente um sistema robusto e eficiente. A integridade e consistência dos dados são garantidas com testes contínuos.</p>
                         </div>

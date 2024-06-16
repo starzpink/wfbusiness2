@@ -47,8 +47,75 @@ $conn->close();
     <title>Editar Empresa</title>
     <link rel="stylesheet" type="text/css" href="css/signup.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.php">
+            <span class="logo">Workfolio for Business</span>
+        </a>
+    </nav>
+    <div class="container">
+        <h1>Editar Empresa</h1>
+        <div class="formContainer">
+            <form id="cadastroForm" method="post">
+                <div class="parte1">
+                    <div class="campo">
+                        <label for="email">E-mail de Login:</label>
+                        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($empresa['email']); ?>" required>
+                    </div>
+                    <div class="campo">
+                        <label for="senha">Nova Senha:</label>
+                        <input type="password" id="senha" name="senha">
+                    </div>
+                    <div class="campo">
+                        <label for="confirmaSenha">Confirme a Nova Senha:</label>
+                        <input type="password" id="confirmaSenha" name="confirmaSenha">
+                    </div>
+                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo">
+                </div>
+                <div class="parte2" style="display:none;">
+                    <div class="campo">
+                        <label for="nome_emp">Nome da Empresa:</label>
+                        <input type="text" id="nome_emp" name="nome_emp" value="<?php echo htmlspecialchars($empresa['nome_emp']); ?>" required>
+                    </div>
+                    <div class="campo">
+                        <label for="cod_local">Local:</label>
+                        <select id="cod_local" name="cod_local" required></select>
+                    </div>
+                    <div class="campo">
+                        <label for="areaat_emp">Área de Atuação:</label>
+                        <select id="areaat_emp" name="areaat_emp" required></select>
+                    </div>
+                    <div class="campo">
+                        <label for="desc_emp">Descrição:</label>
+                        <textarea id="desc_emp" name="desc_emp" required><?php echo htmlspecialchars($empresa['desc_emp']); ?></textarea>
+                    </div>
+                    <div class="campo">
+                        <label for="email_emp">E-mail de contato:</label>
+                        <input type="email" id="email_emp" name="email_emp" value="<?php echo htmlspecialchars($empresa['email_emp']); ?>" required>
+                    </div>
+                    <div class="campo">
+                        <label for="site_emp">Site:</label>
+                        <input type="text" id="site_emp" name="site_emp" value="<?php echo htmlspecialchars($empresa['site_emp']); ?>" required>
+                    </div>
+                    <div class="campo">
+                        <label for="tel_emp">Telefone:</label>
+                        <input type="text" id="tel_emp" name="tel_emp" value="<?php echo htmlspecialchars($empresa['tel_emp']); ?>" required>
+                    </div>
+                    <div class="campo">
+                        <label for="cnpj_emp">CNPJ</label>
+                        <input type="text" id="cnpj_emp" name="cnpj_emp" value="<?php echo htmlspecialchars($empresa['cnpj_emp']); ?>" required>
+                    </div>
+                    <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuario; ?>">
+                    <div id="toast" class="toast"></div>
+                    <input type="submit" class="btCadastrar" onclick="funcoes()" value="Atualizar">
+                </div>
+            </form>
+        </div>
+    </div>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             getLocalSelect();
             getAreaAtuacaoSelect();
 
@@ -57,15 +124,15 @@ $conn->close();
                     dataType: 'json',
                     url: 'get/getLocaltrabalho.php',
                     data: {}
-                }).done(function (data) {
+                }).done(function(data) {
                     var htmlSelect = '';
                     var currentCodLocal = <?php echo json_encode($cod_local); ?>;
-                    $.each(data.data, function (key, value) {
+                    $.each(data.data, function(key, value) {
                         var selected = value.cod_local == currentCodLocal ? 'selected' : '';
                         htmlSelect += '<option value="' + value.cod_local + '" ' + selected + '>' + value.cidade_local + '</option>';
                     });
                     $("#cod_local").html(htmlSelect);
-                }).fail(function (jqXHR, textStatus, errorThrown) {
+                }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.log("Request failed: " + textStatus + ", " + errorThrown);
                 });
             }
@@ -75,15 +142,15 @@ $conn->close();
                     dataType: 'json',
                     url: 'get/getAreaat.php',
                     data: {}
-                }).done(function (data) {
+                }).done(function(data) {
                     var htmlSelect = '';
                     var currentAreaAtuacao = <?php echo json_encode($areaat_emp); ?>;
-                    $.each(data.data, function (key, value) {
+                    $.each(data.data, function(key, value) {
                         var selected = value.cod_area == currentAreaAtuacao ? 'selected' : '';
                         htmlSelect += '<option value="' + value.cod_area + '" ' + selected + '>' + value.desc_area + '</option>';
                     });
                     $("#areaat_emp").html(htmlSelect);
-                }).fail(function (jqXHR, textStatus, errorThrown) {
+                }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.log("Request failed: " + textStatus + ", " + errorThrown);
                 });
             }
@@ -92,7 +159,7 @@ $conn->close();
                 var toast = document.getElementById("toast");
                 toast.className = "show";
                 toast.innerHTML = message;
-                setTimeout(function () {
+                setTimeout(function() {
                     toast.className = toast.className.replace("show", "");
                 }, 3000);
             }
@@ -104,9 +171,9 @@ $conn->close();
                 var formData = new FormData(form);
 
                 fetch('update/updateEmpresa.php', {
-                    method: 'POST',
-                    body: formData
-                }).then(response => response.text())
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.text())
                     .then(responseText => {
                         if (responseText.trim() === 'Sucesso') {
                             showToast('Atualização bem-sucedida!');
@@ -123,7 +190,7 @@ $conn->close();
 
         function prox() {
             var camposPreenchidos = true;
-            document.querySelectorAll('.parte1 input').forEach(function (input) {
+            document.querySelectorAll('.parte1 input').forEach(function(input) {
                 if (input.value === '') {
                     camposPreenchidos = false;
                     return;
@@ -138,80 +205,6 @@ $conn->close();
             }
         }
     </script>
-</head>
-
-<body>
-    <nav class="navbar">
-        <a href="index.php">
-            <span class="logo">Workfolio for Business</span>
-        </a>
-    </nav>
-    <div class="container">
-        <h1>Editar Empresa</h1>
-        <div class="formContainer">
-            <form id="cadastroForm" method="post">
-                <div class="parte1">
-                    <div class="campo">
-                        <label for="email">E-mail de Login:</label>
-                        <input type="email" id="email" name="email"
-                            value="<?php echo htmlspecialchars($empresa['email']); ?>" required>
-                    </div>
-                    <div class="campo">
-                        <label for="senha">Nova Senha:</label>
-                        <input type="password" id="senha" name="senha">
-                    </div>
-                    <div class="campo">
-                        <label for="confirmaSenha">Confirme a Nova Senha:</label>
-                        <input type="password" id="confirmaSenha" name="confirmaSenha">
-                    </div>
-                    <input type="button" class="visible_submit" id="visible_submit" onclick="prox()" value="Próximo">
-                </div>
-                <div class="parte2" style="display:none;">
-                    <div class="campo">
-                        <label for="nome_emp">Nome da Empresa:</label>
-                        <input type="text" id="nome_emp" name="nome_emp"
-                            value="<?php echo htmlspecialchars($empresa['nome_emp']); ?>" required>
-                    </div>
-                    <div class="campo">
-                        <label for="cod_local">Local:</label>
-                        <select id="cod_local" name="cod_local" required></select>
-                    </div>
-                    <div class="campo">
-                        <label for="areaat_emp">Área de Atuação:</label>
-                        <select id="areaat_emp" name="areaat_emp" required></select>
-                    </div>
-                    <div class="campo">
-                        <label for="desc_emp">Descrição:</label>
-                        <textarea id="desc_emp" name="desc_emp"
-                            required><?php echo htmlspecialchars($empresa['desc_emp']); ?></textarea>
-                    </div>
-                    <div class="campo">
-                        <label for="email_emp">E-mail de contato:</label>
-                        <input type="email" id="email_emp" name="email_emp"
-                            value="<?php echo htmlspecialchars($empresa['email_emp']); ?>" required>
-                    </div>
-                    <div class="campo">
-                        <label for="site_emp">Site:</label>
-                        <input type="text" id="site_emp" name="site_emp"
-                            value="<?php echo htmlspecialchars($empresa['site_emp']); ?>" required>
-                    </div>
-                    <div class="campo">
-                        <label for="tel_emp">Telefone:</label>
-                        <input type="text" id="tel_emp" name="tel_emp"
-                            value="<?php echo htmlspecialchars($empresa['tel_emp']); ?>" required>
-                    </div>
-                    <div class="campo">
-                        <label for="cnpj_emp">CNPJ</label>
-                        <input type="text" id="cnpj_emp" name="cnpj_emp"
-                            value="<?php echo htmlspecialchars($empresa['cnpj_emp']); ?>" required>
-                    </div>
-                    <input type="hidden" name="cod_usuario" value="<?php echo $cod_usuario; ?>">
-                    <div id="toast" class="toast"></div>
-                    <input type="submit" class="btCadastrar" onclick="funcoes()" value="Atualizar">
-                </div>
-            </form>
-        </div>
-    </div>
 </body>
 
 </html>

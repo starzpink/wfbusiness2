@@ -68,7 +68,6 @@ $conn->close();
     <script src="javascript/javascriptVagadash.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javascript/javascriptChart.js"></script>
-
     <title>Dashboard</title>
 </head>
 
