@@ -1,16 +1,3 @@
-.v-body {
-    display: flex;
-    flex-direction: row;
-}
-
-.v-principal {
-    margin: 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-}
-
 .campos-container {
     display: flex;
     flex-direction: column;
