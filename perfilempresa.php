@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-$cargo_permitido = [1,2];
+$cargo_permitido = [1, 2];
 if (!in_array($_SESSION['cargo'], $cargo_permitido)) {
     $_SESSION['msg'] = "Você não tem permissão para acessar esta área.";
     header("Location: login.php");
@@ -87,49 +87,60 @@ if ($cargo = $_SESSION['cargo'] == 1) {
 </head>
 
 <body class="v-body">
-    <nav class="nav-sidebar">
+    <nav class="fodase">
         <?php include 'sidebar.php'; ?>
     </nav>
     <div class="v-principal">
-        <h1>Perfil da Empresa</h1>
-        <?php if ($cargo = $_SESSION['cargo'] != 1) { ?>
-            <div class="parte1">
-                <div class="campo">
-                    <p><strong>Email do Usuário:</strong> <?php echo htmlspecialchars($empresa['email']); ?></p>
+        <div class="container-perfil">
+            <h1>Perfil da Empresa</h1>
+            <?php if ($cargo = $_SESSION['cargo'] != 1) { ?>
+                <div class="campo-container">
+                    <div class="campo">
+                        <label>Email do Usuário:</label>
+                        <p><?php echo htmlspecialchars($empresa['email']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>Nome:</label>
+                        <p><?php echo htmlspecialchars($empresa['nome_emp']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>Local:</label>
+                        <p><?php echo htmlspecialchars($empresa['cod_local']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>Área:</label>
+                        <p><?php echo htmlspecialchars($empresa['areaat_emp']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>Descrição:</label>
+                        <p><?php echo htmlspecialchars($empresa['desc_emp']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>E-mail:</label>
+                        <p><?php echo htmlspecialchars($empresa['email_emp']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>Website:</label>
+                        <p><?php echo htmlspecialchars($empresa['site_emp']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>Telefone:</label>
+                        <p><?php echo htmlspecialchars($empresa['tel_emp']); ?></p>
+                    </div>
+                    <div class="campo">
+                        <label>CNPJ:</label>
+                        <p><?php echo htmlspecialchars($empresa['cnpj_emp']); ?></p>
+                    </div>
+                    <?php if ($cargo = $_SESSION['cargo'] != 1) { ?>
+                        <div class="dash-botoes">
+                            <a href="editarEmpresa.php?cod_usuario=<?php echo $cod_usuario; ?>"
+                                class="btn btn-primary">Editar</a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         <?php } ?>
-        <div class="parte2">
-            <div class="campo">
-                <p><strong>Nome:</strong> <?php echo htmlspecialchars($empresa['nome_emp']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>Local:</strong> <?php echo htmlspecialchars($empresa['cod_local']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>Área:</strong> <?php echo htmlspecialchars($empresa['areaat_emp']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>Descrição:</strong> <?php echo htmlspecialchars($empresa['desc_emp']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>Email:</strong> <?php echo htmlspecialchars($empresa['email_emp']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>Site:</strong> <?php echo htmlspecialchars($empresa['site_emp']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>Telefone:</strong> <?php echo htmlspecialchars($empresa['tel_emp']); ?></p>
-            </div>
-            <div class="campo">
-                <p><strong>CNPJ:</strong> <?php echo htmlspecialchars($empresa['cnpj_emp']); ?></p>
-            </div>
-        </div>
-        <?php if ($cargo = $_SESSION['cargo'] != 1) { ?>
-            <div class="dash-botoes">
-                <a href="editarEmpresa.php?cod_usuario=<?php echo $cod_usuario; ?>" class="btn btn-primary">Editar</a>
-            </div>
-        <?php } ?>
+    </div>
     </div>
 </body>
 

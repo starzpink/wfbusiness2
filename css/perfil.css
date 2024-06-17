@@ -1,11 +1,12 @@
 .fodase {
     overflow: visible;
     display: initial;
+    height: 120vh;
+    max-height: 200vh;
 }
 
 .v-body {
-    overflow: visible;
-    display: initial;
+    height: 100vh;
 }
 
 .container-perfil { 
@@ -15,6 +16,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 40px;
+    max-height: 100vh;
+    height: 100vh;
 }   
 
 .campos-container {
